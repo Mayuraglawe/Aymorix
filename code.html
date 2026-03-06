@@ -224,12 +224,10 @@
 </div>
 <div class="hidden md:flex space-x-8">
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#why-us">Why Us</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="/product">Products</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#programs">Programs</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#pricing">Pricing</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#campus">Campus Life</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#testimonials">Testimonials</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#faq">FAQ</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
 </div>
@@ -265,129 +263,119 @@
 <!-- About Section -->
 <section id="about" class="py-20 bg-white dark:bg-slate-900/50 overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-16 items-center">
 
-  <!-- Left: Image collage -->
-  <div class="relative select-none">
-    <!-- Dot grid decorations -->
-    <div class="absolute -top-4 -left-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
-    <div class="absolute -bottom-4 -right-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
+  <!-- Top: image + about text -->
+  <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
 
-    <!-- Two-column image grid -->
-    <div class="grid grid-cols-2 gap-3 relative z-10">
-      <!-- Left column: one tall image -->
-      <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-xl" style="height:420px;">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Team collaborating" class="w-full h-full object-cover" />
+    <!-- Left: Image collage -->
+    <div class="relative select-none">
+      <div class="absolute -top-4 -left-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
+      <div class="absolute -bottom-4 -right-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
+      <div class="grid grid-cols-2 gap-3 relative z-10">
+        <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-xl" style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Team collaborating" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" alt="Office workspace" class="w-full h-full object-cover" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Team meeting" class="w-full h-full object-cover" />
+          </div>
+        </div>
       </div>
-      <!-- Right column: two stacked images -->
-      <div class="flex flex-col gap-3">
-        <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" alt="Office workspace" class="w-full h-full object-cover" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Team meeting" class="w-full h-full object-cover" />
-        </div>
+      <div class="absolute bottom-6 left-6 bg-white dark:bg-slate-800 rounded-2xl px-5 py-4 shadow-2xl border border-slate-100 dark:border-slate-700 z-20">
+        <p class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 leading-none">2+</p>
+        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">Years of Innovation</p>
+      </div>
+      <div class="absolute bottom-6 right-6 flex gap-2 z-20">
+        <span class="w-4 h-4 rounded-full bg-teal-500"></span>
+        <span class="w-4 h-4 rounded-full bg-pink-500"></span>
+        <span class="w-4 h-4 rounded-full bg-violet-500"></span>
       </div>
     </div>
 
-    <!-- Years badge floating over bottom-left corner -->
-    <div class="absolute bottom-6 left-6 bg-white dark:bg-slate-800 rounded-2xl px-5 py-4 shadow-2xl border border-slate-100 dark:border-slate-700 z-20">
-      <p class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 leading-none">2+</p>
-      <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">Years of Innovation</p>
-    </div>
-    <!-- Colored dots -->
-    <div class="absolute bottom-6 right-6 flex gap-2 z-20">
-      <span class="w-4 h-4 rounded-full bg-teal-500"></span>
-      <span class="w-4 h-4 rounded-full bg-pink-500"></span>
-      <span class="w-4 h-4 rounded-full bg-violet-500"></span>
+    <!-- Right: About text -->
+    <div>
+      <p class="text-teal-600 dark:text-teal-400 font-bold tracking-widest uppercase text-xs mb-4">About Us</p>
+      <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
+        We Deal With The Aspects<br>Of Professional <span class="text-teal-500">IT Services</span>
+      </h3>
+      <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+        Aymorix is the partner of choice for forward-thinking institutions and enterprises. We help businesses elevate their value through custom software development, product design, and intelligent automation solutions.
+      </p>
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="about-mini-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 cursor-default">
+          <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-teal-600 dark:text-teal-400" style="font-size:1.2rem;">verified_user</span>
+          </div>
+          <div>
+            <h5 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Experience</h5>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Our growing team of skilled software experts delivers excellence.</p>
+          </div>
+        </div>
+        <div class="about-mini-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 cursor-default">
+          <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-teal-600 dark:text-teal-400" style="font-size:1.2rem;">headset_mic</span>
+          </div>
+          <div>
+            <h5 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Quick Support</h5>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">We help you find bold new ideas while staying close to your needs.</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+        Our flagship product, <strong class="text-slate-800 dark:text-white">Academic Compass</strong>, is revolutionizing how colleges manage timetables, curriculum, and academic operations — powered by smart automation and deep domain expertise.
+      </p>
     </div>
   </div>
 
-  <!-- Right: Text content -->
-  <div>
-    <p class="text-teal-600 dark:text-teal-400 font-bold tracking-widest uppercase text-xs mb-4">About Us</p>
-    <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
-      We Deal With The Aspects<br>Of Professional <span class="text-teal-500">IT Services</span>
-    </h3>
-    <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
-      Aymorix is the partner of choice for forward-thinking institutions and enterprises. We help businesses elevate their value through custom software development, product design, and intelligent automation solutions.
-    </p>
-    <!-- Feature mini-cards -->
-    <div class="grid grid-cols-2 gap-4 mb-8">
-      <div class="about-mini-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 cursor-default">
-        <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400" style="font-size:1.2rem;">verified_user</span>
+  <!-- Bottom: Why Choose Us cards -->
+  <div class="border-t border-slate-100 dark:border-slate-800 pt-16">
+    <div class="text-center mb-12">
+      <p class="text-teal-600 dark:text-teal-400 font-bold tracking-widest uppercase text-xs mb-3">Why Aymorix</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">Why Choose Us</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="why-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
+        <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">bolt</span>
         </div>
         <div>
-          <h5 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Experience</h5>
-          <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Our growing team of skilled software experts delivers excellence.</p>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Cutting-Edge Technology</h4>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">We use the latest frameworks — Next.js, React, TypeScript, AI — to build fast, modern, and future-proof products.</p>
         </div>
       </div>
-      <div class="about-mini-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 cursor-default">
-        <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400" style="font-size:1.2rem;">headset_mic</span>
+      <div class="why-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
+        <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">groups</span>
         </div>
         <div>
-          <h5 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Quick Support</h5>
-          <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">We help you find bold new ideas while staying close to your needs.</p>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Domain Expertise</h4>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Deep understanding of education systems, NEP 2020 requirements, and institutional workflows.</p>
+        </div>
+      </div>
+      <div class="why-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
+        <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">security</span>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Enterprise-Grade Security</h4>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Role-based access control, real-time monitoring, and data protection that meets industry standards.</p>
+        </div>
+      </div>
+      <div class="why-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
+        <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">star</span>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Quality First</h4>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every product is built with rigorous testing, clean architecture, and attention to user experience.</p>
         </div>
       </div>
     </div>
-    <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
-      Our flagship product, <strong class="text-slate-800 dark:text-white">Academic Compass</strong>, is revolutionizing how colleges manage timetables, curriculum, and academic operations — powered by smart automation and deep domain expertise.
-    </p>
-    <a href="#why-us"><button class="bg-teal-600 text-white px-7 py-3 rounded-full font-bold hover:bg-teal-700 hover:scale-105 transition-all shadow-md inline-flex items-center gap-2">Read More <span class="material-symbols-outlined text-base">arrow_forward</span></button></a>
   </div>
 
-</div>
-</div>
-</section>
-
-<!-- Why Choose Us Section -->
-<section id="why-us" class="py-20 bg-background-light dark:bg-background-dark">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="text-center mb-14">
-    <p class="text-teal-600 dark:text-teal-400 font-bold tracking-widest uppercase text-xs mb-3">Why Aymorix</p>
-    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">Why Choose Us</h2>
-  </div>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="why-card bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
-      <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">bolt</span>
-      </div>
-      <div>
-        <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Cutting-Edge Technology</h4>
-        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">We use the latest frameworks — Next.js, React, TypeScript, AI — to build fast, modern, and future-proof products.</p>
-      </div>
-    </div>
-    <div class="why-card bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
-      <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">groups</span>
-      </div>
-      <div>
-        <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Domain Expertise</h4>
-        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Deep understanding of education systems, NEP 2020 requirements, and institutional workflows.</p>
-      </div>
-    </div>
-    <div class="why-card bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
-      <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">security</span>
-      </div>
-      <div>
-        <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Enterprise-Grade Security</h4>
-        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Role-based access control, real-time monitoring, and data protection that meets industry standards.</p>
-      </div>
-    </div>
-    <div class="why-card bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex items-start gap-5 cursor-default">
-      <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-teal-600 dark:text-teal-400">star</span>
-      </div>
-      <div>
-        <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Quality First</h4>
-        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every product is built with rigorous testing, clean architecture, and attention to user experience.</p>
-      </div>
-    </div>
-  </div>
 </div>
 </section>
 <!-- Flagship Product Section -->
@@ -660,89 +648,6 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </div>
 </div>
 </div>
-</section>
-
-<!-- Testimonials Section -->
-<section id="testimonials" class="py-20" style="background:#f6f9f8;">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
-    <div class="text-center mb-16">
-      <p class="text-teal-600 dark:text-teal-500 font-bold tracking-widest uppercase text-xs mb-3">TESTIMONIALS</p>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Loved by Institutions</h2>
-      <p class="text-slate-500 text-base max-w-xl mx-auto">Hear from the educators and administrators who use our products every day.</p>
-    </div>
-
-    <!-- Cards -->
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col gap-5 hover:shadow-lg transition-shadow duration-300">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:#cff5ed;">
-          <span class="material-symbols-outlined text-teal-600" style="font-size:22px;">format_quote</span>
-        </div>
-        <div class="flex gap-1">
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-        </div>
-        <p class="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;Aymorix transformed how we manage our academic operations. The timetable scheduling alone saved us weeks of manual work every semester.&rdquo;</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-slate-100">
-          <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">D</div>
-          <div>
-            <p class="text-sm font-bold text-slate-900">Dr. Rajesh Sharma</p>
-            <p class="text-xs text-slate-400">Principal, Engineering College</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col gap-5 hover:shadow-lg transition-shadow duration-300">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:#cff5ed;">
-          <span class="material-symbols-outlined text-teal-600" style="font-size:22px;">format_quote</span>
-        </div>
-        <div class="flex gap-1">
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-        </div>
-        <p class="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;The attention to detail and understanding of NEP 2020 requirements is outstanding. Finally, a product that truly understands education.&rdquo;</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-slate-100">
-          <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">P</div>
-          <div>
-            <p class="text-sm font-bold text-slate-900">Prof. Anita Deshmukh</p>
-            <p class="text-xs text-slate-400">HOD, Computer Science</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col gap-5 hover:shadow-lg transition-shadow duration-300">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:#cff5ed;">
-          <span class="material-symbols-outlined text-teal-600" style="font-size:22px;">format_quote</span>
-        </div>
-        <div class="flex gap-1">
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-          <span class="text-amber-400 text-lg">&#9733;</span>
-        </div>
-        <p class="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;From onboarding to daily use, the experience has been seamless. The support team is responsive and the product keeps getting better.&rdquo;</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-slate-100">
-          <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">V</div>
-          <div>
-            <p class="text-sm font-bold text-slate-900">Vikram Patil</p>
-            <p class="text-xs text-slate-400">College Administrator</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
 
 <!-- FAQ Section -->
