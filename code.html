@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EduCampus | Empowering the Next Generation of Leaders</title>
+<title>Aymorix | Empowering the Next Generation of Leaders</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -42,6 +44,7 @@
 <style>
     body {
       min-height: max(884px, 100dvh);
+      scroll-behavior: smooth;
     }
   </style>
   </head>
@@ -52,16 +55,16 @@
 <div class="flex justify-between h-16 items-center">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-3xl">school</span>
-<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">EduCampus</span>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Aymorix</span>
 </div>
 <div class="hidden md:flex space-x-8">
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Programs</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Campus Life</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#programs">Programs</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#campus">Campus Life</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
 </div>
 <div>
-<button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">Apply Now</button>
+<a href="#contact"><button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">Apply Now</button></a>
 </div>
 </div>
 </div>
@@ -90,7 +93,7 @@
 </div>
 </header>
 <!-- About Section -->
-<section class="py-20 bg-white dark:bg-slate-900/50">
+<section id="about" class="py-20 bg-white dark:bg-slate-900/50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid lg:grid-cols-2 gap-12 items-center">
 <div>
@@ -124,7 +127,7 @@
 </div>
 </section>
 <!-- Programs Section -->
-<section class="py-20">
+<section id="programs" class="py-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Academic Programs</h2>
 <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our wide range of undergraduate and graduate programs tailored to your professional goals.</p>
@@ -176,8 +179,118 @@
 </div>
 </div>
 </section>
-<!-- Campus Life Section -->
+<!-- Flagship Product Section -->
+<section class="py-20 bg-white dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Our Products</h2>
+<h3 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Flagship Product</h3>
+</div>
+<div class="bg-background-light dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 md:p-12">
+<div class="grid lg:grid-cols-2 gap-10 items-start">
+<!-- Left: Product Info -->
+<div>
+<span class="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-full mb-6">
+<span class="material-symbols-outlined text-sm">school</span> Education Technology
+</span>
+<h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Academic Compass</h4>
+<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+A comprehensive academic management platform that empowers colleges to effortlessly manage timetables, track curriculum, and streamline operations — all in one intelligent system.
+</p>
+<a href="#contact" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all hover:scale-105">
+View Product <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+<!-- Right: Feature List -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">AI-Powered Timetable Scheduling</span>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">NEP 2020 Curriculum Management</span>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">Multi-Role Dashboards</span>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">Real-Time Notifications</span>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">Conflict-Free Scheduling</span>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 hover:border-primary/50 hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-slate-900 dark:text-white">Assignment &amp; Assessment System</span>
+</div>
+</div>
+</div>
+</div>
+<p class="text-center text-slate-500 dark:text-slate-400 text-sm mt-10">More products coming soon. <a href="#contact" class="text-primary font-bold hover:underline">Stay tuned.</a></p>
+</div>
+</section>
+
+<!-- Our Services Section -->
 <section class="py-20 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">What We Do</h2>
+<h3 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Services</h3>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">We deliver end-to-end technology solutions that help organizations modernize, automate, and scale.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">code</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Custom Software Development</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Tailored solutions built from the ground up to match your business requirements and workflows.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">smart_toy</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">AI &amp; Automation</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Intelligent automation that eliminates repetitive tasks and optimizes decision-making processes.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">layers</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">SaaS Product Design</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">End-to-end product design and development for scalable, cloud-native SaaS applications.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">bar_chart</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Data Analytics</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Transform raw data into actionable insights with custom dashboards and reporting tools.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">security</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Security &amp; Compliance</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Enterprise-grade security with role-based access, encryption, and regulatory compliance.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">cloud</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Cloud Infrastructure</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Scalable cloud architecture designed for performance, reliability, and cost efficiency.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Campus Life Section -->
+<section id="campus" class="py-20 bg-background-light dark:bg-background-dark">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
 <div class="max-w-xl">
@@ -215,7 +328,7 @@
 </div>
 </section>
 <!-- Contact Section -->
-<section class="py-20 bg-white dark:bg-slate-900">
+<section id="contact" class="py-20 bg-white dark:bg-slate-900">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid lg:grid-cols-2 gap-16">
 <div>
@@ -246,7 +359,7 @@
 </div>
 <div>
 <h5 class="font-bold text-slate-900 dark:text-white">Email Inquiries</h5>
-<p class="text-slate-500 dark:text-slate-400">admissions@educampus.edu</p>
+<p class="text-slate-500 dark:text-slate-400">admissions@Aymorix.edu</p>
 </div>
 </div>
 </div>
@@ -256,24 +369,25 @@
 </div>
 <div class="bg-background-light dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
 <h3 class="text-xl font-bold mb-6">Inquiry Form</h3>
-<form action="#" class="space-y-4">
+<form id="inquiry-form" action="/contact" method="POST" class="space-y-4">
+<div id="form-response" class="hidden rounded-lg px-4 py-3 text-sm font-medium"></div>
 <div class="grid grid-cols-2 gap-4">
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">First Name</label>
-<input class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="text"/>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="first-name">First Name</label>
+<input id="first-name" name="firstName" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="text" placeholder="John"/>
 </div>
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Last Name</label>
-<input class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="text"/>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="last-name">Last Name</label>
+<input id="last-name" name="lastName" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="text" placeholder="Doe"/>
 </div>
 </div>
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Email Address</label>
-<input class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="email"/>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="email">Email Address</label>
+<input id="email" name="email" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="email" placeholder="john.doe@example.com"/>
 </div>
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Program of Interest</label>
-<select class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary">
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="program">Program of Interest</label>
+<select id="program" name="program" title="Program of Interest" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary">
 <option>Select a program</option>
 <option>Arts &amp; Humanities</option>
 <option>Science &amp; Engineering</option>
@@ -281,10 +395,10 @@
 </select>
 </div>
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Message</label>
-<textarea class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" rows="4"></textarea>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="message">Message</label>
+<textarea id="message" name="message" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" rows="4" placeholder="Your message here..."></textarea>
 </div>
-<button class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20" type="submit">Send Message</button>
+<button id="submit-btn" class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20" type="submit">Send Message</button>
 </form>
 </div>
 </div>
@@ -297,7 +411,7 @@
 <div class="col-span-2">
 <div class="flex items-center gap-2 mb-6">
 <span class="material-symbols-outlined text-primary text-3xl">school</span>
-<span class="text-2xl font-bold tracking-tight">EduCampus</span>
+<span class="text-2xl font-bold tracking-tight">Aymorix</span>
 </div>
 <p class="text-slate-400 max-w-sm mb-6">
                         Leading the way in higher education, research, and innovation for over 50 years. Our mission is to transform students into the visionary leaders of tomorrow.
@@ -334,7 +448,7 @@
 </div>
 </div>
 <div class="border-t border-slate-800 pt-8 flex flex-col md:row justify-between items-center text-slate-500 text-sm gap-4">
-<p>© 2024 EduCampus Institution. All rights reserved.</p>
+<p>© 2024 Aymorix Institution. All rights reserved.</p>
 <div class="flex gap-8">
 <span>Accredited Member</span>
 <span>Equal Opportunity Institution</span>
@@ -342,4 +456,52 @@
 </div>
 </div>
 </footer>
+<script>
+(function () {
+    const form = document.getElementById('inquiry-form');
+    const btn  = document.getElementById('submit-btn');
+    const resp = document.getElementById('form-response');
+
+    function showResponse(success, message) {
+        resp.className = 'rounded-lg px-4 py-3 text-sm font-medium ' +
+            (success ? 'bg-green-100 text-green-800 border border-green-300'
+                     : 'bg-red-100 text-red-800 border border-red-300');
+        resp.textContent = message;
+        resp.classList.remove('hidden');
+        resp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        resp.classList.add('hidden');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        try {
+            const data = {
+                firstName: document.getElementById('first-name').value.trim(),
+                lastName:  document.getElementById('last-name').value.trim(),
+                email:     document.getElementById('email').value.trim(),
+                program:   document.getElementById('program').value,
+                message:   document.getElementById('message').value.trim()
+            };
+
+            const res = await fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const json = await res.json();
+            showResponse(json.success, json.message);
+            if (json.success) form.reset();
+        } catch (err) {
+            showResponse(false, 'Something went wrong. Please try again.');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+        }
+    });
+}());
+</script>
 </body></html>
