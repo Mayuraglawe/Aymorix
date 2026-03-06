@@ -211,9 +211,46 @@
     .why-card:hover .text-blue-600 {
       color: #ffffff;
     }
+
+    /* ── Progress bar ── */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, #1754cf, #3b82f6); z-index: 9999; width: 0%; transition: width 0.08s linear; pointer-events: none; border-radius: 0 2px 2px 0; }
+
+    /* ── Hero blobs ── */
+    .hero-blob { position: absolute; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; filter: blur(72px); opacity: 0.22; animation: blobMorph 9s ease-in-out infinite alternate; pointer-events: none; }
+    @keyframes blobMorph {
+      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(0,0) scale(1); }
+      50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: translate(25px,-25px) scale(1.06); }
+      100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-12px, 12px) scale(0.97); }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.22,0.61,0.36,1), transform 0.7s cubic-bezier(0.22,0.61,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Module flip cards ── */
+    .mod-flip { perspective: 1000px; }
+    .mod-flip-inner { position: relative; width: 100%; height: 100%; min-height: 220px; transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1); transform-style: preserve-3d; }
+    .mod-flip:hover .mod-flip-inner { transform: rotateY(180deg); }
+    .mod-flip-front, .mod-flip-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 1rem; padding: 1.5rem; }
+    .mod-flip-front { background: white; border: 1px solid #e2e8f0; }
+    .dark .mod-flip-front { background: #1e293b; border-color: #334155; }
+    .mod-flip-back { background: #1754cf; color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 0.75rem; border: none; }
+
+    /* ── Logo marquee ── */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ── Pricing billing toggle ── */
+    .price-annual { display: none; }
+    .price-monthly { display: block; }
+    body.billing-annual .price-monthly { display: none; }
+    body.billing-annual .price-annual  { display: block; }
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Scroll Progress Bar -->
+<div id="progress-bar"></div>
 <!-- Top Navigation -->
 <nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,6 +278,9 @@
 <header class="relative overflow-hidden pt-8 pb-16 @container">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="relative rounded-xl overflow-hidden min-h-[520px] flex items-center justify-center p-8 bg-slate-900">
+<!-- Animated background blobs -->
+<div class="hero-blob bg-blue-500 w-96 h-96" style="top:-60px;right:-80px;animation-duration:9s;"></div>
+<div class="hero-blob bg-indigo-500 w-72 h-72" style="bottom:0;left:-40px;animation-delay:-5s;animation-duration:12s;"></div>
 <div class="absolute inset-0 opacity-60">
 <img alt="Campus Building" class="w-full h-full object-cover" data-alt="Modern university campus building with glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC80reA8Y52UgCFwflc9R8Fb2HPcvyuF4esMgK17khx6hWa7cYjUoLTMBknT93oqpK44v6GrMu69Y8gT6gehYWQLcItC_70N776wBKv1UThqwZkewqEGVJX4dx4x5r5ENEfoZRaLR9kf2vAfG5_RDnOeL1ojle36Nz26ZYOxJMc1ctLKbJmvR882RzuEdp111KEg_ifLPPLwAxitsgCu_LwTZmS2GLU9kOsRkc30Wfj3JtmuySPTV8NWTWquDlol_QJb9rohrfgGnk"/>
 </div>
@@ -266,11 +306,11 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:divide-x divide-blue-500/50">
       <div class="px-4">
-        <p class="text-4xl font-extrabold text-white mb-1">10+</p>
+        <p class="text-4xl font-extrabold text-white mb-1" data-countup="10" data-suffix="+">0+</p>
         <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Institutions Onboarded</p>
       </div>
       <div class="px-4">
-        <p class="text-4xl font-extrabold text-white mb-1">50k+</p>
+        <p class="text-4xl font-extrabold text-white mb-1" data-countup="50" data-suffix="k+">0k+</p>
         <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Students Managed</p>
       </div>
       <div class="px-4 border-t md:border-t-0 pt-6 md:pt-0 border-blue-500/50">
@@ -280,6 +320,51 @@
       <div class="px-4 border-t md:border-t-0 pt-6 md:pt-0 border-blue-500/50">
         <p class="text-4xl font-extrabold text-white mb-1">Top 50</p>
         <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">SIH 2025 Finalists</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Institution Logo Marquee -->
+<section class="py-8 bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-100 dark:border-slate-800">
+  <p class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">Trusted by forward-thinking institutions</p>
+  <div class="relative overflow-hidden" style="mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);-webkit-mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
+    <div class="marquee-track">
+      <div class="flex items-center gap-16 px-8">
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Sunrise College</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Metro University</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Apex Institute</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pioneer Academy</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Horizon College</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CityTech Institute</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Nexus University</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Stellar Academy</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+      </div>
+      <div class="flex items-center gap-16 px-8" aria-hidden="true">
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Sunrise College</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Metro University</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Apex Institute</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pioneer Academy</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Horizon College</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CityTech Institute</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Nexus University</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Stellar Academy</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
       </div>
     </div>
   </div>
@@ -665,9 +750,16 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 <!-- Pricing Section -->
 <section id="pricing" class="py-20 bg-white dark:bg-slate-900">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14">
+    <div class="text-center mb-10">
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4">Simple, Transparent Pricing</h2>
       <p class="text-slate-500 dark:text-slate-400 text-lg">Choose the perfect plan for your institution</p>
+    </div>
+    <!-- Billing Toggle -->
+    <div class="flex justify-center mb-12">
+      <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700">
+        <button id="btn-monthly" onclick="setPricingBilling('monthly')" class="px-5 py-2 rounded-full text-sm font-bold bg-white shadow-sm text-slate-900 transition-all">Monthly</button>
+        <button id="btn-annual" onclick="setPricingBilling('annual')" class="px-5 py-2 rounded-full text-sm font-bold text-slate-500 transition-all">Annual <span class="text-xs text-blue-600 font-bold ml-1">Save 20%</span></button>
+      </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 
@@ -695,8 +787,14 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
         </div>
         <div>
           <p class="text-blue-600 dark:text-blue-400 font-semibold text-lg mb-1">Professional</p>
-          <p class="text-5xl font-extrabold text-slate-800 dark:text-white">₹4,999<span class="text-xl font-medium text-slate-500 dark:text-slate-400">/month</span></p>
-          <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">Ideal for growing colleges</p>
+          <p class="text-5xl font-extrabold text-slate-800 dark:text-white">
+            <span class="price-monthly">&#x20B9;4,999<span class="text-xl font-medium text-slate-500 dark:text-slate-400">/month</span></span>
+            <span class="price-annual">&#x20B9;3,999<span class="text-xl font-medium text-blue-600">/month</span></span>
+          </p>
+          <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+            <span class="price-monthly">Ideal for growing colleges</span>
+            <span class="price-annual text-blue-600 font-semibold">Billed annually &mdash; save &#x20B9;12,000/yr</span>
+          </p>
         </div>
         <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm flex-1">
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-blue-500" style="font-size:1.1rem;">check_circle</span> Up to 2000 students</li>
@@ -969,6 +1067,38 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
   </div>
 </section>
 
+<!-- Comparison: Old Way vs Academic Compass -->
+<section class="py-20 bg-background-light dark:bg-background-dark">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Why Switch?</h2>
+      <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">Old Chaos vs. Academic Compass</h3>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800/50 rounded-2xl p-8">
+        <h4 class="font-extrabold text-red-500 text-lg mb-7 flex items-center gap-2"><span class="material-symbols-outlined">cancel</span> The Old Way</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Timetables built manually in Excel &mdash; conflicts discovered on day one of semester</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Student records scattered across registers, files, and disconnected spreadsheets</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Fee reminders sent manually &mdash; defaulters tracked in separate notebooks</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Parents must call the office to check attendance or results</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">NEP 2020 compliance managed through half a dozen disconnected tools</span></li>
+        </ul>
+      </div>
+      <div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50 rounded-2xl p-8">
+        <h4 class="font-extrabold text-blue-600 text-lg mb-7 flex items-center gap-2"><span class="material-symbols-outlined">verified</span> With Academic Compass</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">AI generates a conflict-free timetable for the entire college in under 60 seconds</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Every student&rsquo;s complete digital profile &mdash; searchable, exportable, always current</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Automated fee reminders, online payments, and real-time defaulter dashboard</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Parents get instant updates on attendance, results, and fees from their phone</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Built-in NEP 2020 framework: CBCS, OBE, electives &mdash; fully automated</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA Bottom Banner -->
 <section class="py-24 bg-white dark:bg-slate-900 text-center border-b border-slate-100 dark:border-slate-800">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -981,6 +1111,15 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
     <p class="mt-6 text-sm text-slate-400">No credit card required for our Starter tier.</p>
   </div>
 </section>
+
+<!-- Floating Book a Demo CTA -->
+<div id="floating-cta" class="hidden fixed bottom-6 right-6 z-50 transition-all">
+  <a href="#contact">
+    <button class="flex items-center gap-2 bg-primary text-white pl-4 pr-5 py-3 rounded-full font-bold shadow-2xl shadow-primary/40 hover:scale-105 hover:bg-primary/90 transition-all">
+      <span class="material-symbols-outlined text-base">calendar_month</span> Book a Demo
+    </button>
+  </a>
+</div>
 
 <!-- Footer -->
 <footer class="bg-slate-900 text-white py-16">
@@ -1081,5 +1220,118 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
         }
     });
 }());
+</script>
+
+<script>
+// ── 1. Page Progress Bar ──
+(function() {
+  const bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function updateBar() {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = total > 0 ? (window.scrollY / total * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+})();
+
+// ── 2. Sticky Header Scroll Shadow ──
+(function() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 12) {
+      nav.classList.add('shadow-xl');
+      nav.style.borderBottomColor = 'transparent';
+    } else {
+      nav.classList.remove('shadow-xl');
+      nav.style.borderBottomColor = '';
+    }
+  }, { passive: true });
+})();
+
+// ── 3. Scroll-Triggered Reveal ──
+(function() {
+  const targets = document.querySelectorAll(
+    '.why-card, .about-mini-card, #programs .grid > div, #campus .grid > div, .mod-flip, .faq-item, #about .grid > div'
+  );
+  targets.forEach(function(el, i) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 0.12 + 's';
+  });
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  targets.forEach(function(el) { io.observe(el); });
+})();
+
+// ── 4. Count-Up Stats ──
+(function() {
+  const els = document.querySelectorAll('[data-countup]');
+  if (!els.length) return;
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const targetVal = +el.dataset.countup;
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const steps = 60;
+      const interval = 1400 / steps;
+      const increment = Math.ceil(targetVal / steps);
+      const timer = setInterval(function() {
+        current = Math.min(current + increment, targetVal);
+        el.textContent = current + suffix;
+        if (current >= targetVal) clearInterval(timer);
+      }, interval);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+// ── 5. Floating CTA Reveal ──
+(function() {
+  const cta = document.getElementById('floating-cta');
+  if (!cta) return;
+  let shown = false;
+  window.addEventListener('scroll', function() {
+    if (!shown && window.scrollY > window.innerHeight * 0.6) {
+      shown = true;
+      cta.classList.remove('hidden');
+      cta.style.animation = 'none';
+      cta.style.transform = 'translateY(20px)';
+      cta.style.opacity = '0';
+      cta.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          cta.style.transform = 'translateY(0)';
+          cta.style.opacity = '1';
+        });
+      });
+    }
+  }, { passive: true });
+})();
+
+// ── 6. Pricing Billing Toggle ──
+function setPricingBilling(mode) {
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnAnnual  = document.getElementById('btn-annual');
+  if (!btnMonthly || !btnAnnual) return;
+  if (mode === 'annual') {
+    document.body.classList.add('billing-annual');
+    btnAnnual.classList.add('bg-white','shadow-sm','text-slate-900');
+    btnAnnual.classList.remove('text-slate-500');
+    btnMonthly.classList.remove('bg-white','shadow-sm','text-slate-900');
+    btnMonthly.classList.add('text-slate-500');
+  } else {
+    document.body.classList.remove('billing-annual');
+    btnMonthly.classList.add('bg-white','shadow-sm','text-slate-900');
+    btnMonthly.classList.remove('text-slate-500');
+    btnAnnual.classList.remove('bg-white','shadow-sm','text-slate-900');
+    btnAnnual.classList.add('text-slate-500');
+  }
+}
 </script>
 </body></html>
