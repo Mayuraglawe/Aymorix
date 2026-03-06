@@ -14,6 +14,10 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'code.html'));
 });
+
+app.get('/product', (req, res) => {
+    res.sendFile(path.join(__dirname, 'product.html'));
+});
 app.use(express.urlencoded({ extended: true }));
 
 // Simple in-memory rate limiter: max 5 submissions per IP per minute
