@@ -5,7 +5,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Aymorix | Empowering the Next Generation of Leaders</title>
+<title>Aymorix | We Build Software as a Service Products</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -246,6 +246,39 @@
     .price-monthly { display: block; }
     body.billing-annual .price-monthly { display: none; }
     body.billing-annual .price-annual  { display: block; }
+
+    /* ── White shade / gradient overlays ── */
+    .section-glow {
+      position: relative;
+    }
+    .section-glow::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.92), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .dark .section-glow::before {
+      background: linear-gradient(to bottom, rgba(17,22,33,0.8), transparent);
+    }
+    .white-veil {
+      position: relative;
+    }
+    .white-veil::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.55) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .dark .white-veil::after {
+      background: radial-gradient(ellipse at 50% 0%, rgba(30,41,59,0.4) 0%, transparent 70%);
+    }
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
@@ -256,20 +289,19 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16 items-center">
 <a href="/" class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
 <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Aymorix</span>
 </a>
 <div class="hidden md:flex space-x-8">
 <a class="text-sm font-medium hover:text-primary transition-colors" href="/#about">About</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="/product">Products</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="/#programs">Programs</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="/product">Algomate</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="/#services">Services</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="/#pricing">Pricing</a>
-<a class="text-sm font-medium hover:text-primary transition-colors" href="/#campus">Campus Life</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="/#faq">FAQ</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="/#contact">Contact</a>
 </div>
 <div>
-<a href="/#contact"><button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">Apply Now</button></a>
+<a href="/#contact"><button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">Book a Demo</button></a>
 </div>
 </div>
 </div>
@@ -282,19 +314,19 @@
 <div class="hero-blob bg-blue-500 w-96 h-96" style="top:-60px;right:-80px;animation-duration:9s;"></div>
 <div class="hero-blob bg-indigo-500 w-72 h-72" style="bottom:0;left:-40px;animation-delay:-5s;animation-duration:12s;"></div>
 <div class="absolute inset-0 opacity-60">
-<img alt="Campus Building" class="w-full h-full object-cover" data-alt="Modern university campus building with glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC80reA8Y52UgCFwflc9R8Fb2HPcvyuF4esMgK17khx6hWa7cYjUoLTMBknT93oqpK44v6GrMu69Y8gT6gehYWQLcItC_70N776wBKv1UThqwZkewqEGVJX4dx4x5r5ENEfoZRaLR9kf2vAfG5_RDnOeL1ojle36Nz26ZYOxJMc1ctLKbJmvR882RzuEdp111KEg_ifLPPLwAxitsgCu_LwTZmS2GLU9kOsRkc30Wfj3JtmuySPTV8NWTWquDlol_QJb9rohrfgGnk"/>
+<img alt="SaaS Dashboard" class="w-full h-full object-cover" data-alt="Modern SaaS dashboard interface" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"/>
 </div>
 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
 <div class="relative z-10 text-center max-w-3xl">
 <h1 class="text-white text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-                        Architecting the Future of Academic Excellence.
+                        We Build Software<br/>That Runs Your Business.
                     </h1>
 <p class="text-slate-200 text-lg md:text-xl font-normal mb-8 max-w-2xl mx-auto">
-                        Experience a world-class education designed to foster innovation, leadership, and personal growth in a thriving academic community.
+                        Aymorix is a SaaS product firm that engineers cloud-native, enterprise-grade platforms. Our flagship product Algomate is transforming how institutions operate.
                     </p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-primary text-white px-8 py-4 rounded-lg text-base font-bold hover:scale-105 transition-transform">Learn More</button>
-<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-base font-bold hover:bg-white/20 transition-all">Virtual Tour</button>
+<a href="/#contact"><button class="bg-primary text-white px-8 py-4 rounded-lg text-base font-bold hover:scale-105 transition-transform">Book a Free Demo</button></a>
+<a href="/product"><button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg text-base font-bold hover:bg-white/20 transition-all">Explore Algomate</button></a>
 </div>
 </div>
 </div>
@@ -306,20 +338,20 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:divide-x divide-blue-500/50">
       <div class="px-4">
-        <p class="text-4xl font-extrabold text-white mb-1" data-countup="10" data-suffix="+">0+</p>
-        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Institutions Onboarded</p>
+        <p class="text-4xl font-extrabold text-white mb-1" data-countup="50" data-suffix="+">0+</p>
+        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Clients Worldwide</p>
       </div>
       <div class="px-4">
-        <p class="text-4xl font-extrabold text-white mb-1" data-countup="50" data-suffix="k+">0k+</p>
-        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Students Managed</p>
+        <p class="text-4xl font-extrabold text-white mb-1" data-countup="100" data-suffix="k+">0k+</p>
+        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Users on Our Platform</p>
       </div>
       <div class="px-4 border-t md:border-t-0 pt-6 md:pt-0 border-blue-500/50">
-        <p class="text-4xl font-extrabold text-white mb-1">Zero</p>
-        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Timetable Conflicts</p>
+        <p class="text-4xl font-extrabold text-white mb-1">99.9%</p>
+        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Uptime Guaranteed</p>
       </div>
       <div class="px-4 border-t md:border-t-0 pt-6 md:pt-0 border-blue-500/50">
-        <p class="text-4xl font-extrabold text-white mb-1">Top 50</p>
-        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">SIH 2025 Finalists</p>
+        <p class="text-4xl font-extrabold text-white mb-1">24/7</p>
+        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Dedicated Support</p>
       </div>
     </div>
   </div>
@@ -327,43 +359,43 @@
 
 <!-- Institution Logo Marquee -->
 <section class="py-8 bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-100 dark:border-slate-800">
-  <p class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">Trusted by forward-thinking institutions</p>
+  <p class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">Trusted by industry-leading organizations</p>
   <div class="relative overflow-hidden" style="mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);-webkit-mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
     <div class="marquee-track">
       <div class="flex items-center gap-16 px-8">
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Sunrise College</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">TechForge Inc</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Metro University</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CloudScale</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Apex Institute</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">DataPulse</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pioneer Academy</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">NexaFlow</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Horizon College</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">BrightPath</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CityTech Institute</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Zenith Corp</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Nexus University</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pragma Labs</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Stellar Academy</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Orbitwise</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
       </div>
       <div class="flex items-center gap-16 px-8" aria-hidden="true">
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Sunrise College</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">TechForge Inc</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Metro University</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CloudScale</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Apex Institute</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">DataPulse</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pioneer Academy</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">NexaFlow</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Horizon College</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">BrightPath</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">CityTech Institute</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Zenith Corp</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Nexus University</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Pragma Labs</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
-        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Stellar Academy</span>
+        <span class="font-bold text-slate-400 dark:text-slate-500 text-lg whitespace-nowrap">Orbitwise</span>
         <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
       </div>
     </div>
@@ -371,37 +403,62 @@
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-20 bg-white dark:bg-slate-900/50 overflow-hidden">
+<section id="about" class="py-20 bg-white dark:bg-slate-900/50 overflow-hidden section-glow white-veil">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
   <!-- Top: image + about text -->
   <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
 
-    <!-- Left: Image collage -->
+    <!-- Left: Typographic / text-style visual -->
     <div class="relative select-none">
-      <div class="absolute -top-4 -left-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
-      <div class="absolute -bottom-4 -right-4 w-24 h-24 opacity-20 pointer-events-none z-0" style="background-image:radial-gradient(circle, #14b8a6 1.5px, transparent 1.5px);background-size:12px 12px;"></div>
-      <div class="grid grid-cols-2 gap-3 relative z-10">
-        <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-xl" style="height:420px;">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Team collaborating" class="w-full h-full object-cover" />
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" alt="Office workspace" class="w-full h-full object-cover" />
+      <!-- Soft white glow behind the block -->
+      <div class="absolute -inset-6 bg-gradient-to-br from-white/80 via-blue-50/40 to-white/60 dark:from-slate-800/60 dark:via-blue-900/20 dark:to-slate-800/40 rounded-3xl blur-2xl pointer-events-none"></div>
+
+      <div class="relative z-10 rounded-3xl border border-slate-200/80 dark:border-slate-700/60 overflow-hidden" style="background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.9) 50%, rgba(255,255,255,0.85) 100%); backdrop-filter: blur(20px);">
+        <!-- Dark mode override -->
+        <div class="hidden dark:block absolute inset-0 rounded-3xl" style="background: linear-gradient(145deg, rgba(30,41,59,0.95) 0%, rgba(15,23,42,0.9) 100%);"></div>
+
+        <div class="relative z-10 p-8 md:p-10">
+          <!-- Top decorative line -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-1 rounded-full bg-blue-500"></div>
+            <div class="w-4 h-1 rounded-full bg-blue-300"></div>
+            <div class="w-2 h-1 rounded-full bg-blue-200"></div>
           </div>
-          <div class="rounded-2xl overflow-hidden border-4 border-white dark:border-slate-700 shadow-lg flex-1" style="height:200px;">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Team meeting" class="w-full h-full object-cover" />
+
+          <!-- Big statement text — feels "written" -->
+          <p class="text-5xl md:text-6xl font-black leading-[1.05] tracking-tight text-slate-900 dark:text-white mb-6">
+            We <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-500">build</span><br/>
+            software<br/>
+            that <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">matters.</span>
+          </p>
+
+          <!-- Subtle divider -->
+          <div class="w-full h-px bg-gradient-to-r from-slate-200 via-blue-200 to-transparent dark:from-slate-700 dark:via-blue-800 dark:to-transparent mb-6"></div>
+
+          <!-- Inline stats row — feels organic, not a card -->
+          <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+            <div>
+              <span class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">2+</span>
+              <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest mt-0.5">Years</p>
+            </div>
+            <div>
+              <span class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">50+</span>
+              <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest mt-0.5">Clients</p>
+            </div>
+            <div>
+              <span class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">99.9%</span>
+              <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest mt-0.5">Uptime</p>
+            </div>
+          </div>
+
+          <!-- Bottom decorative dots -->
+          <div class="flex gap-2 mt-8">
+            <span class="w-3 h-3 rounded-full bg-blue-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-violet-400/60"></span>
+            <span class="w-3 h-3 rounded-full bg-cyan-400/40"></span>
           </div>
         </div>
-      </div>
-      <div class="absolute bottom-6 left-6 bg-white dark:bg-slate-800 rounded-2xl px-5 py-4 shadow-2xl border border-slate-100 dark:border-slate-700 z-20">
-        <p class="text-3xl font-extrabold text-blue-600 dark:text-blue-400 leading-none">2+</p>
-        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">Years of Innovation</p>
-      </div>
-      <div class="absolute bottom-6 right-6 flex gap-2 z-20">
-        <span class="w-4 h-4 rounded-full bg-blue-500"></span>
-        <span class="w-4 h-4 rounded-full bg-pink-500"></span>
-        <span class="w-4 h-4 rounded-full bg-violet-500"></span>
       </div>
     </div>
 
@@ -409,10 +466,10 @@
     <div>
       <p class="text-blue-600 dark:text-blue-400 font-bold tracking-widest uppercase text-xs mb-4">About Us</p>
       <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
-        We Deal With The Aspects<br>Of Professional <span class="text-blue-500">IT Services</span>
+        We Deal With The Aspects<br>Of Professional <span class="text-blue-500">SaaS Products</span>
       </h3>
       <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
-        Aymorix is the partner of choice for forward-thinking institutions and enterprises. We help businesses elevate their value through custom software development, product design, and intelligent automation solutions.
+        Aymorix is a product-first SaaS firm that builds scalable, cloud-native software solutions. We help businesses and institutions modernize their operations through intelligent automation, beautiful design, and rock-solid engineering.
       </p>
       <div class="grid grid-cols-2 gap-4 mb-8">
         <div class="about-mini-card bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex items-start gap-4 cursor-default">
@@ -435,7 +492,7 @@
         </div>
       </div>
       <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-        Our flagship product, <strong class="text-slate-800 dark:text-white">Algomate</strong>, is revolutionizing how colleges manage timetables, curriculum, and academic operations — powered by smart automation and deep domain expertise.
+        Our flagship product, <strong class="text-slate-800 dark:text-white">Algomate</strong>, is our first step in building an ecosystem of SaaS tools that solve real-world problems — starting with how institutions manage timetables, curriculum, and operations.
       </p>
     </div>
   </div>
@@ -489,7 +546,7 @@
 </div>
 </section>
 <!-- Flagship Product Section -->
-<section class="py-20 bg-white dark:bg-slate-900/50">
+<section class="py-20 bg-white dark:bg-slate-900/50 section-glow">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
 <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Our Products</h2>
@@ -693,54 +750,54 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </div>
 </section>
 
-<!-- Programs Section -->
+<!-- Technology Stack Section -->
 <section id="programs" class="py-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Academic Programs</h2>
-<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our wide range of undergraduate and graduate programs tailored to your professional goals.</p>
+<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Built With Best-in-Class Technology</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">We use modern, battle-tested technologies to deliver products that are fast, secure, and infinitely scalable.</p>
 </div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid md:grid-cols-3 gap-8">
-<!-- Arts -->
+<!-- Frontend -->
 <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow group">
-<div class="h-48 overflow-hidden">
-<img alt="Arts Department" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Students painting in a bright art studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv518-1oCYUoabaXlwf6Ss8k0YbyUj3J-N7wd3r5RuEyDCbx2gEqrNmsWM_VRdtg9lDMOrYnwkLXSw9nTNXhKii9wPGvf9S2ST0ddaD1yjtR5ZwyjPJ57FvJaTQ6KtFQg8Bp9j9o-nI2nbaeaoyglg6JR2U3rIv_Yh_CqbAJyDoGSX5eiEVEpy2bWw0-r3sm_qrGqJWm7MyGug-3SvlVMnif1bTsE2tOFLuueBZ3XmiKrPxQnby12UrwgW8M2lFoHl82DKIjK0Vwc"/>
+<div class="h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-size:5rem;">web</span>
 </div>
 <div class="p-6">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-<span class="material-symbols-outlined text-primary">palette</span>
+<span class="material-symbols-outlined text-primary">code</span>
 </div>
-<h4 class="text-xl font-bold mb-2">Faculty of Arts</h4>
-<p class="text-slate-600 dark:text-slate-400 mb-4">Nurture your creativity through our comprehensive arts, humanities, and design programs.</p>
-<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="#">View Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<h4 class="text-xl font-bold mb-2">Frontend Engineering</h4>
+<p class="text-slate-600 dark:text-slate-400 mb-4">React, Next.js, TypeScript, and Tailwind CSS — delivering pixel-perfect, responsive interfaces.</p>
+<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="/product">Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
 </div>
 </div>
-<!-- Science -->
+<!-- Backend -->
 <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow group">
-<div class="h-48 overflow-hidden">
-<img alt="Science Lab" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Researcher working with equipment in modern lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK23c7jSl3dNCF-KPGrAfvuzuJQ_2D7I2qQObDAghLP9-bNfhYt1EYjehKECpZTye603-VxyWXv4NANQcwUR9HY9rWtD20ECvo2HwOyyj2THoFaZdkXaHrF_17iS-y0b1v6di8briMqKOQnG3lLfZU_bn1_gAsAIf0FUQGExRcbngWtc1uwMGSkprFAOKD6lkv3AzF7FxGovLWVFdc-3eBRisPNlGUGfALiI5Cvol4I9iALoOUriJu0TdWu3MGo0Y10DAV6f0v0WI"/>
+<div class="h-48 overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-size:5rem;">dns</span>
 </div>
 <div class="p-6">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-<span class="material-symbols-outlined text-primary">science</span>
+<span class="material-symbols-outlined text-primary">terminal</span>
 </div>
-<h4 class="text-xl font-bold mb-2">Faculty of Science</h4>
-<p class="text-slate-600 dark:text-slate-400 mb-4">Advance human knowledge with state-of-the-art labs and research-driven science courses.</p>
-<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="#">View Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<h4 class="text-xl font-bold mb-2">Backend & AI</h4>
+<p class="text-slate-600 dark:text-slate-400 mb-4">Node.js, Python, PostgreSQL, Redis, and hybrid AI engines for intelligent automation.</p>
+<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="/product">Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
 </div>
 </div>
-<!-- Business -->
+<!-- Cloud -->
 <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow group">
-<div class="h-48 overflow-hidden">
-<img alt="Business Studies" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Professionals in a corporate meeting room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYSaAyrLXXmz0RKcamU1SGnq4Uy5zCSh52slKTnNj8mQYtAswpjGEKAREIzJcU4vaxhkupt7abNM3Ebt7HyxW9xGWx9P9kV6_esRTXhamRhzrY3xm8PQGZHhtcwYIhRTlX5j7qWoJQMj-S_3xAunP4vfDei-oe6QlrMtA0qFE3BB-C2xWoa4463N4BWpo6FD9PIpUBzgLXAOSjIdfTCl95DpqfMXT0lO_w8YzsswKOn4oP-1_6vwvCNcLUPz6zASKS3x9xAqrBcg8"/>
+<div class="h-48 overflow-hidden bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-size:5rem;">cloud</span>
 </div>
 <div class="p-6">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-<span class="material-symbols-outlined text-primary">payments</span>
+<span class="material-symbols-outlined text-primary">cloud_done</span>
 </div>
-<h4 class="text-xl font-bold mb-2">Business School</h4>
-<p class="text-slate-600 dark:text-slate-400 mb-4">Prepare for the global marketplace with leadership, finance, and entrepreneurship tracks.</p>
-<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="#">View Details <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+<h4 class="text-xl font-bold mb-2">Cloud & DevOps</h4>
+<p class="text-slate-600 dark:text-slate-400 mb-4">AWS/GCP infrastructure, Docker, CI/CD pipelines, and 99.9% uptime monitoring.</p>
+<a class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all" href="/product">Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
 </div>
 </div>
 </div>
@@ -748,7 +805,7 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </section>
 
 <!-- Pricing Section -->
-<section id="pricing" class="py-20 bg-white dark:bg-slate-900">
+<section id="pricing" class="py-20 bg-white dark:bg-slate-900 section-glow white-veil">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-10">
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4">Simple, Transparent Pricing</h2>
@@ -829,39 +886,65 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
   </div>
 </section>
 
-<!-- Campus Life Section -->
+<!-- Client Testimonials Section -->
 <section id="campus" class="py-20 bg-background-light dark:bg-background-dark">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
 <div class="max-w-xl">
-<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Campus Life</h2>
-<p class="text-slate-600 dark:text-slate-400">Education goes beyond the classroom. Discover a vibrant community with over 100+ student organizations and sports clubs.</p>
-</div>
-<button class="border-2 border-primary text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">View Student Gallery</button>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="h-64 rounded-lg overflow-hidden relative group">
-<img alt="Students studying" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Group of students studying together outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCwtM2J7fxQXkKl4CGawmYkvwb31ekNkm3kXErj6VONGSsXhK0qF9OnT6VGnM5X53YL3eaJZtUdQcfPo1e4Q4C2zqwXEydoUbHdiU5APmr5AOQO6jIyTaQX1tuT659bxH6_-_4HUCZ7bBWA3PFQRFBFQnMVpLm42ieFVLeqghLUYTh9VWIlC8XjXb8D9qeXTeaQi8lFsTMLNOIZSv0lnO3-q_hUToOC5zno-k0jn38YBkC_S9GHzZuLUXO068q5YRnYSq_0bq81VY"/>
-<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="text-white font-bold">Study Groups</span>
+<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">What Our Clients Say</h2>
+<p class="text-slate-600 dark:text-slate-400">Don't just take our word for it. Hear from the institutions and businesses that trust Aymorix to power their operations.</p>
 </div>
 </div>
-<div class="h-64 rounded-lg overflow-hidden relative group md:mt-8">
-<img alt="Campus sports" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="University athletic field with runners" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr_GNrpQ94ONaE6ncBM57R3Z0fOUdlBYnwBqcjnOHreuOYP8vYlKiJNnQL59fUqiZ-agI0c_VuQrI_UOyeORtSVwqIg44MiU4QRy_qjYmPbffC_EFEnaw1iO1OOwhaLJxG9NYa5xbt32-47DrwghoJIszDcdxhwuX9ZdfDdjplzqPa79chKe3xxhhNfhbtWiBG94VGHkjHvdo5Zn392TuflHACIUPUpdRINmdoR1nN0OYsor6um_3QsG6uLUjRrv4Mjc9q-faILSY"/>
-<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="text-white font-bold">Athletics</span>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+<div class="flex items-center gap-1 text-yellow-400 mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"Algomate completely transformed our timetable process. What used to take weeks of manual work is now done in under a minute — conflict-free. We wish we had this years ago."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">person</span></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Dr. Ramesh Kulkarni</p>
+<p class="text-slate-500 text-xs">Dean, Sunrise Engineering College</p>
 </div>
 </div>
-<div class="h-64 rounded-lg overflow-hidden relative group">
-<img alt="Music room" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Student practicing musical instrument in studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOe4-ZNMca7SW_SQt5taMFYRu6eyu-hF3CU5ZOQ2HHgMK35uZSXMsdJ7L2mVoMZa_zJVziR3zx_dtVynRNHgVDWOi6XWEezlEw3nhfaEQbUpNN7DALQSInunyHXVopyOSFFr3vWsA7pM7xuQkXLeGyuGZQX-c18h-2mcqzhlj86jC35zGCEoe1nJ_kbDPu5r3Nr0gJzLFml2BDjV-R99dB3NkEdBMWhN9sDmqnU-EvJmrjvLwWqnT3-r05i_9X5YHXikGMhIf8Scw"/>
-<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="text-white font-bold">Arts &amp; Culture</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+<div class="flex items-center gap-1 text-yellow-400 mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"The Aymorix team builds software with the precision of experienced engineers but the care of a partner who actually understands our problems. Truly impressive."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">person</span></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Priya Mehta</p>
+<p class="text-slate-500 text-xs">CTO, NexaFlow Technologies</p>
 </div>
 </div>
-<div class="h-64 rounded-lg overflow-hidden relative group md:mt-8">
-<img alt="Events" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Large audience at a campus event" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZevNVnjI3PUytpj97hymlqKYuepUGf1eaWzMHOYy0AX8RNCRyK04bNaOvh42OneALelpnc5LXeY8f6bDG9XRGKn4wtXVf1iTDV87GJ-wVOzJWf-NX41N1vVM6fbPJA5Y6-8FMpMSUzs6MK6Innn90MVKHuax7yxftUcnQxt0yAGuUNYbCU3-hhIQlsLwE0ZVVGQ8PEH2HaFLl2Z-MLDYJ606VRKjVOsQihvuOoaO1riY-_R2FRqWcVjmUVL5gQhR296TuFLvAvPg"/>
-<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="text-white font-bold">Annual Events</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+<div class="flex items-center gap-1 text-yellow-400 mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">"From onboarding to go-live, the entire experience was seamless. The multi-college dashboard alone saved our admin team thousands of hours this year."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">person</span></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Prof. Anand Sharma</p>
+<p class="text-slate-500 text-xs">Registrar, Metro University</p>
+</div>
 </div>
 </div>
 </div>
@@ -869,7 +952,7 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </section>
 
 <!-- FAQ Section -->
-<section id="faq" class="py-20 bg-white dark:bg-slate-900">
+<section id="faq" class="py-20 bg-white dark:bg-slate-900 section-glow">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <p class="text-blue-600 dark:text-blue-400 font-bold tracking-widest uppercase text-xs mb-3">FAQ</p>
@@ -976,20 +1059,20 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </script>
 
 <!-- Contact Section -->
-<section id="contact" class="py-20 bg-white dark:bg-slate-900">
+<section id="contact" class="py-20 bg-white dark:bg-slate-900 white-veil">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid lg:grid-cols-2 gap-16">
 <div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Get in Touch</h2>
-<p class="text-slate-600 dark:text-slate-400 mb-8">Have questions about admissions or our programs? Our team is here to help you navigate your journey.</p>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Talk</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-8">Have a project in mind or want to see Algomate in action? Our team is ready to help you get started.</p>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
 <div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
 <span class="material-symbols-outlined text-primary">location_on</span>
 </div>
 <div>
-<h5 class="font-bold text-slate-900 dark:text-white">Visit Us</h5>
-<p class="text-slate-500 dark:text-slate-400">123 Education Blvd, Academic Valley, SC 29012</p>
+<h5 class="font-bold text-slate-900 dark:text-white">Our Office</h5>
+<p class="text-slate-500 dark:text-slate-400">Nagpur, Maharashtra, India</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
@@ -997,8 +1080,8 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 <span class="material-symbols-outlined text-primary">call</span>
 </div>
 <div>
-<h5 class="font-bold text-slate-900 dark:text-white">Call Admissions</h5>
-<p class="text-slate-500 dark:text-slate-400">+1 (555) 000-1234</p>
+<h5 class="font-bold text-slate-900 dark:text-white">Call Us</h5>
+<p class="text-slate-500 dark:text-slate-400">+91 (000) 000-0000</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
@@ -1006,8 +1089,8 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 <span class="material-symbols-outlined text-primary">mail</span>
 </div>
 <div>
-<h5 class="font-bold text-slate-900 dark:text-white">Email Inquiries</h5>
-<p class="text-slate-500 dark:text-slate-400">admissions@Aymorix.edu</p>
+<h5 class="font-bold text-slate-900 dark:text-white">Email Us</h5>
+<p class="text-slate-500 dark:text-slate-400">hello@aymorix.com</p>
 </div>
 </div>
 </div>
@@ -1034,12 +1117,13 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 <input id="email" name="email" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" type="email" placeholder="john.doe@example.com"/>
 </div>
 <div>
-<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="program">Program of Interest</label>
-<select id="program" name="program" title="Program of Interest" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary">
-<option>Select a program</option>
-<option>Arts &amp; Humanities</option>
-<option>Science &amp; Engineering</option>
-<option>Business &amp; Economics</option>
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" for="program">Interested In</label>
+<select id="program" name="program" title="Interested In" class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary">
+<option>Select a topic</option>
+<option>Algomate Demo</option>
+<option>Custom Software Development</option>
+<option>Partnership Inquiry</option>
+<option>General Question</option>
 </select>
 </div>
 <div>
@@ -1067,48 +1151,16 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
   </div>
 </section>
 
-<!-- Comparison: Old Way vs Algomate -->
-<section class="py-20 bg-background-light dark:bg-background-dark">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Why Switch?</h2>
-      <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">Old Chaos vs. Algomate</h3>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800/50 rounded-2xl p-8">
-        <h4 class="font-extrabold text-red-500 text-lg mb-7 flex items-center gap-2"><span class="material-symbols-outlined">cancel</span> The Old Way</h4>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Timetables built manually in Excel &mdash; conflicts discovered on day one of semester</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Student records scattered across registers, files, and disconnected spreadsheets</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Fee reminders sent manually &mdash; defaulters tracked in separate notebooks</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">Parents must call the office to check attendance or results</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-red-400 shrink-0 mt-0.5">close</span><span class="text-slate-600 dark:text-slate-300 text-sm">NEP 2020 compliance managed through half a dozen disconnected tools</span></li>
-        </ul>
-      </div>
-      <div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50 rounded-2xl p-8">
-        <h4 class="font-extrabold text-blue-600 text-lg mb-7 flex items-center gap-2"><span class="material-symbols-outlined">verified</span> With Algomate</h4>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">AI generates a conflict-free timetable for the entire college in under 60 seconds</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Every student&rsquo;s complete digital profile &mdash; searchable, exportable, always current</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Automated fee reminders, online payments, and real-time defaulter dashboard</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Parents get instant updates on attendance, results, and fees from their phone</span></li>
-          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-blue-500 shrink-0 mt-0.5">check_circle</span><span class="text-slate-600 dark:text-slate-300 text-sm">Built-in NEP 2020 framework: CBCS, OBE, electives &mdash; fully automated</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA Bottom Banner -->
-<section class="py-24 bg-white dark:bg-slate-900 text-center border-b border-slate-100 dark:border-slate-800">
+<section class="py-24 bg-white dark:bg-slate-900 text-center border-b border-slate-100 dark:border-slate-800 section-glow">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Ready to Digitize Your Institution?</h2>
-    <p class="text-xl text-slate-500 dark:text-slate-400 mb-10">Join the visionary colleges already using Algomate to eliminate timetable conflicts, save thousands of administrative hours, and deliver an exceptional student experience.</p>
+    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Ready to Transform Your Operations?</h2>
+    <p class="text-xl text-slate-500 dark:text-slate-400 mb-10">Join the forward-thinking organizations already using Algomate to eliminate inefficiencies, save thousands of hours, and deliver exceptional results.</p>
     <div class="flex flex-col sm:flex-row justify-center gap-4">
       <a href="#contact"><button class="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 hover:scale-105 transition-all shadow-xl shadow-blue-600/30">Book a Free Demo</button></a>
       <a href="/product"><button class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700">Explore Features</button></a>
     </div>
-    <p class="mt-6 text-sm text-slate-400">No credit card required for our Starter tier.</p>
+    <p class="mt-6 text-sm text-slate-400">No credit card required. Free tier available for small teams.</p>
   </div>
 </section>
 
@@ -1127,11 +1179,11 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 <div class="grid md:grid-cols-4 gap-12 mb-12">
 <div class="col-span-2">
 <div class="flex items-center gap-2 mb-6">
-<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
 <span class="text-2xl font-bold tracking-tight">Aymorix</span>
 </div>
 <p class="text-slate-400 max-w-sm mb-6">
-                        Leading the way in higher education, research, and innovation for over 50 years. Our mission is to transform students into the visionary leaders of tomorrow.
+                        A product-first SaaS firm engineering scalable, cloud-native solutions that solve real-world problems. Our flagship product Algomate is just the beginning.
                     </p>
 <div class="flex gap-4">
 <a class="size-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
@@ -1146,29 +1198,29 @@ View Product <span class="material-symbols-outlined text-sm">arrow_outward</span
 </div>
 </div>
 <div>
-<h5 class="font-bold text-lg mb-6">Quick Links</h5>
+<h5 class="font-bold text-lg mb-6">Product</h5>
 <ul class="space-y-4 text-slate-400">
-<li><a class="hover:text-primary transition-colors" href="#">Admissions</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Scholarships</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Alumni Network</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Campus Map</a></li>
+<li><a class="hover:text-primary transition-colors" href="/product">Algomate</a></li>
+<li><a class="hover:text-primary transition-colors" href="/#pricing">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="/#faq">FAQ</a></li>
+<li><a class="hover:text-primary transition-colors" href="/#contact">Book a Demo</a></li>
 </ul>
 </div>
 <div>
-<h5 class="font-bold text-lg mb-6">Support</h5>
+<h5 class="font-bold text-lg mb-6">Company</h5>
 <ul class="space-y-4 text-slate-400">
-<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="/about">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="/contact">Contact</a></li>
 <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
 <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
 </ul>
 </div>
 </div>
 <div class="border-t border-slate-800 pt-8 flex flex-col md:row justify-between items-center text-slate-500 text-sm gap-4">
-<p>© 2024 Aymorix Institution. All rights reserved.</p>
+<p>© 2026 Aymorix. All rights reserved.</p>
 <div class="flex gap-8">
-<span>Accredited Member</span>
-<span>Equal Opportunity Institution</span>
+<span>SaaS Product Firm</span>
+<span>Made with ❤️ in India</span>
 </div>
 </div>
 </div>

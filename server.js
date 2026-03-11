@@ -83,10 +83,24 @@ app.post('/contact', rateLimit, (req, res) => {
             to:      process.env.EMAIL_TO || process.env.EMAIL_USER,
             replyTo: submission.email,
             subject: `New Inquiry from ${submission.firstName} ${submission.lastName}`,
+            html:
+                `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px;">` +
+                `<h2 style="color:#1754cf;margin:0 0 16px;">New Contact Submission</h2>` +
+                `<table style="width:100%;border-collapse:collapse;">` +
+                `<tr><td style="padding:8px 0;color:#64748b;width:120px;">Name</td><td style="padding:8px 0;font-weight:600;">${submission.firstName} ${submission.lastName}</td></tr>` +
+                `<tr><td style="padding:8px 0;color:#64748b;">Email</td><td style="padding:8px 0;"><a href="mailto:${submission.email}" style="color:#1754cf;">${submission.email}</a></td></tr>` +
+                `<tr><td style="padding:8px 0;color:#64748b;">Interested In</td><td style="padding:8px 0;">${submission.program}</td></tr>` +
+                `</table>` +
+                `<hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">` +
+                `<p style="color:#64748b;font-size:13px;margin:0 0 8px;">Message:</p>` +
+                `<p style="margin:0;line-height:1.6;">${submission.message.replace(/\n/g, '<br>')}</p>` +
+                `<hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">` +
+                `<p style="color:#94a3b8;font-size:11px;margin:0;">Submitted on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST via aymorix.com</p>` +
+                `</div>`,
             text:
-                `Name:    ${submission.firstName} ${submission.lastName}\n` +
-                `Email:   ${submission.email}\n` +
-                `Program: ${submission.program}\n\n` +
+                `Name:          ${submission.firstName} ${submission.lastName}\n` +
+                `Email:         ${submission.email}\n` +
+                `Interested In: ${submission.program}\n\n` +
                 `Message:\n${submission.message}`
         };
 
