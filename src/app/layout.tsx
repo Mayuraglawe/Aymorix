@@ -15,6 +15,10 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Aymorix - Enterprise Software & AI Workflows',
   description: 'Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms.',
+  icons: {
+    icon: '/Aymorix_logo.svg',
+    shortcut: '/Aymorix_logo.svg',
+  },
 };
 
 export default function RootLayout({
