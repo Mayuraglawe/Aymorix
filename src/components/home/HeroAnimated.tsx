@@ -232,16 +232,16 @@ export default function HeroAnimated() {
             {/* Background Background */}
             <div className="dot-grid absolute inset-0 opacity-55 pointer-events-none z-0"></div>
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[520px] pointer-events-none z-0"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-275 h-130 pointer-events-none z-0"
                 style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(24, 71, 240, 0.055) 0%, transparent 68%)' }}
             ></div>
 
             {/* Main Content Area */}
             <div className="relative z-10 flex-1 flex items-center">
-                <div className="w-full max-w-screen-xl mx-auto px-8 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+                <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
 
                     {/* Left Side: Copy & CTA */}
-                    <div className="flex-1 min-w-0 max-w-[540px] pt-3">
+                    <div className="flex-1 min-w-0 max-w-135 pt-3">
                         <div className="animate-fadeIn opacity-0 inline-block mb-7" style={{ animationDelay: '80ms' }}>
                             <span className="inline-flex items-center gap-2 bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] rounded-full px-4 py-1.5 text-xs font-semibold text-brand tracking-wide">
                                 <span className="w-1.5 h-1.5 rounded-full animate-pdot bg-brand"></span>
@@ -259,7 +259,7 @@ export default function HeroAnimated() {
                         </h1>
 
                         <p
-                            className="animate-fadeUp opacity-0 mb-10 text-[clamp(14.5px,1.45vw,16.5px)] text-soft max-w-[430px] leading-[1.8] tracking-tight"
+                            className="animate-fadeUp opacity-0 mb-10 text-[clamp(14.5px,1.45vw,16.5px)] text-soft max-w-107.5 leading-[1.8] tracking-tight"
                             style={{ animationDelay: '280ms' }}
                         >
                             Tailor-built CRM, ERP, and mobile apps that connect your teams, automate workflows, and give you complete visibility across every department.
@@ -294,7 +294,7 @@ export default function HeroAnimated() {
                             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] text-brand">
                                 <Home size={11} /> CRM Suite
                             </span>
-                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#f2efff] border-[1.5px] border-[#cec3fa] text-[#5b30e8]">
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#f2efff] border-[1.5px] border-[#cec3fa] text-brand-accent">
                                 <LayoutGrid size={11} /> ERP Platform
                             </span>
                             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#ecfcff] border-[1.5px] border-[#a0ecf8] text-[#0784a8]">
@@ -305,18 +305,18 @@ export default function HeroAnimated() {
 
                     {/* Right Side: Interactive Panel */}
                     <div className="hidden lg:flex flex-1 items-start justify-center min-w-0 pt-2">
-                        <div className="relative w-full max-w-[640px]">
+                        <div className="relative w-full max-w-160">
                             <div className="product-panel animate-fadeIn opacity-0" style={{ animationDelay: '400ms' }}>
 
                                 {/* Browser Chrome */}
-                                <div className="chrome-bar px-4 py-[11px] flex items-center gap-[7px]">
+                                <div className="chrome-bar px-4 py-2.75 flex items-center gap-1.75">
                                     <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
-                                    <div className="flex-1 mx-3 h-6 rounded-md bg-[#eef0f7] flex items-center px-[10px] gap-1.5 text-[11px] text-soft">
+                                    <div className="flex-1 mx-3 h-6 rounded-md bg-[#eef0f7] flex items-center px-2.5 gap-1.5 text-[11px] text-soft">
                                         app.babasolutions.com
                                     </div>
-                                    <div className="flex items-center gap-[5px] px-[10px] py-[4px] rounded-md bg-[#eef1fd] text-[10.5px] font-bold text-brand">
+                                    <div className="flex items-center gap-1.25 px-2.5 py-1 rounded-md bg-[#eef1fd] text-[10.5px] font-bold text-brand">
                                         <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
                                         LIVE
                                     </div>
@@ -326,7 +326,7 @@ export default function HeroAnimated() {
                                 <div className="flex border-b border-[#e8edf6] bg-[#fafbfd]">
                                     <button
                                         onClick={() => setActiveTab('crm')}
-                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
                                             activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                         }`}
                                     >
@@ -334,7 +334,7 @@ export default function HeroAnimated() {
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('erp')}
-                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
                                             activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                         }`}
                                     >
@@ -342,7 +342,7 @@ export default function HeroAnimated() {
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('app')}
-                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
                                             activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                         }`}
                                     >
@@ -351,11 +351,11 @@ export default function HeroAnimated() {
                                 </div>
 
                                 {/* Tab Content */}
-                                <div className="p-4 relative min-h-[530px]">
+                                <div className="p-4 relative min-h-132.5">
                                     {activeTab === 'crm' && (
                                         <div key="crm-tab" className="animate-fadeIn">
                                             {/* Toast Notification */}
-                                            <div className={`absolute top-4 right-3 z-50 w-[210px] transition-all duration-400 ${showToast ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
+                                            <div className={`absolute top-4 right-3 z-50 w-52.5 transition-all duration-400 ${showToast ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
                                                 <div className="bg-white border-[1.5px] border-[#a7f0c4] rounded-xl p-2.5 shadow-[0_6px_24px_rgba(0,0,0,0.1)] flex items-center gap-2.5">
                                                     <div className="relative">
                                                         <div className="w-6.5 h-6.5 bg-[#dcfce7] rounded-full flex items-center justify-center">
@@ -400,18 +400,18 @@ export default function HeroAnimated() {
                                                         </div>
                                                     </div>
                                                     <canvas ref={canvasRef} height="62" className="w-full block rounded-md mb-2"></canvas>
-                                                    <div className="flex items-end gap-[4px] h-[44px] mt-2">
+                                                    <div className="flex items-end gap-1 h-11 mt-2">
                                                         {[52, 70, 44, 86, 64].map((h, i) => (
-                                                            <div key={i} className="flex-1 bg-gradient-to-t from-[#dce8ff] to-brand rounded-t-[3px] animate-barRise opacity-0" style={{ height: `${h}%`, animationDelay: `${i * 60}ms` }}></div>
+                                                            <div key={i} className="flex-1 bg-linear-to-t from-[#dce8ff] to-brand rounded-t-[3px] animate-barRise opacity-0" style={{ height: `${h}%`, animationDelay: `${i * 60}ms` }}></div>
                                                         ))}
-                                                        <div className="flex-1 h-full bg-gradient-to-t from-brand/60 to-brand rounded-t-[3px] shadow-[0_2px_12px_rgba(24,71,240,0.28)] relative overflow-hidden animate-barRise opacity-0" style={{ animationDelay: '300ms' }}>
+                                                        <div className="flex-1 h-full bg-linear-to-t from-brand/60 to-brand rounded-t-[3px] shadow-[0_2px_12px_rgba(24,71,240,0.28)] relative overflow-hidden animate-barRise opacity-0" style={{ animationDelay: '300ms' }}>
                                                             <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/30 animate-progShimmer"></div>
                                                         </div>
                                                     </div>
                                                     <div className="flex justify-between mt-1 text-[8px] text-soft font-medium">
                                                         <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span>
                                                         <span className="text-brand font-bold flex items-center">
-                                                            Dec <span className="w-[1px] h-2 bg-brand ml-0.5 animate-blink"></span>
+                                                            Dec <span className="w-px h-2 bg-brand ml-0.5 animate-blink"></span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -433,12 +433,12 @@ export default function HeroAnimated() {
                                                                     <span className="text-soft">{item.label}</span>
                                                                     <span className="text-ink font-bold">{item.val}%</span>
                                                                 </div>
-                                                                <div className="prog-track h-[5px]">
+                                                                <div className="prog-track h-1.25">
                                                                     <div
-                                                                        className={`h-full rounded-full bg-gradient-to-r ${item.color} relative overflow-hidden transition-all duration-1000 ease-out`}
+                                                                        className={`h-full rounded-full bg-linear-to-r ${item.color} relative overflow-hidden transition-all duration-1000 ease-out`}
                                                                         style={{ width: `${item.val}%` }}
                                                                     >
-                                                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-[30%] animate-progShimmer"></div>
+                                                                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent w-[30%] animate-progShimmer"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -459,7 +459,7 @@ export default function HeroAnimated() {
                                                 <div className="space-y-1">
                                                     {feedRows.map((row, idx) => (
                                                         <div key={`${row.initials}-${row.action}-${idx}`} className="flex items-center gap-2.5 p-1.5 rounded-lg bg-[#f7f8fb] animate-rowSlide opacity-0" style={{ animationDelay: `${idx * 100}ms` }}>
-                                                            <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${row.avatarClass} text-white flex items-center justify-center text-[9px] font-bold`}>{row.initials}</div>
+                                                            <div className={`w-7 h-7 rounded-full bg-linear-to-br ${row.avatarClass} text-white flex items-center justify-center text-[9px] font-bold`}>{row.initials}</div>
                                                             <div className="flex-1">
                                                                 <div className="text-[10px] font-bold text-ink leading-tight">{row.name}</div>
                                                                 <div className="text-[8.5px] text-soft">{row.action}</div>
@@ -470,7 +470,7 @@ export default function HeroAnimated() {
                                                     ))}
                                                     {/* Typing Row */}
                                                     <div className="flex items-center gap-2.5 p-1.5 rounded-lg bg-[#eef1fd] animate-rowSlide opacity-0" style={{ animationDelay: '200ms' }}>
-                                                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#5b30e8] to-[#9069f8] text-white flex items-center justify-center text-[9px] font-bold">AJ</div>
+                                                        <div className="w-7 h-7 rounded-full bg-linear-to-br from-brand-accent to-[#9069f8] text-white flex items-center justify-center text-[9px] font-bold">AJ</div>
                                                         <div className="flex-1">
                                                             <div className="text-[10px] font-bold text-ink flex items-center gap-1.5">
                                                                 Amir Jafari <span className="text-[8.5px] font-normal text-soft">is typing...</span>
@@ -509,7 +509,7 @@ export default function HeroAnimated() {
                                             {/* Process Flow SVG */}
                                             <div className="mc mb-3">
                                                 <div className="text-[11px] font-bold text-ink mb-3">Business Process Flow</div>
-                                                <div className="relative h-[172px]">
+                                                <div className="relative h-43">
                                                     <svg width="100%" height="172" viewBox="0 0 520 172" className="overflow-visible">
                                                         {/* Edges */}
                                                         <line x1="88" y1="44" x2="152" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '300ms' }} />
@@ -526,32 +526,32 @@ export default function HeroAnimated() {
                                                     </svg>
 
                                                     <div className="pointer-events-none absolute inset-0">
-                                                        <div className="absolute left-[12px] top-[20px] w-[76px] h-[48px] rounded-[10px] bg-[#f2efff] border border-[#cec3fa] text-[#5b30e8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0">
+                                                        <div className="absolute left-3 top-5 w-19 h-12 rounded-2.5 bg-[#f2efff] border border-[#cec3fa] text-brand-accent flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0">
                                                             <Briefcase size={13} />
                                                             <span className="text-[8.5px] font-bold">Procurement</span>
                                                         </div>
 
-                                                        <div className="absolute left-[152px] top-[20px] w-[90px] h-[48px] rounded-[10px] bg-[#eef1fd] border border-[#c3ccf8] text-[#1847f0] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '200ms' }}>
+                                                        <div className="absolute left-38 top-5 w-22.5 h-12 rounded-2.5 bg-[#eef1fd] border border-[#c3ccf8] text-brand flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '200ms' }}>
                                                             <Package size={13} />
                                                             <span className="text-[8.5px] font-bold">Inventory</span>
                                                         </div>
 
-                                                        <div className="absolute left-[308px] top-[20px] w-[90px] h-[48px] rounded-[10px] bg-[#ecfcff] border border-[#a0ecf8] text-[#0784a8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '400ms' }}>
+                                                        <div className="absolute left-77 top-5 w-22.5 h-12 rounded-2.5 bg-[#ecfcff] border border-[#a0ecf8] text-[#0784a8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '400ms' }}>
                                                             <Sun size={13} />
                                                             <span className="text-[8.5px] font-bold">Production</span>
                                                         </div>
 
-                                                        <div className="absolute left-[456px] top-[20px] w-[56px] h-[48px] rounded-[10px] bg-[#f0fdf5] border border-[#a7f0c4] text-[#0f7a42] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '600ms' }}>
+                                                        <div className="absolute left-114 top-5 w-14 h-12 rounded-2.5 bg-[#f0fdf5] border border-[#a7f0c4] text-[#0f7a42] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '600ms' }}>
                                                             <Truck size={13} />
                                                             <span className="text-[8.5px] font-bold">Dispatch</span>
                                                         </div>
 
-                                                        <div className="absolute left-[157px] top-[106px] w-[80px] h-[42px] rounded-[10px] bg-[#fff7ed] border border-[#fed7aa] text-[#c2410c] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '700ms' }}>
+                                                        <div className="absolute left-39.25 top-26.5 w-20 h-10.5 rounded-2.5 bg-[#fff7ed] border border-[#fed7aa] text-[#c2410c] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '700ms' }}>
                                                             <Wallet size={12} />
                                                             <span className="text-[8.5px] font-bold">Finance</span>
                                                         </div>
 
-                                                        <div className="absolute left-[308px] top-[106px] w-[90px] h-[42px] rounded-[10px] bg-[#fdf4ff] border border-[#f0abfc] text-[#a21caf] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '820ms' }}>
+                                                        <div className="absolute left-77 top-26.5 w-22.5 h-10.5 rounded-2.5 bg-[#fdf4ff] border border-[#f0abfc] text-[#a21caf] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '820ms' }}>
                                                             <UserRound size={12} />
                                                             <span className="text-[8.5px] font-bold">HR</span>
                                                         </div>
@@ -569,9 +569,9 @@ export default function HeroAnimated() {
                                                                     <span className="text-soft font-medium">{m.label}</span>
                                                                     <span className="text-ink font-bold">{m.value}%</span>
                                                                 </div>
-                                                                <div className="prog-track h-[4px]">
+                                                                <div className="prog-track h-1">
                                                                     <div
-                                                                        className={`h-full rounded-full bg-gradient-to-r ${m.color} animate-healthFill`}
+                                                                        className={`h-full rounded-full bg-linear-to-r ${m.color} animate-healthFill`}
                                                                         style={{
                                                                             ['--target-w' as string]: `${m.value}%`,
                                                                             animationDelay: `${120 + i * 120}ms`,
@@ -603,12 +603,12 @@ export default function HeroAnimated() {
                                         <div key="app-tab" className="animate-fadeIn">
                                             <div className="flex gap-4">
                                                 {/* Phone Mockup */}
-                                                <div className="w-[166px] flex-shrink-0 animate-phoneIn opacity-0">
+                                                <div className="w-41.5 shrink-0 animate-phoneIn opacity-0">
                                                     <div className="animate-phoneFloat">
-                                                        <div className="bg-[#0d1120] rounded-[28px] p-[10px] shadow-[0_20px_60px_rgba(8,13,28,0.22)]">
-                                                            <div className="w-[52px] h-[5px] bg-[#1c2442] rounded-full mx-auto mb-2"></div>
-                                                            <div className="bg-[#f7f8fb] rounded-[20px] overflow-hidden">
-                                                                <div className="bg-gradient-to-br from-brand to-[#5b30e8] p-3 pt-4 text-white">
+                                                        <div className="bg-[#0d1120] rounded-7 p-2.5 shadow-[0_20px_60px_rgba(8,13,28,0.22)]">
+                                                            <div className="w-13 h-1.25 bg-[#1c2442] rounded-full mx-auto mb-2"></div>
+                                                            <div className="bg-[#f7f8fb] rounded-5 overflow-hidden">
+                                                                <div className="bg-linear-to-br from-brand to-brand-accent p-3 pt-4 text-white">
                                                                     <div className="flex justify-between items-center mb-3">
                                                                         <div>
                                                                             <div className="text-[8.5px] opacity-70">Good morning,</div>
@@ -621,9 +621,9 @@ export default function HeroAnimated() {
                                                                     </div>
                                                                     <div className="bg-white/10 rounded-lg p-2 flex gap-2">
                                                                         <div className="flex-1"><div className="text-[7.5px] opacity-60">Pipeline</div><div className="text-[12px] font-bold">$840K</div></div>
-                                                                        <div className="w-[1px] bg-white/20"></div>
+                                                                        <div className="w-px bg-white/20"></div>
                                                                         <div className="flex-1"><div className="text-[7.5px] opacity-60">Tasks</div><div className="text-[12px] font-bold">12</div></div>
-                                                                        <div className="w-[1px] bg-white/20"></div>
+                                                                        <div className="w-px bg-white/20"></div>
                                                                         <div className="flex-1"><div className="text-[7.5px] opacity-60">Meetings</div><div className="text-[12px] font-bold">4</div></div>
                                                                     </div>
                                                                 </div>
@@ -632,7 +632,7 @@ export default function HeroAnimated() {
                                                                     <div className="grid grid-cols-4 gap-1.5">
                                                                         {[
                                                                             { label: 'Contacts', tone: 'text-brand bg-[#eef1fd]' },
-                                                                            { label: 'Reports', tone: 'text-[#5b30e8] bg-[#f2efff]' },
+                                                                            { label: 'Reports', tone: 'text-brand-accent bg-[#f2efff]' },
                                                                             { label: 'Deals', tone: 'text-[#0784a8] bg-[#ecfcff]' },
                                                                             { label: 'Calendar', tone: 'text-[#0f7a42] bg-[#f0fdf5]' },
                                                                         ].map((item, i) => (
@@ -672,7 +672,7 @@ export default function HeroAnimated() {
 
                                                 {/* Feature Cards */}
                                                 <div className="flex-1 space-y-2.5">
-                                                    <div className="animate-notifDrop opacity-0 p-3.5 bg-gradient-to-br from-brand to-[#5b30e8] rounded-2xl text-white">
+                                                    <div className="animate-notifDrop opacity-0 p-3.5 bg-linear-to-br from-brand to-brand-accent rounded-2xl text-white">
                                                         <div className="text-[9px] font-bold opacity-60 uppercase mb-1">Available on</div>
                                                         <div className="font-display font-bold text-[16px] mb-2 tracking-tight">iOS & Android</div>
                                                         <div className="flex gap-2">
@@ -730,7 +730,7 @@ export default function HeroAnimated() {
             {/* Scroll Cue */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-fadeIn opacity-0 flex flex-col items-center gap-2" style={{ animationDelay: '1000ms' }}>
                 <span className="text-[9px] uppercase tracking-widest text-soft/40 font-bold">Scroll</span>
-                <div className="w-[19px] h-[30px] rounded-xl border-2 border-[#dce3ef] flex justify-center p-1">
+                <div className="w-4.75 h-7.5 rounded-xl border-2 border-[#dce3ef] flex justify-center p-1">
                     <div className="w-1 h-1.5 bg-brand rounded-full animate-sdrop"></div>
                 </div>
             </div>

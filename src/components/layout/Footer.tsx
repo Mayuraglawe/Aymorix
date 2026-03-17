@@ -1,11 +1,14 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Footer() {
     return (
         <footer id="contact" className="bg-ink text-white py-20 relative overflow-hidden">
             <div className="dot-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
 
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+            <div className="max-w-7xl mx-auto px-8 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
                 {/* Left: Contact Information */}
                 <div className="max-w-md">
                     <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 text-brand-accent text-xs font-semibold tracking-wide uppercase mb-6">
@@ -75,13 +78,18 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="max-w-7xl mx-auto px-8 md:px-16 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center">
-                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                            <path d="M4 4l12 12m0-12L4 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </div>
+                    <Link href="/" className="flex items-center gap-3 no-underline">
+                        <Image
+                                            src="/Aymorix_logo2.png"
+                                            alt="Aymorix logo"
+                                            width={42}
+                                            height={42}
+                                            className="w-10 h-10"
+                                            priority
+                                        />
+                    </Link>
                     <span className="font-display font-bold text-sm text-white tracking-tight">Aymorix</span>
                 </div>
                 <div className="text-xs text-slate-500 font-medium">
