@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: 'Aymorix - Enterprise Software & AI Workflows',
   description: 'Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms.',
   icons: {
-    icon: '/Aymorix_logo.svg',
-    shortcut: '/Aymorix_logo.svg',
+    icon: '/Aymorix_logo2.png',
+    shortcut: '/Aymorix_logo2.png',
   },
 };
 

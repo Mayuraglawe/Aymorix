@@ -5,19 +5,25 @@ export default function Services() {
         {
             title: "Custom SaaS Development",
             description: "End-to-end development of bespoke web platforms using Next.js and secure backends.",
-            icon: <Code2 size={24} className="text-brand" />,
+            icon: Code2,
+            iconColor: 'text-brand',
+            image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=85",
             delay: "100ms"
         },
         {
             title: "AI Integration",
             description: "Specializing in Python-driven AI modules, CP-SAT solvers, and constraint-satisfaction engines.",
-            icon: <BrainCircuit size={24} className="text-brand-accent" />,
+            icon: BrainCircuit,
+            iconColor: 'text-brand-accent',
+            image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?auto=format&fit=crop&w=1200&q=85",
             delay: "200ms"
         },
         {
             title: "Enterprise Workflow Automation",
             description: "API bridges and n8n workflows to eliminate manual data entry and streamline operations.",
-            icon: <Workflow size={24} className="text-[#0784a8]" />,
+            icon: Workflow,
+            iconColor: 'text-[#0784a8]',
+            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
             delay: "300ms"
         }
     ];
@@ -38,23 +44,38 @@ export default function Services() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                    {services.map((service, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 opacity-0 animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
-                            style={{ animationDelay: service.delay }}
-                        >
-                            <div className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center bg-slate-50 border border-slate-100 shadow-sm">
-                                {service.icon}
+                    {services.map((service, idx) => {
+                        const Icon = service.icon;
+
+                        return (
+                            <div
+                                key={idx}
+                                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg opacity-0 animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+                                style={{ animationDelay: service.delay }}
+                            >
+                                <div className="pointer-events-none absolute inset-0 z-0 translate-y-[-100%] opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-b from-[#072a57]/75 via-[#0f4b86]/65 to-[#0c698f]/70" />
+                                </div>
+
+                                <div className="relative z-10">
+                                    <div className={`w-14 h-14 rounded-xl mb-6 flex items-center justify-center bg-slate-50 border border-slate-100 shadow-sm transition-colors group-hover:bg-white/20 group-hover:border-white/30 ${service.iconColor} group-hover:text-white`}>
+                                        <Icon size={24} className="text-current" />
+                                    </div>
+                                    <h3 className="font-display font-bold text-xl text-ink mb-3 tracking-tight transition-colors group-hover:text-white">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-soft leading-relaxed text-[15px] transition-colors group-hover:text-blue-100">
+                                        {service.description}
+                                    </p>
+                                </div>
                             </div>
-                            <h3 className="font-display font-bold text-xl text-ink mb-3 tracking-tight">
-                                {service.title}
-                            </h3>
-                            <p className="text-soft leading-relaxed text-[15px]">
-                                {service.description}
-                            </p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

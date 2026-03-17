@@ -1,25 +1,167 @@
 'use client';
 
-import { Play, ArrowRight } from 'lucide-react';
+import { Play, ArrowRight, Home, LayoutGrid, Smartphone, ChevronUp, Check, Bell, Star, Briefcase, Package, Sun, Truck, UserRound, Wallet } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+type Tab = 'crm' | 'erp' | 'app';
+
+type FeedItem = {
+    initials: string;
+    name: string;
+    action: string;
+    chip: string;
+    chipClass: string;
+    avatarClass: string;
+};
+
+const FEED_ROTATION: FeedItem[] = [
+    {
+        initials: 'NK',
+        name: 'Neha Kapoor',
+        action: 'Opened quote · Vortex',
+        chip: 'Proposal',
+        chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
+        avatarClass: 'from-[#f59e0b] to-[#d97706]',
+    },
+    {
+        initials: 'MR',
+        name: 'Mihail Radu',
+        action: 'Deal closed · NovaTech',
+        chip: 'Won!',
+        chipClass: 'bg-[#dcfce7] text-[#14532d]',
+        avatarClass: 'from-[#0f7a42] to-[#22c55e]',
+    },
+    {
+        initials: 'SW',
+        name: 'Sara Williams',
+        action: 'Booked demo · Axiom',
+        chip: 'Hot lead',
+        chipClass: 'bg-[#dcfce7] text-[#14532d]',
+        avatarClass: 'from-[#c2410c] to-[#f97316]',
+    },
+    {
+        initials: 'LP',
+        name: 'Lena Park',
+        action: 'Replied follow-up · Parallax',
+        chip: 'Negotiation',
+        chipClass: 'bg-[#fef3c7] text-[#78350f]',
+        avatarClass: 'from-brand to-[#5b30e8]',
+    },
+];
+
+const INITIAL_FEED: FeedItem[] = [
+    {
+        initials: 'RS',
+        name: 'Rahul Sharma',
+        action: 'Viewed proposal · Meridian Corp',
+        chip: 'Hot lead',
+        chipClass: 'bg-[#dcfce7] text-[#14532d]',
+        avatarClass: 'from-brand to-[#5b30e8]',
+    },
+    {
+        initials: 'PK',
+        name: 'Priya Kumar',
+        action: 'Replied to email · CloudCore',
+        chip: 'Proposal',
+        chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
+        avatarClass: 'from-[#0784a8] to-[#06b6d4]',
+    },
+];
+
+const ERP_HEALTH = [
+    { label: 'Finance', value: 92, color: 'from-[#f97316] to-[#c2410c]' },
+    { label: 'HR', value: 78, color: 'from-[#d946ef] to-[#9333ea]' },
+    { label: 'Supply Chain', value: 96, color: 'from-[#06b6d4] to-[#0284c7]' },
+];
 
 export default function HeroAnimated() {
+    const [activeTab, setActiveTab] = useState<Tab>('crm');
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [showToast, setShowToast] = useState(false);
+    const [feedRows, setFeedRows] = useState<FeedItem[]>(INITIAL_FEED);
+    const [pipelineVals, setPipelineVals] = useState([68, 44, 28, 18]);
+    const [kpi, setKpi] = useState({ revenueM: 2.4, leads: 184, dealsWon: 47, pipelineK: 840 });
+    const [kpiTick, setKpiTick] = useState(0);
 
+    // Auto tab cycling to keep the hero continuously active.
     useEffect(() => {
-        // CRMLive Sparkline Canvas
+        const tabTimer = setInterval(() => {
+            setActiveTab((prev) => (prev === 'crm' ? 'erp' : prev === 'erp' ? 'app' : 'crm'));
+        }, 7000);
+
+        return () => clearInterval(tabTimer);
+    }, []);
+
+    // CRM live widgets: KPI tick, pipeline movement, activity feed, and toast cycle.
+    useEffect(() => {
+        if (activeTab !== 'crm') {
+            setShowToast(false);
+            return;
+        }
+
+        let feedIndex = 0;
+
+        const triggerToast = () => {
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 2600);
+        };
+
+        const kpiTimer = setInterval(() => {
+            setKpi((prev) => ({
+                revenueM: Math.max(1, prev.revenueM + (Math.random() * 0.04 - 0.005)),
+                leads: prev.leads + (Math.random() > 0.55 ? 1 : 0),
+                dealsWon: prev.dealsWon + (Math.random() > 0.82 ? 1 : 0),
+                pipelineK: Math.max(200, prev.pipelineK + Math.round(Math.random() * 9 - 2)),
+            }));
+            setKpiTick((prev) => prev + 1);
+        }, 3500);
+
+        const pipelineTimer = setInterval(() => {
+            setPipelineVals((prev) =>
+                prev.map((value) => {
+                    const next = value + (Math.random() * 2 - 0.9);
+                    return Math.max(5, Math.min(95, next));
+                })
+            );
+        }, 4000);
+
+        const feedTimer = setInterval(() => {
+            const nextItem = FEED_ROTATION[feedIndex % FEED_ROTATION.length];
+            feedIndex += 1;
+            setFeedRows((prev) => [nextItem, ...prev].slice(0, 2));
+            if (nextItem.chip === 'Won!') {
+                triggerToast();
+            }
+        }, 5000);
+
+        const firstToast = setTimeout(triggerToast, 2800);
+
+        return () => {
+            clearInterval(kpiTimer);
+            clearInterval(pipelineTimer);
+            clearInterval(feedTimer);
+            clearTimeout(firstToast);
+        };
+    }, [activeTab]);
+
+    // CRM Live Sparkline Logic
+    useEffect(() => {
+        if (activeTab !== 'crm') return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
         const sizeCanvas = () => {
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
             canvas.width = canvas.offsetWidth * window.devicePixelRatio;
             canvas.height = canvas.offsetHeight * window.devicePixelRatio;
             ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
         };
         sizeCanvas();
+        window.addEventListener('resize', sizeCanvas);
 
         const W = () => canvas.offsetWidth;
         const H = () => canvas.offsetHeight;
@@ -38,7 +180,7 @@ export default function HeroAnimated() {
 
             const newY = Math.max(
                 0.08,
-                Math.min(0.95, data[data.length - 1] + (Math.random() - 0.48) * 0.08 + 0.004)
+                Math.min(0.95, (data[data.length - 1] || 0.5) + (Math.random() - 0.48) * 0.08 + 0.004)
             );
             data.push(newY);
             if (data.length > N) data.shift();
@@ -81,184 +223,516 @@ export default function HeroAnimated() {
 
         return () => {
             cancelAnimationFrame(rafId);
+            window.removeEventListener('resize', sizeCanvas);
         };
-    }, []);
+    }, [activeTab]);
 
     return (
-        <section className="relative min-h-screen flex items-center pt-24 bg-white overflow-hidden">
-            {/* Background Enhancements */}
+        <section className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-20 md:pt-24">
+            {/* Background Background */}
             <div className="dot-grid absolute inset-0 opacity-55 pointer-events-none z-0"></div>
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[520px] pointer-events-none z-0"
                 style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(24, 71, 240, 0.055) 0%, transparent 68%)' }}
             ></div>
 
-            <div className="relative z-10 w-full max-w-screen-xl mx-auto px-8 md:px-16 py-10 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            {/* Main Content Area */}
+            <div className="relative z-10 flex-1 flex items-center">
+                <div className="w-full max-w-screen-xl mx-auto px-8 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
 
-                {/* LEFT COLUMN: Copy & CTA */}
-                <div className="flex-1 min-w-0 max-w-[540px]">
-                    <div className="animate-[fadeIn_0.8s_ease_forwards] opacity-0 inline-block mb-7" style={{ animationDelay: '80ms' }}>
-                        <span className="inline-flex items-center gap-2 bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] rounded-full px-4 py-1.5 text-xs font-semibold text-brand tracking-wide">
-                            <span className="w-1.5 h-1.5 rounded-full animate-pdot bg-brand"></span>
-                            CRM · Custom SaaS · AI Integration — All in one
-                        </span>
-                    </div>
-
-                    <h1
-                        className="animate-[fadeUp_0.85s_cubic-bezier(0.16,1,0.3,1)_forwards] opacity-0 mb-5 font-display font-extrabold text-[clamp(2.5rem,5vw,4.5rem)] leading-none tracking-tight text-ink"
-                        style={{ animationDelay: '180ms' }}
-                    >
-                        <span className="block">Software that</span>
-                        <span className="block text-grad py-1">runs your</span>
-                        <span className="block">business.</span>
-                    </h1>
-
-                    <p
-                        className="animate-[fadeUp_0.85s_cubic-bezier(0.16,1,0.3,1)_forwards] opacity-0 mb-10 text-[clamp(15px,1.45vw,17px)] text-soft max-w-[440px] leading-relaxed tracking-tight"
-                        style={{ animationDelay: '280ms' }}
-                    >
-                        Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms. Tailor-built workflows that connect teams and automate operations.
-                    </p>
-
-                    <div className="animate-[fadeUp_0.85s_cubic-bezier(0.16,1,0.3,1)_forwards] opacity-0 flex flex-wrap items-center gap-4 mb-12" style={{ animationDelay: '400ms' }}>
-                        <Link href="#demo" className="btn-primary">
-                            Book a Free Demo <ArrowRight size={14} strokeWidth={2} />
-                        </Link>
-                        <Link href="#algomate" className="btn-ghost">
-                            <Play size={14} strokeWidth={2} className="text-mid" />
-                            Watch Algomate in Action
-                        </Link>
-                    </div>
-
-                    <div className="animate-[fadeUp_0.85s_cubic-bezier(0.16,1,0.3,1)_forwards] opacity-0 flex flex-wrap gap-3 mb-8" style={{ animationDelay: '520ms' }}>
-                        <div className="bg-white border-[1.5px] border-slate-200 rounded-xl px-4 py-3 cursor-default hover:border-brand-accent/40 hover:-translate-y-[2px] hover:shadow-lg transition-all">
-                            <div className="font-display font-bold text-[22px] text-ink tracking-tight">SIH 2025</div>
-                            <div className="text-[11.5px] font-medium text-soft mt-1">Winners</div>
+                    {/* Left Side: Copy & CTA */}
+                    <div className="flex-1 min-w-0 max-w-[540px] pt-3">
+                        <div className="animate-fadeIn opacity-0 inline-block mb-7" style={{ animationDelay: '80ms' }}>
+                            <span className="inline-flex items-center gap-2 bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] rounded-full px-4 py-1.5 text-xs font-semibold text-brand tracking-wide">
+                                <span className="w-1.5 h-1.5 rounded-full animate-pdot bg-brand"></span>
+                                CRM · ERP · Custom Apps — All in one
+                            </span>
                         </div>
-                        <div className="bg-white border-[1.5px] border-slate-200 rounded-xl px-4 py-3 cursor-default hover:border-brand-accent/40 hover:-translate-y-[2px] hover:shadow-lg transition-all">
-                            <div className="font-display font-bold text-[22px] text-ink tracking-tight">Hybrid AI</div>
-                            <div className="text-[11.5px] font-medium text-soft mt-1">Driven Engine</div>
-                        </div>
-                        <div className="bg-white border-[1.5px] border-slate-200 rounded-xl px-4 py-3 cursor-default hover:border-brand-accent/40 hover:-translate-y-[2px] hover:shadow-lg transition-all">
-                            <div className="font-display font-bold text-[22px] text-ink tracking-tight">NEP 2020</div>
-                            <div className="text-[11.5px] font-medium text-soft mt-1">Compliant</div>
-                        </div>
-                    </div>
-                </div>
 
-                {/* RIGHT COLUMN: Dashboard Mockup */}
-                <div className="hidden lg:flex flex-1 items-center justify-center min-w-0 pointer-events-none">
-                    <div className="relative w-full max-w-[580px]">
-                        <div className="product-panel opacity-0 animate-[fadeIn_0.8s_ease_forwards]" style={{ animationDelay: '400ms' }}>
+                        <h1
+                            className="animate-fadeUp opacity-0 mb-5 font-display font-extrabold text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.01] tracking-[-0.045em] text-ink"
+                            style={{ animationDelay: '180ms' }}
+                        >
+                            <span className="block">Software that</span>
+                            <span className="block text-grad">runs your</span>
+                            <span className="block">business.</span>
+                        </h1>
 
-                            {/* Chrome Bar */}
-                            <div className="chrome-bar px-4 py-3 flex items-center gap-2">
-                                <div className="w-[10px] h-[10px] rounded-full bg-red-400"></div>
-                                <div className="w-[10px] h-[10px] rounded-full bg-yellow-400"></div>
-                                <div className="w-[10px] h-[10px] rounded-full bg-green-400"></div>
-                                <div className="flex-1 mx-3 h-6 rounded-md bg-[#eef0f7] flex items-center px-3 gap-1.5 text-[11px] text-soft">
-                                    app.aymorix.com/algomate
-                                </div>
-                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-brand/10 text-[10.5px] font-semibold text-brand">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
-                                    LIVE
-                                </div>
+                        <p
+                            className="animate-fadeUp opacity-0 mb-10 text-[clamp(14.5px,1.45vw,16.5px)] text-soft max-w-[430px] leading-[1.8] tracking-tight"
+                            style={{ animationDelay: '280ms' }}
+                        >
+                            Tailor-built CRM, ERP, and mobile apps that connect your teams, automate workflows, and give you complete visibility across every department.
+                        </p>
+
+                        <div className="animate-fadeUp opacity-0 flex flex-wrap items-center gap-3 mb-12" style={{ animationDelay: '400ms' }}>
+                            <Link href="#" className="btn-primary">
+                                Start Free Trial <ArrowRight size={13} strokeWidth={2.5} />
+                            </Link>
+                            <Link href="#" className="btn-ghost">
+                                <Play size={14} fill="currentColor" strokeWidth={1} className="text-mid" />
+                                Watch Demo
+                            </Link>
+                        </div>
+
+                        <div className="animate-fadeUp opacity-0 flex flex-wrap gap-3 mb-8" style={{ animationDelay: '520ms' }}>
+                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
+                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">500+</div>
+                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Businesses automated</div>
                             </div>
+                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
+                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">3× faster</div>
+                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Sales cycle close</div>
+                            </div>
+                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
+                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">40%</div>
+                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Ops cost reduction</div>
+                            </div>
+                        </div>
 
-                            {/* Panel Body */}
-                            <div className="p-4 bg-slate-50/50">
-                                {/* KPI Row */}
-                                <div className="grid grid-cols-4 gap-2 mb-3">
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '500ms' }}>
-                                        <div className="text-[9.5px] font-semibold text-soft uppercase tracking-wider mb-1.5">Schedules</div>
-                                        <div className="font-display font-bold text-[15px] text-ink">1,400+</div>
-                                        <div className="text-[9.5px] font-semibold text-green-600 mt-1">100% Conflict-free</div>
+                        <div className="animate-fadeUp opacity-0 flex flex-wrap gap-2" style={{ animationDelay: '660ms' }}>
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] text-brand">
+                                <Home size={11} /> CRM Suite
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#f2efff] border-[1.5px] border-[#cec3fa] text-[#5b30e8]">
+                                <LayoutGrid size={11} /> ERP Platform
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#ecfcff] border-[1.5px] border-[#a0ecf8] text-[#0784a8]">
+                                <Smartphone size={11} /> Mobile Apps
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Interactive Panel */}
+                    <div className="hidden lg:flex flex-1 items-start justify-center min-w-0 pt-2">
+                        <div className="relative w-full max-w-[640px]">
+                            <div className="product-panel animate-fadeIn opacity-0" style={{ animationDelay: '400ms' }}>
+
+                                {/* Browser Chrome */}
+                                <div className="chrome-bar px-4 py-[11px] flex items-center gap-[7px]">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
+                                    <div className="flex-1 mx-3 h-6 rounded-md bg-[#eef0f7] flex items-center px-[10px] gap-1.5 text-[11px] text-soft">
+                                        app.babasolutions.com
                                     </div>
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '550ms' }}>
-                                        <div className="text-[9.5px] font-semibold text-soft uppercase tracking-wider mb-1.5">Teachers</div>
-                                        <div className="font-display font-bold text-[15px] text-ink">450</div>
-                                        <div className="text-[9.5px] font-semibold text-green-600 mt-1">Assigned Load</div>
-                                    </div>
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '600ms' }}>
-                                        <div className="text-[9.5px] font-semibold text-soft uppercase tracking-wider mb-1.5">Time Saved</div>
-                                        <div className="font-display font-bold text-[15px] text-ink animate-kpiTick">95%</div>
-                                        <div className="text-[9.5px] font-semibold text-amber-500 mt-1">Reduced Manual Hrs</div>
-                                    </div>
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '650ms' }}>
-                                        <div className="text-[9.5px] font-semibold text-soft uppercase tracking-wider mb-1.5">Solver Load</div>
-                                        <div className="font-display font-bold text-[15px] text-ink">1.2s</div>
-                                        <div className="text-[9.5px] font-semibold text-brand mt-1">CP-SAT Active</div>
+                                    <div className="flex items-center gap-[5px] px-[10px] py-[4px] rounded-md bg-[#eef1fd] text-[10.5px] font-bold text-brand">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
+                                        LIVE
                                     </div>
                                 </div>
 
-                                <div className="grid gap-3 grid-cols-[1.15fr_0.85fr]">
-                                    {/* Chart */}
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '700ms' }}>
-                                        <div className="flex items-center justify-between mb-2">
-                                            <span className="text-[11px] font-semibold text-ink">Timetable Generation Engine</span>
-                                            <div className="flex items-center gap-1.5">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
-                                                <span className="text-[9.5px] font-semibold text-brand">Running</span>
-                                            </div>
-                                        </div>
-                                        {/* Canvas Sparkline */}
-                                        <canvas ref={canvasRef} height="62" className="w-full block rounded mb-2"></canvas>
-                                        {/* Simulated Bars */}
-                                        <div className="flex items-end gap-1 h-11 mt-2">
-                                            <div className="flex-1 h-[40%] bg-gradient-to-t from-brand/20 to-brand rounded-t-[3px]"></div>
-                                            <div className="flex-1 h-[65%] bg-gradient-to-t from-brand/20 to-brand/80 rounded-t-[3px]"></div>
-                                            <div className="flex-1 h-[55%] bg-gradient-to-t from-brand/20 to-brand/90 rounded-t-[3px]"></div>
-                                            <div className="flex-1 h-[80%] bg-gradient-to-t from-brand/20 to-brand/80 rounded-t-[3px]"></div>
-                                            <div className="flex-1 h-[60%] bg-gradient-to-t from-brand/20 to-brand/70 rounded-t-[3px]"></div>
-                                            <div className="flex-1 h-full bg-gradient-to-t from-brand/60 to-brand rounded-t-[3px] shadow-[0_2px_12px_rgba(24,71,240,0.28)] relative overflow-hidden">
-                                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/30 rounded-t-[3px] animate-progShimmer"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                {/* Tabs Navigation */}
+                                <div className="flex border-b border-[#e8edf6] bg-[#fafbfd]">
+                                    <button
+                                        onClick={() => setActiveTab('crm')}
+                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                            activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        }`}
+                                    >
+                                        <Home size={11} /> CRM Dashboard
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveTab('erp')}
+                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                            activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        }`}
+                                    >
+                                        <LayoutGrid size={11} /> ERP Overview
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveTab('app')}
+                                        className={`px-[18px] py-[10px] text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
+                                            activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        }`}
+                                    >
+                                        <Smartphone size={11} /> Mobile App
+                                    </button>
+                                </div>
 
-                                    {/* Activity Feed */}
-                                    <div className="mc opacity-0 animate-[fadeUp_0.8s_ease_forwards]" style={{ animationDelay: '800ms' }}>
-                                        <div className="flex items-center justify-between mb-2.5">
-                                            <span className="text-[11px] font-semibold text-ink">Live Activity</span>
-                                        </div>
-                                        <div className="flex flex-col gap-1.5">
-                                            <div className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-slate-50 border border-slate-100">
-                                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-brand to-brand-accent text-white flex items-center justify-center text-[8px] font-bold">TC</div>
-                                                <div className="flex-1">
-                                                    <div className="text-[9.5px] font-semibold text-ink">Timetable generated</div>
-                                                    <div className="text-[8px] text-soft">CompSci Dept</div>
-                                                </div>
-                                                <span className="text-[8.5px] text-soft">1m ago</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-slate-50 border border-slate-100">
-                                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white flex items-center justify-center text-[8px] font-bold">CR</div>
-                                                <div className="flex-1">
-                                                    <div className="text-[9.5px] font-semibold text-ink">Conflict resolved</div>
-                                                    <div className="text-[8px] text-soft">Lab 3 Booking</div>
-                                                </div>
-                                                <span className="text-[8.5px] text-soft">5m ago</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-brand/5 border border-brand/10">
-                                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-brand-accent text-white flex items-center justify-center text-[8px] font-bold hover:animate-pulse"> AI</div>
-                                                <div className="flex-1">
-                                                    <div className="text-[9.5px] font-semibold text-ink flex gap-1">AI Solver <span className="text-[8px] font-normal text-soft">is typing...</span></div>
-                                                    <div className="flex gap-1 mt-1">
-                                                        <div className="w-1 h-1 bg-brand-accent rounded-full animate-bounce"></div>
-                                                        <div className="w-1 h-1 bg-brand-accent rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                                                        <div className="w-1 h-1 bg-brand-accent rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                                {/* Tab Content */}
+                                <div className="p-4 relative min-h-[530px]">
+                                    {activeTab === 'crm' && (
+                                        <div key="crm-tab" className="animate-fadeIn">
+                                            {/* Toast Notification */}
+                                            <div className={`absolute top-4 right-3 z-50 w-[210px] transition-all duration-400 ${showToast ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
+                                                <div className="bg-white border-[1.5px] border-[#a7f0c4] rounded-xl p-2.5 shadow-[0_6px_24px_rgba(0,0,0,0.1)] flex items-center gap-2.5">
+                                                    <div className="relative">
+                                                        <div className="w-6.5 h-6.5 bg-[#dcfce7] rounded-full flex items-center justify-center">
+                                                            <Check size={12} className="text-[#0f7a42]" strokeWidth={3} />
+                                                        </div>
+                                                        <div className="absolute inset-0 rounded-full border-2 border-[#0f7a42]/30 animate-ping-slow"></div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[10.5px] font-bold text-ink">Deal Closed!</div>
+                                                        <div className="text-[9px] text-soft">Meridian Corp · $48K</div>
                                                     </div>
                                                 </div>
-                                                <span className="text-[8.5px] font-semibold text-brand-accent">Now</span>
+                                            </div>
+
+                                            {/* KPI Grid */}
+                                            <div className="grid grid-cols-4 gap-2 mb-3">
+                                                {[
+                                                    { label: 'Revenue', val: `$${kpi.revenueM.toFixed(1)}M`, pct: '+18%', up: true, delay: '0ms' },
+                                                    { label: 'Leads', val: `${Math.round(kpi.leads)}`, pct: '+32%', up: true, delay: '90ms' },
+                                                    { label: 'Deals Won', val: `${Math.round(kpi.dealsWon)}`, pct: '-4%', up: false, delay: '180ms' },
+                                                    { label: 'Pipeline', val: `$${Math.round(kpi.pipelineK)}K`, pct: '+6%', up: true, delay: '270ms' },
+                                                ].map((kpi, i) => (
+                                                    <div key={i} className="mc animate-kpiPop opacity-0" style={{ animationDelay: kpi.delay }}>
+                                                        <div className="text-[9.5px] font-bold text-soft uppercase tracking-wider mb-1"> {kpi.label}</div>
+                                                        <div key={`${i}-${kpiTick}`} className="font-display font-extrabold text-[15px] text-ink leading-tight tracking-tight animate-kpiTick">{kpi.val}</div>
+                                                        <div className="flex items-center gap-1 mt-1">
+                                                            <ChevronUp size={9} className={kpi.up ? 'text-green-700' : 'rotate-180 text-red-600'} />
+                                                            <span className={`text-[9.5px] font-bold ${kpi.up ? 'text-green-700' : 'text-red-600'}`}> {kpi.pct}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            {/* Chart Section */}
+                                            <div className="grid gap-3 grid-cols-[1.15fr_0.85fr] mb-3">
+                                                <div className="mc">
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <span className="text-[11px] font-bold text-ink">Live Revenue</span>
+                                                        <div className="flex items-center gap-1">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-[#0f7a42] animate-blink"></span>
+                                                            <span className="text-[9.5px] font-bold text-[#0f7a42]">Streaming</span>
+                                                        </div>
+                                                    </div>
+                                                    <canvas ref={canvasRef} height="62" className="w-full block rounded-md mb-2"></canvas>
+                                                    <div className="flex items-end gap-[4px] h-[44px] mt-2">
+                                                        {[52, 70, 44, 86, 64].map((h, i) => (
+                                                            <div key={i} className="flex-1 bg-gradient-to-t from-[#dce8ff] to-brand rounded-t-[3px] animate-barRise opacity-0" style={{ height: `${h}%`, animationDelay: `${i * 60}ms` }}></div>
+                                                        ))}
+                                                        <div className="flex-1 h-full bg-gradient-to-t from-brand/60 to-brand rounded-t-[3px] shadow-[0_2px_12px_rgba(24,71,240,0.28)] relative overflow-hidden animate-barRise opacity-0" style={{ animationDelay: '300ms' }}>
+                                                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/30 animate-progShimmer"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex justify-between mt-1 text-[8px] text-soft font-medium">
+                                                        <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span>
+                                                        <span className="text-brand font-bold flex items-center">
+                                                            Dec <span className="w-[1px] h-2 bg-brand ml-0.5 animate-blink"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div className="mc">
+                                                    <div className="flex items-center justify-between mb-2.5">
+                                                        <span className="text-[11px] font-bold text-ink">Pipeline</span>
+                                                        <span className="text-[9px] font-bold text-brand bg-[#eef1fd] px-1.5 py-0.5 rounded-full">Live</span>
+                                                    </div>
+                                                    <div className="space-y-2.5">
+                                                        {[
+                                                            { label: 'Qualified', val: Math.round(pipelineVals[0] || 68), color: 'from-[#4d7aff] to-brand' },
+                                                            { label: 'Proposal', val: Math.round(pipelineVals[1] || 44), color: 'from-[#7e5cf7] to-[#5b30e8]' },
+                                                            { label: 'Negotiation', val: Math.round(pipelineVals[2] || 28), color: 'from-[#0ba7cc] to-[#0784a8]' },
+                                                            { label: 'Closed Won', val: Math.round(pipelineVals[3] || 18), color: 'from-[#1cad5e] to-[#0f7a42]' },
+                                                        ].map((item, i) => (
+                                                            <div key={i}>
+                                                                <div className="flex justify-between text-[9.5px] mb-1 font-medium">
+                                                                    <span className="text-soft">{item.label}</span>
+                                                                    <span className="text-ink font-bold">{item.val}%</span>
+                                                                </div>
+                                                                <div className="prog-track h-[5px]">
+                                                                    <div
+                                                                        className={`h-full rounded-full bg-gradient-to-r ${item.color} relative overflow-hidden transition-all duration-1000 ease-out`}
+                                                                        style={{ width: `${item.val}%` }}
+                                                                    >
+                                                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-[30%] animate-progShimmer"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Activity Feed */}
+                                            <div className="mc">
+                                                <div className="flex items-center justify-between mb-2">
+                                                    <span className="text-[11px] font-bold text-ink">Live Activity</span>
+                                                    <div className="flex items-center gap-1">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
+                                                        <span className="text-[9px] font-bold text-brand">Real-time</span>
+                                                    </div>
+                                                </div>
+                                                <div className="space-y-1">
+                                                    {feedRows.map((row, idx) => (
+                                                        <div key={`${row.initials}-${row.action}-${idx}`} className="flex items-center gap-2.5 p-1.5 rounded-lg bg-[#f7f8fb] animate-rowSlide opacity-0" style={{ animationDelay: `${idx * 100}ms` }}>
+                                                            <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${row.avatarClass} text-white flex items-center justify-center text-[9px] font-bold`}>{row.initials}</div>
+                                                            <div className="flex-1">
+                                                                <div className="text-[10px] font-bold text-ink leading-tight">{row.name}</div>
+                                                                <div className="text-[8.5px] text-soft">{row.action}</div>
+                                                            </div>
+                                                            <span className={`px-1.5 py-0.5 rounded-full text-[8.5px] font-bold ${row.chipClass}`}>{row.chip}</span>
+                                                            <span className="text-[9px] text-soft">Now</span>
+                                                        </div>
+                                                    ))}
+                                                    {/* Typing Row */}
+                                                    <div className="flex items-center gap-2.5 p-1.5 rounded-lg bg-[#eef1fd] animate-rowSlide opacity-0" style={{ animationDelay: '200ms' }}>
+                                                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#5b30e8] to-[#9069f8] text-white flex items-center justify-center text-[9px] font-bold">AJ</div>
+                                                        <div className="flex-1">
+                                                            <div className="text-[10px] font-bold text-ink flex items-center gap-1.5">
+                                                                Amir Jafari <span className="text-[8.5px] font-normal text-soft">is typing...</span>
+                                                            </div>
+                                                            <div className="flex gap-0.5 mt-1">
+                                                                <span className="w-1 h-1 bg-brand rounded-full animate-bounce"></span>
+                                                                <span className="w-1 h-1 bg-brand rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                                                                <span className="w-1 h-1 bg-brand rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                                                            </div>
+                                                        </div>
+                                                        <span className="text-[9.5px] font-bold text-brand">Now</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    )}
 
+                                    {activeTab === 'erp' && (
+                                        <div key="erp-tab" className="animate-fadeIn">
+                                            {/* Stat Cards */}
+                                            <div className="grid grid-cols-4 gap-2 mb-3">
+                                                {[
+                                                    { label: 'Inventory', val: '94.2%', sub: 'Optimal', delay: '0ms', color: '#5b30e8' },
+                                                    { label: 'Orders', val: '1,284', sub: '+24%', delay: '100ms', color: '#1847f0' },
+                                                    { label: 'Suppliers', val: '38', sub: 'Active', delay: '200ms', color: '#0784a8' },
+                                                    { label: 'Efficiency', val: '87%', sub: '+12%', delay: '300ms', color: '#0f7a42' },
+                                                ].map((stat, i) => (
+                                                    <div key={i} className="mc animate-erpStat opacity-0" style={{ animationDelay: stat.delay, borderTop: `2px solid ${stat.color}` }}>
+                                                        <div className="text-[9px] font-bold text-soft uppercase tracking-wider mb-1"> {stat.label}</div>
+                                                        <div className="font-display font-bold text-[15px] text-ink leading-none">{stat.val}</div>
+                                                        <div className="text-[9px] font-bold text-green-700 mt-1">↑ {stat.sub}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            {/* Process Flow SVG */}
+                                            <div className="mc mb-3">
+                                                <div className="text-[11px] font-bold text-ink mb-3">Business Process Flow</div>
+                                                <div className="relative h-[172px]">
+                                                    <svg width="100%" height="172" viewBox="0 0 520 172" className="overflow-visible">
+                                                        {/* Edges */}
+                                                        <line x1="88" y1="44" x2="152" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '300ms' }} />
+                                                        <line x1="242" y1="44" x2="308" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '500ms' }} />
+                                                        <line x1="398" y1="44" x2="456" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '700ms' }} />
+                                                        <line x1="197" y1="70" x2="197" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '600ms' }} />
+                                                        <line x1="353" y1="70" x2="353" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '800ms' }} />
+                                                        {/* Packets */}
+                                                        <circle r="4" fill="#1847f0" className="animate-flowDot" style={{ offsetPath: `path('M88,44 L242,44')` }} />
+                                                        <circle r="4" fill="#0784a8" className="animate-flowDot [animation-delay:0.6s]" style={{ offsetPath: `path('M242,44 L398,44')` }} />
+                                                        <circle r="4" fill="#16a34a" className="animate-flowDot [animation-delay:1.2s]" style={{ offsetPath: `path('M398,44 L456,44')` }} />
+                                                        <circle r="4" fill="#5b30e8" className="animate-flowDot [animation-delay:1.8s]" style={{ offsetPath: `path('M197,70 L197,106')` }} />
+                                                        <circle r="4" fill="#0784a8" className="animate-flowDot [animation-delay:2.2s]" style={{ offsetPath: `path('M353,70 L353,106')` }} />
+                                                    </svg>
+
+                                                    <div className="pointer-events-none absolute inset-0">
+                                                        <div className="absolute left-[12px] top-[20px] w-[76px] h-[48px] rounded-[10px] bg-[#f2efff] border border-[#cec3fa] text-[#5b30e8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0">
+                                                            <Briefcase size={13} />
+                                                            <span className="text-[8.5px] font-bold">Procurement</span>
+                                                        </div>
+
+                                                        <div className="absolute left-[152px] top-[20px] w-[90px] h-[48px] rounded-[10px] bg-[#eef1fd] border border-[#c3ccf8] text-[#1847f0] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '200ms' }}>
+                                                            <Package size={13} />
+                                                            <span className="text-[8.5px] font-bold">Inventory</span>
+                                                        </div>
+
+                                                        <div className="absolute left-[308px] top-[20px] w-[90px] h-[48px] rounded-[10px] bg-[#ecfcff] border border-[#a0ecf8] text-[#0784a8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '400ms' }}>
+                                                            <Sun size={13} />
+                                                            <span className="text-[8.5px] font-bold">Production</span>
+                                                        </div>
+
+                                                        <div className="absolute left-[456px] top-[20px] w-[56px] h-[48px] rounded-[10px] bg-[#f0fdf5] border border-[#a7f0c4] text-[#0f7a42] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '600ms' }}>
+                                                            <Truck size={13} />
+                                                            <span className="text-[8.5px] font-bold">Dispatch</span>
+                                                        </div>
+
+                                                        <div className="absolute left-[157px] top-[106px] w-[80px] h-[42px] rounded-[10px] bg-[#fff7ed] border border-[#fed7aa] text-[#c2410c] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '700ms' }}>
+                                                            <Wallet size={12} />
+                                                            <span className="text-[8.5px] font-bold">Finance</span>
+                                                        </div>
+
+                                                        <div className="absolute left-[308px] top-[106px] w-[90px] h-[42px] rounded-[10px] bg-[#fdf4ff] border border-[#f0abfc] text-[#a21caf] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '820ms' }}>
+                                                            <UserRound size={12} />
+                                                            <span className="text-[8.5px] font-bold">HR</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <div className="mc">
+                                                    <div className="text-[11px] font-bold text-ink mb-2">Module Health</div>
+                                                    <div className="space-y-2">
+                                                        {ERP_HEALTH.map((m, i) => (
+                                                            <div key={i}>
+                                                                <div className="flex justify-between text-[9px] mb-1">
+                                                                    <span className="text-soft font-medium">{m.label}</span>
+                                                                    <span className="text-ink font-bold">{m.value}%</span>
+                                                                </div>
+                                                                <div className="prog-track h-[4px]">
+                                                                    <div
+                                                                        className={`h-full rounded-full bg-gradient-to-r ${m.color} animate-healthFill`}
+                                                                        style={{
+                                                                            ['--target-w' as string]: `${m.value}%`,
+                                                                            animationDelay: `${120 + i * 120}ms`,
+                                                                        }}
+                                                                    ></div>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                <div className="mc">
+                                                    <div className="text-[11px] font-bold text-ink mb-2">Live Alerts</div>
+                                                    <div className="space-y-1.5">
+                                                        <div className="flex items-center gap-2 px-2 py-1 bg-green-50 rounded border border-green-100 animate-erpStat opacity-0" style={{ animationDelay: '400ms' }}>
+                                                            <Check size={10} className="text-green-600" />
+                                                            <span className="text-[9px] font-bold text-ink">PO #2841 approved</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2 px-2 py-1 bg-amber-50 rounded border border-amber-100 animate-erpStat opacity-0" style={{ animationDelay: '550ms' }}>
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                                            <span className="text-[9px] font-bold text-ink">Low stock: SKU-448</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {activeTab === 'app' && (
+                                        <div key="app-tab" className="animate-fadeIn">
+                                            <div className="flex gap-4">
+                                                {/* Phone Mockup */}
+                                                <div className="w-[166px] flex-shrink-0 animate-phoneIn opacity-0">
+                                                    <div className="animate-phoneFloat">
+                                                        <div className="bg-[#0d1120] rounded-[28px] p-[10px] shadow-[0_20px_60px_rgba(8,13,28,0.22)]">
+                                                            <div className="w-[52px] h-[5px] bg-[#1c2442] rounded-full mx-auto mb-2"></div>
+                                                            <div className="bg-[#f7f8fb] rounded-[20px] overflow-hidden">
+                                                                <div className="bg-gradient-to-br from-brand to-[#5b30e8] p-3 pt-4 text-white">
+                                                                    <div className="flex justify-between items-center mb-3">
+                                                                        <div>
+                                                                            <div className="text-[8.5px] opacity-70">Good morning,</div>
+                                                                            <div className="text-[14px] font-extrabold font-display">Rahul</div>
+                                                                        </div>
+                                                                        <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center relative">
+                                                                            <Bell size={13} />
+                                                                            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full text-[7px] border border-brand flex items-center justify-center font-bold">3</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="bg-white/10 rounded-lg p-2 flex gap-2">
+                                                                        <div className="flex-1"><div className="text-[7.5px] opacity-60">Pipeline</div><div className="text-[12px] font-bold">$840K</div></div>
+                                                                        <div className="w-[1px] bg-white/20"></div>
+                                                                        <div className="flex-1"><div className="text-[7.5px] opacity-60">Tasks</div><div className="text-[12px] font-bold">12</div></div>
+                                                                        <div className="w-[1px] bg-white/20"></div>
+                                                                        <div className="flex-1"><div className="text-[7.5px] opacity-60">Meetings</div><div className="text-[12px] font-bold">4</div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="p-2.5">
+                                                                    <div className="text-[8px] font-bold text-soft uppercase tracking-widest mb-2">Quick Actions</div>
+                                                                    <div className="grid grid-cols-4 gap-1.5">
+                                                                        {[
+                                                                            { label: 'Contacts', tone: 'text-brand bg-[#eef1fd]' },
+                                                                            { label: 'Reports', tone: 'text-[#5b30e8] bg-[#f2efff]' },
+                                                                            { label: 'Deals', tone: 'text-[#0784a8] bg-[#ecfcff]' },
+                                                                            { label: 'Calendar', tone: 'text-[#0f7a42] bg-[#f0fdf5]' },
+                                                                        ].map((item, i) => (
+                                                                            <div key={item.label} className="animate-screenSwipe opacity-0 text-center" style={{ animationDelay: `${350 + i * 70}ms` }}>
+                                                                                <div className={`aspect-square rounded-lg ${item.tone} flex items-center justify-center mb-1`}>
+                                                                                    <div className="w-4 h-4 rounded-full border border-current/25"></div>
+                                                                                </div>
+                                                                                <div className="text-[7px] font-bold text-soft leading-none">{item.label}</div>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                    <div className="text-[8px] font-bold text-soft uppercase tracking-widest mt-3 mb-1.5">Recent</div>
+                                                                    <div className="space-y-1.5">
+                                                                        <div className="rounded-lg border border-[#dce3ef] bg-white p-1.5 flex items-center gap-1.5">
+                                                                            <div className="w-5 h-5 rounded-full bg-[#eef1fd] text-brand text-[7px] font-bold flex items-center justify-center">RS</div>
+                                                                            <div className="flex-1 min-w-0">
+                                                                                <div className="text-[7.5px] font-bold text-ink truncate">Rahul Sharma</div>
+                                                                                <div className="text-[6.5px] text-soft truncate">Follow-up due</div>
+                                                                            </div>
+                                                                            <span className="text-[6.5px] font-bold text-brand">Today</span>
+                                                                        </div>
+                                                                        <div className="rounded-lg border border-[#d8f2e4] bg-[#f0fdf5] p-1.5 flex items-center gap-1.5">
+                                                                            <div className="w-5 h-5 rounded-full bg-[#dcfce7] text-[#0f7a42] text-[9px] font-bold flex items-center justify-center">✓</div>
+                                                                            <div className="flex-1 min-w-0">
+                                                                                <div className="text-[7.5px] font-bold text-ink truncate">Deal closed</div>
+                                                                                <div className="text-[6.5px] text-soft truncate">$48K · Meridian</div>
+                                                                            </div>
+                                                                            <span className="text-[6.5px] font-bold text-[#0f7a42]">Won!</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="w-12 h-1 bg-[#dce3ef] rounded-full mx-auto mt-2"></div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Feature Cards */}
+                                                <div className="flex-1 space-y-2.5">
+                                                    <div className="animate-notifDrop opacity-0 p-3.5 bg-gradient-to-br from-brand to-[#5b30e8] rounded-2xl text-white">
+                                                        <div className="text-[9px] font-bold opacity-60 uppercase mb-1">Available on</div>
+                                                        <div className="font-display font-bold text-[16px] mb-2 tracking-tight">iOS & Android</div>
+                                                        <div className="flex gap-2">
+                                                            <div className="flex-1 bg-white/20 rounded-md py-1 px-2 flex items-center gap-1.5 text-[9px] font-bold">
+                                                                <Star size={10} fill="white" /> App Store
+                                                            </div>
+                                                            <div className="flex-1 bg-white/20 rounded-md py-1 px-2 flex items-center gap-1.5 text-[9px] font-bold">
+                                                                Play Store
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="animate-notifDrop opacity-0 p-3 bg-white border border-[#dce3ef] rounded-2xl" style={{ animationDelay: '180ms' }}>
+                                                        <div className="text-[11px] font-bold text-ink mb-2">Live Metrics</div>
+                                                        <div className="grid grid-cols-2 gap-2">
+                                                            <div className="bg-[#f7f8fb] p-2 rounded-lg">
+                                                                <div className="text-[18px] font-extrabold text-ink leading-tight tracking-tight">1,284</div>
+                                                                <div className="text-[9px] text-soft font-bold">Active users</div>
+                                                            </div>
+                                                            <div className="bg-[#f0fdf5] p-2 rounded-lg">
+                                                                <div className="text-[18px] font-extrabold text-green-700 leading-tight tracking-tight">+22%</div>
+                                                                <div className="text-[9px] text-soft font-bold">This week</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="animate-notifDrop opacity-0 p-3 bg-white border border-[#dce3ef] rounded-2xl" style={{ animationDelay: '260ms' }}>
+                                                        <div className="text-[11px] font-bold text-ink mb-2">Push notification</div>
+                                                        <div className="rounded-xl border border-[#a7f0c4] bg-[#f0fdf5] p-2.5 flex items-center gap-2.5">
+                                                            <div className="w-7 h-7 rounded-full bg-[#dcfce7] text-[#0f7a42] flex items-center justify-center font-bold">✓</div>
+                                                            <div>
+                                                                <div className="text-[10px] font-bold text-ink">Deal Closed!</div>
+                                                                <div className="text-[9px] text-soft">Meridian Corp · $48,000</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="animate-notifDrop opacity-0 p-3 bg-[#fffbeb] border border-[#fde68a] rounded-2xl" style={{ animationDelay: '340ms' }}>
+                                                        <div className="flex items-center gap-2">
+                                                            <Star size={15} className="text-amber-500" fill="currentColor" />
+                                                            <div className="text-[16px] font-extrabold text-ink leading-none tracking-tight">4.9 / 5</div>
+                                                        </div>
+                                                        <div className="text-[10px] text-soft font-medium mt-1.5">2,400+ App Store reviews</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            {/* Scroll Cue */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-fadeIn opacity-0 flex flex-col items-center gap-2" style={{ animationDelay: '1000ms' }}>
+                <span className="text-[9px] uppercase tracking-widest text-soft/40 font-bold">Scroll</span>
+                <div className="w-[19px] h-[30px] rounded-xl border-2 border-[#dce3ef] flex justify-center p-1">
+                    <div className="w-1 h-1.5 bg-brand rounded-full animate-sdrop"></div>
+                </div>
             </div>
         </section>
     );

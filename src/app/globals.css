@@ -14,6 +14,19 @@
   --animate-fadeUp: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fadeIn: fadeIn 0.8s ease forwards;
   --animate-kpiTick: kpiTick 0.35s ease;
+  --animate-kpiPop: kpiPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-rowSlide: rowSlide 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-barRise: barRise 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-erpStat: erpStat 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-edgeDraw: edgeDraw 0.7s ease forwards;
+  --animate-nodeIn: nodeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-phoneIn: phoneIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-screenSwipe: screenSwipe 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-notifDrop: notifDrop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-phoneFloat: phoneFloat 4.5s ease-in-out infinite;
+  --animate-sdrop: sdrop 2s ease-in-out infinite;
+  --animate-flowDot: flowDot 2.1s ease-in-out infinite;
+  --animate-healthFill: healthFill 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-progShimmer: progShimmer 2.2s ease-in-out infinite;
   --animate-blink: blink 2s ease-in-out infinite;
   --animate-pdot: pdot 2.2s ease-in-out infinite;
@@ -36,6 +49,46 @@
     70% { transform: translateY(2px); }
     100% { transform: translateY(0); }
   }
+  @keyframes kpiPop {
+    from { opacity: 0; transform: translateY(8px) scale(0.93); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes rowSlide {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes barRise {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+  @keyframes erpStat {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes edgeDraw {
+    from { stroke-dashoffset: 220; opacity: 0; }
+    to { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes nodeIn {
+    from { opacity: 0; transform: scale(0.65) translateY(6px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes phoneIn {
+    from { opacity: 0; transform: translateY(28px) scale(0.93); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes screenSwipe {
+    from { opacity: 0; transform: translateX(18px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes notifDrop {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes phoneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
   @keyframes progShimmer {
     from { transform: translateX(-100%); }
     to { transform: translateX(300%); }
@@ -51,6 +104,20 @@
   @keyframes ping {
     0% { transform: scale(1); opacity: 0.7; }
     100% { transform: scale(2.2); opacity: 0; }
+  }
+  @keyframes sdrop {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    60% { transform: translateY(7px); opacity: 0.25; }
+  }
+  @keyframes flowDot {
+    0% { offset-distance: 0%; opacity: 0; }
+    12% { opacity: 1; }
+    86% { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+  @keyframes healthFill {
+    from { width: 0; }
+    to { width: var(--target-w); }
   }
 }
 
