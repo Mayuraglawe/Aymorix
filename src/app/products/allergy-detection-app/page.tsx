@@ -112,6 +112,48 @@ export default function AllergyDetectionAppPage() {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-100 py-20 mt-10">
+        <div className="mx-auto max-w-screen-lg px-6 md:px-12">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="md:w-1/2 w-full flex justify-center">
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/allergy.jpg"
+                  width={520}
+                  height={370}
+                  alt="Allergy Detection App screenshot"
+                  className="rounded-2xl shadow-xl border-4 border-white mb-8"
+                />
+                <Image
+                  src="/allergy1.png"
+                  width={520}
+                  height={370}
+                  alt="Allergy Detection App interface"
+                  className="rounded-2xl shadow-xl border-4 border-white"
+                />
+              </div>
+            </div>
+            <div className="md:w-1/2 w-full">
+              <span className="inline-block rounded-full border border-pink-200 bg-pink-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-pink-700 mb-2">About the App</span>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl mb-4">Allergy Detection App: Your Smart Allergy Assistant</h2>
+              <p className="text-base md:text-lg text-mid mb-4">
+                The Allergy Detection App empowers healthcare professionals and patients with fast, reliable, and AI-powered allergy screening. Its intuitive interface and advanced algorithms analyze ingredient lists, flag potential allergens, and provide clear guidance for safe consumption. Whether in a clinic or at home, our product helps you make informed decisions and avoid risky ingredients.
+              </p>
+              <ul className="list-disc pl-5 text-mid text-sm md:text-base mb-4">
+                <li>Instant ingredient analysis and allergen detection</li>
+                <li>Clear risk warnings and safe ingredient highlights</li>
+                <li>Designed for both clinical and personal use</li>
+                <li>Modern, user-friendly interface</li>
+              </ul>
+              <div className="mt-4">
+                <p className="text-base text-soft">Want to know more or collaborate? <Link href="/contact" className="underline text-blue-700 hover:text-pink-600 transition">Contact Us</Link></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

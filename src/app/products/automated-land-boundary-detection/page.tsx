@@ -1,4 +1,12 @@
+"use client";
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+const heroImages = [
+  '/boundary.jpeg',
+  '/land1.png',
+  '/land2.png',
+  '/land3.png',
+];
 import Link from 'next/link';
 import { ArrowRight, Map, Layers, ScanLine } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
@@ -23,6 +31,17 @@ const capabilities = [
 ];
 
 export default function AutomatedLandBoundaryDetectionPage() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToSlide = (idx: number) => setActiveSlide(idx);
+
   return (
     <main className="min-h-screen bg-white text-ink">
       <Navbar />
@@ -71,18 +90,38 @@ export default function AutomatedLandBoundaryDetectionPage() {
           </div>
 
           <div className="relative h-[360px] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-blue-100/70 md:h-[480px]">
-            <Image
-              src="/boundary.jpeg"
-              alt="Automated land boundary detection interface"
-              fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
+            {heroImages.map((img, idx) => (
+              <Image
+                key={img}
+                src={img}
+                alt={`Boundary detection showcase ${idx + 1}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className={`object-cover transition-all duration-700 absolute inset-0 ${
+                  idx === activeSlide ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
+                }`}
+                priority={idx === 0}
+              />
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              {heroImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`h-2 w-6 rounded-full transition-all duration-200 ${
+                    idx === activeSlide ? 'bg-brand-accent' : 'bg-slate-300/80'
+                  }`}
+                  aria-label={`Show image ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+
+
 
       <section id="capabilities" className="pb-24 md:pb-28">
         <div className="mx-auto max-w-screen-xl px-8 md:px-16">
@@ -112,6 +151,28 @@ export default function AutomatedLandBoundaryDetectionPage() {
         </div>
       </section>
 
+      {/* About Us Section (moved to end) */}
+      <section className="py-14 md:py-20 bg-gradient-to-br from-blue-50 via-white to-emerald-50 border-y border-slate-200">
+        <div className="max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center gap-10">
+          <div className="flex-1">
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-ink mb-5 tracking-tight">About Us</h2>
+            <p className="text-lg md:text-xl text-mid mb-4">We are a passionate team of geospatial engineers, AI experts, and land management professionals dedicated to transforming land governance through technology. Our mission is to make land records, boundary detection, and compliance effortless, transparent, and accessible for everyone.</p>
+            <ul className="list-disc pl-6 text-base text-slate-700 space-y-2">
+              <li>Over 10 years of experience in geospatial analytics and AI.</li>
+              <li>Trusted by government agencies, landowners, and urban planners.</li>
+              <li>Committed to accuracy, security, and user-friendly solutions.</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-center">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-emerald-200 bg-white">
+              <Image src="/land2.png" alt="Our Team" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-400/30 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Decorative Gradient Footer */}
+      <div className="h-32 w-full bg-gradient-to-t from-emerald-100 via-white to-transparent opacity-80 -mb-10" />
       <Footer />
     </main>
   );
