@@ -95,7 +95,6 @@ export default function Services() {
                             <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80" alt="Education" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our education solutions streamline administration, enhance learning experiences, and empower institutions with digital tools for modern classrooms.</p>
-                                <a href="#education-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +104,6 @@ export default function Services() {
                             <img src="/health_care.png" alt="Healthcare" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our healthcare app development services can help you improve staff productivity, reduce costs, and achieve service excellence.</p>
-                                <a href="#healthcare-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +116,6 @@ export default function Services() {
                             <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Media and Entertainment" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">We create platforms for content management, streaming, and audience engagement.</p>
-                                <a href="#media-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -128,7 +125,6 @@ export default function Services() {
                             <img src="/hospitality.png" alt="Hospitality" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our hospitality solutions optimize guest management, booking systems, and operational workflows for hotels, restaurants, and resorts.</p>
-                                <a href="#hospitality-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -138,7 +134,6 @@ export default function Services() {
                             <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="E-commerce" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">We build seamless e-commerce platforms for shopping and customer engagement.</p>
-                                <a href="#ecommerce-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
                         </div>
                     </div>

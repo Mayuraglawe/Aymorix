@@ -31,11 +31,11 @@ export default function AboutTeam() {
 
                             <div className="absolute bottom-4 left-4 right-4 z-20 grid grid-cols-3 gap-3">
                                 <div className="rounded-xl border border-white/25 bg-white/15 p-3 text-center text-white backdrop-blur-sm">
-                                    <p className="font-display text-xl font-bold leading-none">45+</p>
+                                    <p className="font-display text-xl font-bold leading-none">4+</p>
                                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-slate-100">Projects</p>
                                 </div>
                                 <div className="rounded-xl border border-white/25 bg-white/15 p-3 text-center text-white backdrop-blur-sm">
-                                    <p className="font-display text-xl font-bold leading-none">12</p>
+                                    <p className="font-display text-xl font-bold leading-none">6</p>
                                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-slate-100">Core Experts</p>
                                 </div>
                                 <div className="rounded-xl border border-white/25 bg-white/15 p-3 text-center text-white backdrop-blur-sm">
@@ -43,11 +43,6 @@ export default function AboutTeam() {
                                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-slate-100">Client Trust</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="pointer-events-none absolute -bottom-6 -right-4 hidden rounded-3xl border border-brand/15 bg-white/85 px-5 py-4 shadow-xl backdrop-blur md:block">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-brand">Design x Engineering x AI</p>
-                            <p className="mt-1 text-sm font-semibold text-ink">Built to scale with your business vision</p>
                         </div>
                     </div>
 
