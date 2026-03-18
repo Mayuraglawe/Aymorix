@@ -218,4 +218,12 @@
     background: #f0f4ff;
     transform: translateY(-1px);
   }
+
+  @media (max-width: 640px) {
+    .btn-primary,
+    .btn-ghost {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+  }
 }

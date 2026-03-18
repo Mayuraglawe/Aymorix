@@ -43,10 +43,10 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState(-1);
 
   return (
-    <section id="faq" className="max-w-2xl mx-auto py-16">
+    <section id="faq" className="max-w-2xl mx-auto px-4 sm:px-6 py-14 md:py-16">
       <div className="mb-6 text-center">
         <span className="block text-sm font-semibold text-green-600 mb-2">FAQ</span>
-        <h2 className="text-4xl font-extrabold text-ink mb-4">Frequently Asked Questions</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-ink mb-4">Frequently Asked Questions</h2>
       </div>
       <div className="space-y-4">
         {faqs.map((faq, idx) => (
@@ -55,7 +55,7 @@ export default function FAQSection() {
             className="rounded-xl border border-slate-200 bg-white shadow-sm"
           >
             <button
-              className="w-full flex items-center justify-between px-6 py-4 text-lg font-semibold text-ink focus:outline-none"
+              className="w-full flex items-center justify-between px-4 md:px-6 py-4 text-base md:text-lg font-semibold text-ink focus:outline-none"
               onClick={() => setOpenIdx(openIdx === idx ? -1 : idx)}
             >
               {faq.question}
@@ -68,7 +68,7 @@ export default function FAQSection() {
               </span>
             </button>
             {openIdx === idx && (
-              <div className="px-6 pb-4 text-base text-mid">
+              <div className="px-4 md:px-6 pb-4 text-sm md:text-base text-mid">
                 {faq.answer}
               </div>
             )}

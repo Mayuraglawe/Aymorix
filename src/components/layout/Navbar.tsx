@@ -1,20 +1,27 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronDown, Briefcase, Plus, Factory, MonitorPlay, Gamepad2, Building2, Lock, Clock, ShoppingCart, GraduationCap } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ChevronDown, Plus, MonitorPlay, Clock, ShoppingCart, GraduationCap, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-16 py-5 bg-white/85 border-b border-slate-100 glass-nav">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 md:py-5 bg-white/85 border-b border-slate-100 glass-nav">
             <Link href="/" className="flex items-center gap-3 no-underline">
                 <Image
                     src="/Aymorix_logo2.png"
                     alt="Aymorix logo"
                     width={42}
                     height={42}
-                    className="w-10 h-10"
+                    className="w-9 h-9 sm:w-10 sm:h-10"
                     priority
                 />
-                <span className="font-display font-bold text-2xl tracking-tight text-ink">
+                <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
                     Aymorix
                 </span>
             </Link>
@@ -108,10 +115,42 @@ export default function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3">
-                <Link href="#contact" className="btn-primary">
+                <Link href="#contact" className="hidden sm:inline-flex btn-primary">
                     Contact Us <ArrowRight size={14} strokeWidth={2} />
                 </Link>
+                <button
+                    type="button"
+                    onClick={() => setIsMenuOpen((prev) => !prev)}
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-ink transition hover:bg-slate-50 md:hidden"
+                    aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                    aria-expanded={isMenuOpen}
+                >
+                    {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                </button>
             </div>
+
+            {isMenuOpen && (
+                <div className="absolute left-0 right-0 top-full border-b border-slate-200 bg-white px-4 py-4 shadow-lg md:hidden">
+                    <div className="mx-auto max-w-screen-xl space-y-2">
+                        <Link href="#services" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Services</Link>
+                        <Link href="#industry" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Industry</Link>
+                        <Link href="#products" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Products</Link>
+                        <Link href="#technologies" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Tech Stack</Link>
+                        <Link href="#about" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">About Us</Link>
+                        <Link href="#faq" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">FAQ</Link>
+                        <div className="mt-3 border-t border-slate-200 pt-3">
+                            <p className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wide text-soft">Products</p>
+                            <Link href="/products/algomate" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Algomate</Link>
+                            <Link href="/products/zenith" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Zenith</Link>
+                            <Link href="/products/allergy-detection-app" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Allergy Detection App</Link>
+                            <Link href="/products/automated-land-boundary-detection" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Automated Land Boundary Detection</Link>
+                        </div>
+                        <Link href="#contact" onClick={closeMenu} className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white">
+                            Contact Us <ArrowRight size={14} strokeWidth={2} />
+                        </Link>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }

@@ -49,7 +49,7 @@ export default function AutomatedLandBoundaryDetectionPage() {
       <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-36">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_22%,rgba(24,71,240,0.12),transparent_42%),radial-gradient(circle_at_86%_30%,rgba(7,132,168,0.14),transparent_40%),linear-gradient(180deg,#f7fbff_0%,#ffffff_76%)]" />
 
-        <div className="mx-auto grid max-w-screen-xl grid-cols-1 items-center gap-10 px-8 md:px-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="mx-auto grid max-w-screen-xl grid-cols-1 items-center gap-10 px-4 sm:px-6 md:px-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
               Geospatial Product
@@ -124,7 +124,7 @@ export default function AutomatedLandBoundaryDetectionPage() {
 
 
       <section id="capabilities" className="pb-24 md:pb-28">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="mb-8 md:mb-10">
             <span className="inline-block rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-700">
               Core Capabilities
@@ -157,7 +157,7 @@ export default function AutomatedLandBoundaryDetectionPage() {
 
       {/* About Us Section (moved to end) */}
       <section className="py-14 md:py-20 bg-gradient-to-br from-blue-50 via-white to-emerald-50 border-y border-slate-200">
-        <div className="max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center gap-10">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16 flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
             <h2 className="font-display text-4xl md:text-5xl font-extrabold text-ink mb-5 tracking-tight">About Us</h2>
             <p className="text-lg md:text-xl text-mid mb-4">We are a passionate team of geospatial engineers, AI experts, and land management professionals dedicated to transforming land governance through technology. Our mission is to make land records, boundary detection, and compliance effortless, transparent, and accessible for everyone.</p>

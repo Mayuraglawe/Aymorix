@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const reviews = [
@@ -39,9 +38,19 @@ const reviews = [
 
 export default function ReviewCards() {
   const [slideIdx, setSlideIdx] = useState(0);
-  const reviewsPerSlide = 2;
+  const [reviewsPerSlide, setReviewsPerSlide] = useState(2);
   const maxSlide = Math.ceil(reviews.length / reviewsPerSlide);
   const visibleReviews = reviews.slice(slideIdx * reviewsPerSlide, (slideIdx + 1) * reviewsPerSlide);
+
+  useEffect(() => {
+    const setSlides = () => {
+      setReviewsPerSlide(window.innerWidth < 1024 ? 1 : 2);
+    };
+
+    setSlides();
+    window.addEventListener('resize', setSlides);
+    return () => window.removeEventListener('resize', setSlides);
+  }, []);
 
   // Auto-rotate slides every 4 seconds
   useEffect(() => {
@@ -60,18 +69,18 @@ export default function ReviewCards() {
           <polygon points="700,0 2100,0 1900,900 1100,900" fill="#e0e7ef" />
         </svg>
       </div>
-      <div className="relative z-10 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Our Testimonials</h2>
-        <p className="text-lg text-center mb-8 text-slate-600">Hear from our happy users and discover how Aymorix made a difference for them.</p>
-        <div className="flex flex-row gap-8 justify-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Our Testimonials</h2>
+        <p className="text-base md:text-lg text-center mb-8 text-slate-600">Hear from our happy users and discover how Aymorix made a difference for them.</p>
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center items-center">
           {visibleReviews.map((review, idx) => (
-            <div key={idx} className="flex flex-col items-center w-[420px] rounded-2xl border border-slate-200 bg-white bg-opacity-80 shadow-lg p-8">
+            <div key={idx} className="flex flex-col items-center w-full max-w-[420px] rounded-2xl border border-slate-200 bg-white bg-opacity-80 shadow-lg p-6 md:p-8">
               <div className="mb-4 flex items-center justify-center">
                 <div className="flex items-center justify-center w-20 h-20 rounded-full border-4 border-white shadow-md bg-blue-100 text-blue-700 text-3xl font-bold">
                   {review.name.trim().charAt(0)}
                 </div>
               </div>
-              <div className="text-lg font-semibold text-ink mb-2 text-center">{review.text}</div>
+              <div className="text-base md:text-lg font-semibold text-ink mb-2 text-center">{review.text}</div>
               <div className="flex items-center mt-2">
                 {[...Array(5)].map((_, i) => (
                   <svg

@@ -26,14 +26,14 @@ const techStack = [
 export default function TechStrip() {
   return (
     <div className="overflow-hidden w-full py-6 bg-white">
-      <div className="max-w-screen-xl mx-auto mb-8 text-center">
-        <h2 className="text-3xl font-extrabold text-ink mb-2">Technologies We Use</h2>
-        <p className="text-lg text-mid">Our platform is built on modern, scalable, and secure technologies.</p>
+      <div className="max-w-screen-xl mx-auto mb-8 px-4 sm:px-6 text-center">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-ink mb-2">Technologies We Use</h2>
+        <p className="text-base md:text-lg text-mid">Our platform is built on modern, scalable, and secure technologies.</p>
       </div>
       <div className="relative w-full">
         <div className="animate-marquee flex gap-12 w-max">
           {Array(3).fill(techStack).flat().map((tech, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center min-w-[120px]">
+            <div key={idx} className="flex flex-col items-center justify-center min-w-[108px] sm:min-w-[120px]">
               <div className="h-16 w-16 flex items-center justify-center">
                 <img src={tech.icon} alt={tech.name} width={64} height={64} />
               </div>

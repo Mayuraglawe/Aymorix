@@ -7,20 +7,20 @@ export default function Documentation() {
   const [activeSection, setActiveSection] = useState('introduction');
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900">
-      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-4 px-6 shadow-sm">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-3 md:py-4 px-4 sm:px-6 shadow-sm">
+        <div className="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <Image src="/Aymorix_logo2.png" alt="Aymorix Logo" width={44} height={44} className="rounded-full" priority />
-            <span className="text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
+            <span className="text-xl md:text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
           </div>
-          <Link href="/" className="text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+          <Link href="/" className="text-sm md:text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">
             ← Back to Home
           </Link>
         </div>
       </header>
-      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-12 gap-8">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 gap-6 md:gap-8">
         {/* Sidebar Navigation */}
-        <nav className="md:w-64 w-full bg-white rounded-2xl shadow border border-blue-200 p-6 mb-8 md:mb-0">
+        <nav className="md:w-64 w-full bg-white rounded-2xl shadow border border-blue-200 p-5 md:p-6 mb-6 md:mb-0">
           <ul className="space-y-4">
             <li><button className={`font-bold text-blue-900 ${activeSection === 'introduction' ? 'underline' : ''}`} onClick={() => setActiveSection('introduction')}>Introduction</button></li>
             <li><button className={`font-bold text-blue-900 ${activeSection === 'features' ? 'underline' : ''}`} onClick={() => setActiveSection('features')}>Features</button></li>
@@ -29,9 +29,9 @@ export default function Documentation() {
           </ul>
         </nav>
         {/* Main Content */}
-        <main className="flex-1 bg-white rounded-2xl shadow-xl border border-blue-200 p-10 md:p-16">
+        <main className="flex-1 bg-white rounded-2xl shadow-xl border border-blue-200 p-5 sm:p-8 md:p-16">
           <div className="mb-8">
-            <h1 className="font-display text-4xl font-bold text-slate-900 mb-2">Aymorix Documentation</h1>
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-2">Aymorix Documentation</h1>
             <p className="text-slate-500 mb-8">Last updated: March 18, 2026</p>
           </div>
           {activeSection === 'introduction' && (

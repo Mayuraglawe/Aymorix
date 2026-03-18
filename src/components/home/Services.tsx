@@ -30,7 +30,7 @@ export default function Services() {
 
     return (
         <section id="services" className="relative py-24 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16">
                 <div className="text-center mb-16">
                     <span className="inline-block py-1.5 px-3 rounded-full bg-brand/10 text-brand text-xs font-semibold tracking-wide uppercase mb-3">
                         What We Do
@@ -80,7 +80,7 @@ export default function Services() {
             </div>
 
             {/* Industries We Excel In Heading */}
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16 mt-24">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16 mt-24">
                 <h2 id="industry" className="font-display font-extrabold text-3xl md:text-5xl text-ink tracking-tight mb-4 text-center">
                     Industries We Excel In
                 </h2>

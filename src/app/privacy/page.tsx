@@ -10,21 +10,21 @@ export const metadata = {
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900">
-      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-4 px-6 shadow-sm">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-3 md:py-4 px-4 sm:px-6 shadow-sm">
+        <div className="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <Image src="/Aymorix_logo2.png" alt="Aymorix Logo" width={44} height={44} className="rounded-full" priority />
-            <span className="text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
+            <span className="text-xl md:text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
           </div>
-          <Link href="/" className="text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+          <Link href="/" className="text-sm md:text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">
             ← Back to Home
           </Link>
         </div>
       </header>
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-2xl shadow-xl border border-blue-200 p-10 md:p-16">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <div className="bg-white rounded-2xl shadow-xl border border-blue-200 p-5 sm:p-8 md:p-16">
           <div className="mb-8">
-            <h1 className="font-display text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
             <p className="text-slate-500 mb-8">Last updated: March 18, 2026</p>
           </div>
           <section className="mb-8">

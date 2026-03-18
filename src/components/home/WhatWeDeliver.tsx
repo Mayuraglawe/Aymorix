@@ -80,7 +80,7 @@ export default function WhatWeDeliver() {
 
     return (
         <section className="py-14 md:py-16 bg-slate-100 border-y border-slate-200">
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16">
                 <div className="mb-7 md:mb-8">
                     <h2 className="font-display font-extrabold text-3xl md:text-5xl text-ink tracking-tight">
                         What We Deliver

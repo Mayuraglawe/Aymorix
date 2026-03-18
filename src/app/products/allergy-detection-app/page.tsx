@@ -30,7 +30,7 @@ export default function AllergyDetectionAppPage() {
       <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-36">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,rgba(24,71,240,0.12),transparent_42%),radial-gradient(circle_at_84%_26%,rgba(7,132,168,0.14),transparent_40%),linear-gradient(180deg,#f7fbff_0%,#ffffff_76%)]" />
 
-        <div className="mx-auto grid max-w-screen-xl grid-cols-1 items-center gap-10 px-8 md:px-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="mx-auto grid max-w-screen-xl grid-cols-1 items-center gap-10 px-4 sm:px-6 md:px-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
               Healthcare Product
@@ -85,7 +85,7 @@ export default function AllergyDetectionAppPage() {
       </section>
 
       <section id="features" className="pb-24 md:pb-28">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="mb-8 md:mb-10">
             <span className="inline-block rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-700">
               Key Capabilities

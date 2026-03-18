@@ -89,7 +89,7 @@ export default function ZenithPage() {
       <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-36">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(24,71,240,0.12),transparent_40%),radial-gradient(circle_at_85%_28%,rgba(7,132,168,0.17),transparent_42%),linear-gradient(180deg,#f5fbff_0%,#ffffff_78%)]" />
 
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mid">
             <Sparkles size={13} />
             Welcome to ZENITH
@@ -185,7 +185,7 @@ export default function ZenithPage() {
       </section>
 
       <section className="pb-18 md:pb-22">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="mb-7 md:mb-10">
             <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
               What is Zenith?
@@ -234,7 +234,7 @@ export default function ZenithPage() {
       </section>
 
       <section id="zenith-clubs" className="pb-20 md:pb-24">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="mb-8 md:mb-10">
             <span className="inline-block rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-700">
               Our Specialized Clubs
@@ -286,7 +286,7 @@ export default function ZenithPage() {
       </section>
 
       <section id="zenith-events" className="pb-24 md:pb-28">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="rounded-3xl border border-slate-200 bg-[linear-gradient(160deg,#ffffff_0%,#f3f9ff_100%)] p-8 shadow-sm md:p-10">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
               <div>

@@ -37,7 +37,7 @@ export default function AlgomatePage() {
       <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-36">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,rgba(24,71,240,0.12),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(7,132,168,0.14),transparent_40%),linear-gradient(180deg,#f7fbff_0%,#ffffff_75%)]" />
 
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mid">
             Algomate Platform
           </span>
@@ -180,7 +180,7 @@ export default function AlgomatePage() {
       </section>
 
       <section className="pb-20 md:pb-24">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {capabilityCards.map((card) => {
               const Icon = card.icon;
@@ -222,13 +222,13 @@ export default function AlgomatePage() {
 
         {/* Academic Compass Pro Feature Card Section - moved after feature cards */}
         <section className="py-12 md:py-16">
-          <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+          <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
             <div className="rounded-3xl bg-[linear-gradient(135deg,#f5faff_0%,#dbeafe_60%,#e7f0fa_100%)] shadow-xl flex flex-col md:flex-row gap-10 items-center border border-transparent">
               <div className="flex-1 min-w-[260px] p-8 md:p-12">
                 <span className="inline-block mb-3 rounded-full border border-blue-300 bg-blue-300/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-blue-700">ADVANCED TECHNOLOGY</span>
-                <h2 className="font-display text-4xl font-extrabold tracking-tight text-blue-900 mb-4">Academic Compass Pro</h2>
+                <h2 className="font-display text-4xl font-extrabold tracking-tight text-blue-900 mb-4">Algomate</h2>
                 <p className="text-lg text-blue-700 mb-6 max-w-md">Unlock advanced features for academic management with enhanced AI, analytics, and real-time collaboration tools.</p>
-                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-blue-500 text-white px-6 py-3 font-semibold shadow-md hover:bg-blue-600 transition text-lg">Request Demo <ArrowRight size={18} /></Link>
+                <Link href="https://algomate.aymorix.com/" className="inline-flex items-center gap-2 rounded-full bg-blue-500 text-white px-6 py-3 font-semibold shadow-md hover:bg-blue-600 transition text-lg">Request Demo <ArrowRight size={18} /></Link>
               </div>
               <div className="flex-1 min-w-[260px] p-8 md:p-12">
                 <ul className="space-y-4">
@@ -245,7 +245,7 @@ export default function AlgomatePage() {
         </section>
 
       <section className="pb-24 md:pb-28" id="about-algomate">
-        <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="mb-6 md:mb-8">
             <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
               About Us

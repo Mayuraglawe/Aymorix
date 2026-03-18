@@ -10,7 +10,7 @@ export default function AboutTeam() {
                 <div className="absolute bottom-0 left-1/2 h-44 w-[520px] -translate-x-1/2 bg-gradient-to-r from-transparent via-brand/10 to-transparent blur-2xl" />
             </div>
 
-            <div className="relative mx-auto max-w-screen-xl px-8 md:px-16">
+            <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
                     <div className="relative">
                         <div className="relative overflow-hidden rounded-[34px] border border-slate-200 bg-slate-950 shadow-[0_26px_70px_rgba(16,25,64,0.2)]">

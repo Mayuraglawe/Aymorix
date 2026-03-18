@@ -238,7 +238,7 @@ export default function HeroAnimated() {
 
             {/* Main Content Area */}
             <div className="relative z-10 flex-1 flex items-center">
-                <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
 
                     {/* Left Side: Copy & CTA */}
                     <div className="flex-1 min-w-0 max-w-135 pt-3">
@@ -721,7 +721,7 @@ export default function HeroAnimated() {
             </div>
 
             {/* Scroll Cue */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-fadeIn opacity-0 flex flex-col items-center gap-2" style={{ animationDelay: '1000ms' }}>
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-fadeIn opacity-0 hidden md:flex flex-col items-center gap-2" style={{ animationDelay: '1000ms' }}>
                 <span className="text-[9px] uppercase tracking-widest text-soft/40 font-bold">Scroll</span>
                 <div className="w-4.75 h-7.5 rounded-xl border-2 border-[#dce3ef] flex justify-center p-1">
                     <div className="w-1 h-1.5 bg-brand rounded-full animate-sdrop"></div>

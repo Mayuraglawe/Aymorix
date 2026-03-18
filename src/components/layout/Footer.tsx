@@ -46,7 +46,7 @@ export default function Footer() {
         <footer id="contact" className="bg-ink text-white py-20 relative overflow-hidden">
             <div className="dot-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
 
-            <div className="max-w-7xl mx-auto px-8 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
                 {/* Left: Contact Information */}
                 <div className="max-w-md">
                     <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 text-brand-accent text-xs font-semibold tracking-wide uppercase mb-6">
@@ -154,7 +154,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-8 md:px-16 mt-20 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 mt-20 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
                 {/* Logo & Description */}
                 <div>
                     <div className="flex items-center gap-3 mb-4">
@@ -195,7 +195,7 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* Quick Links */}
-                <div className="ml-8">
+                <div className="md:ml-8">
                     <h3 className="font-bold mb-4 text-white">Quick Links</h3>
                     <ul className="space-y-2 text-slate-400 text-sm">
                         <li><Link href="#services"><i className="fas fa-concierge-bell mr-2"></i>Services</Link></li>
@@ -225,7 +225,7 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto px-8 md:px-16 mt-8 flex items-center justify-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 mt-8 flex items-center justify-center">
                 <div className="text-xs text-slate-500 font-medium">
                     &copy; {new Date().getFullYear()} Aymorix Technologies. All rights reserved.
                 </div>

@@ -134,26 +134,26 @@ export default function ProductShowcase() {
     };
 
     return (
-        <section id="products" className="py-24 text-white overflow-hidden relative bg-[linear-gradient(145deg,#050916_0%,#0b1126_42%,#14122f_100%)]">
+        <section id="products" className="py-16 md:py-24 text-white overflow-hidden relative bg-[linear-gradient(145deg,#050916_0%,#0b1126_42%,#14122f_100%)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(0,190,255,0.18),transparent_38%),radial-gradient(circle_at_88%_8%,rgba(153,69,255,0.2),transparent_42%),radial-gradient(circle_at_80%_88%,rgba(45,115,255,0.2),transparent_45%)]" />
             <div className="absolute -left-24 top-1/3 h-60 w-60 rotate-12 rounded-[40px] border border-cyan-200/20 bg-cyan-300/10 blur-2xl" />
             <div className="absolute -right-20 bottom-16 h-52 w-52 -rotate-12 rounded-[42px] border border-fuchsia-200/20 bg-fuchsia-300/10 blur-2xl" />
 
-            <div className="max-w-screen-xl mx-auto px-8 md:px-16 relative z-10">
-                <div className="text-center mb-16">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16 relative z-10">
+                <div className="text-center mb-10 md:mb-16">
                     <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 text-slate-300 border border-white/20 text-xs font-semibold tracking-wide uppercase mb-3 text-center">
                         Engineered by Aymorix
                     </span>
-                    <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight mb-5">
+                    <h2 className="font-display font-extrabold text-3xl md:text-5xl tracking-tight mb-5">
                         Our Products
                     </h2>
-                    <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                         Built to solve real-world operational challenges with scalable engineering and AI-first architecture.
                     </p>
                 </div>
 
                 <div className="rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-sm p-4 md:p-6 shadow-[0_24px_60px_rgba(5,8,22,0.45)]">
-                    <div className="relative h-[420px] md:h-[460px]">
+                    <div className="relative h-[620px] sm:h-[640px] lg:h-[460px]">
                         {PRODUCTS.map((product, idx) => {
                             const position = queue.indexOf(idx);
                             return (
@@ -162,13 +162,13 @@ export default function ProductShowcase() {
                                     className={`absolute inset-0 rounded-2xl overflow-hidden border border-white/10 bg-white transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${getCardClasses(position)}`}
                                 >
                                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] h-full">
-                                        <div className="p-7 md:p-10 text-ink flex flex-col justify-between">
+                                        <div className="p-5 sm:p-6 md:p-8 lg:p-10 text-ink flex flex-col justify-between">
                                             <div>
-                                                <span className="text-5xl md:text-6xl font-light text-slate-300 leading-none">{idx + 1}</span>
-                                                <h3 className="mt-6 font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink leading-tight">
+                                                <span className="text-4xl sm:text-5xl md:text-6xl font-light text-slate-300 leading-none">{idx + 1}</span>
+                                                <h3 className="mt-4 md:mt-6 font-display font-extrabold text-2xl md:text-3xl lg:text-4xl tracking-tight text-ink leading-tight">
                                                     {product.name}
                                                 </h3>
-                                                <p className="mt-4 text-mid text-base leading-relaxed max-w-lg">
+                                                <p className="mt-3 md:mt-4 text-mid text-sm md:text-base leading-relaxed max-w-lg">
                                                     {product.description}
                                                 </p>
                                             </div>
@@ -197,7 +197,7 @@ export default function ProductShowcase() {
                                             )}
                                         </div>
 
-                                        <div className="relative min-h-[220px] lg:min-h-full">
+                                            <div className="relative min-h-[180px] sm:min-h-[220px] lg:min-h-full">
                                             <Image
                                                 src={product.image}
                                                 alt={product.imageAlt}
