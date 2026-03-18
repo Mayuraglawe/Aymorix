@@ -36,7 +36,7 @@ export default function Navbar() {
                         </Link>
 
                         <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                            <div className="w-[600px] rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_40px_rgba(8,13,28,0.12)] grid grid-cols-2 gap-x-12 gap-y-4">
+                            <div className="w-150 rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_40px_rgba(8,13,28,0.12)] grid grid-cols-2 gap-x-12 gap-y-4">
                                 <div className="flex items-center gap-3">
                                     <GraduationCap size={22} />
                                     <span className="text-ink text-[15px] font-medium">Education</span>
@@ -65,7 +65,7 @@ export default function Navbar() {
                     <div className="group relative">
                         <Link
                             href="#products"
-                            className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
+                            className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
                         >
                             Products
                             <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
