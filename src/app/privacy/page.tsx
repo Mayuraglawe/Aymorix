@@ -1,124 +1,102 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { AymorixLogo } from '@/components/AymorixLogo';
 
-export const metadata: Metadata = {
+import Image from 'next/image';
+import Link from 'next/link';
+
+export const metadata = {
   title: 'Privacy Policy — Aymorix',
-  description: 'How Aymorix collects, uses, and protects your data.',
+  description: 'Aymorix Privacy Policy for website, products, and services.'
 };
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-slate-100 py-5 px-6">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <Link href="/">
-            <AymorixLogo size={36} variant="full" color="#0D9488" />
-          </Link>
-          <Link href="/" className="text-sm text-teal-600 font-medium hover:text-teal-700 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900">
+      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-4 px-6 shadow-sm">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Image src="/Aymorix_logo2.png" alt="Aymorix Logo" width={44} height={44} className="rounded-full" priority />
+            <span className="text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
+          </div>
+          <Link href="/" className="text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">
             ← Back to Home
           </Link>
         </div>
       </header>
-
-      {/* Content */}
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold text-slate-900 mb-3">Privacy Policy</h1>
-        <p className="text-slate-500 mb-10">Last updated: March 12, 2026</p>
-
-        <div className="prose prose-slate max-w-none space-y-8 text-slate-600 leading-relaxed">
-          <section>
+      <main className="max-w-4xl mx-auto px-6 py-12">
+        <div className="bg-white rounded-2xl shadow-xl border border-blue-200 p-10 md:p-16">
+          <div className="mb-8">
+            <h1 className="font-display text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
+            <p className="text-slate-500 mb-8">Last updated: March 18, 2026</p>
+          </div>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">1. Information We Collect</h2>
-            <p>
-              When you submit the contact form on our website, we collect your first name, last name,
-              email address, area of interest, and the message you provide. We do not collect any
-              information automatically beyond standard web server logs.
-            </p>
+            <p>Aymorix may collect personal information you provide (name, email, contact details, company, job title, and any info submitted through forms) and information collected automatically (IP address, browser, device info, pages viewed, cookies).</p>
           </section>
-
-          <section>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">2. How We Use Your Information</h2>
-            <p>We use the information you provide solely to:</p>
-            <ul className="list-disc list-inside mt-2 space-y-1">
+            <ul className="list-disc list-inside mb-3">
               <li>Respond to your inquiry or request</li>
-              <li>Provide information about our products and services</li>
-              <li>Improve our offerings based on feedback</li>
+              <li>Process applications or registrations</li>
+              <li>Improve our website and services</li>
+              <li>Comply with legal obligations</li>
+              <li>Protect against illegal activity or threats</li>
+              <li>Send marketing communications (with consent)</li>
+              <li>Analyze trends and understand user interactions</li>
             </ul>
-            <p className="mt-3">We do not sell, trade, or share your personal data with third parties for marketing purposes.</p>
+            <p>We do not sell, trade, or share your personal data with third parties for marketing purposes.</p>
           </section>
-
-          <section>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">3. Data Storage</h2>
-            <p>
-              Contact form submissions are stored securely on our servers. We retain this data only
-              as long as necessary to fulfil the purpose for which it was collected, or as required
-              by law.
-            </p>
+            <p>Personal data is stored securely and retained only as long as necessary for the purposes outlined or as required by law.</p>
           </section>
-
-          <section>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">4. Cookies</h2>
-            <p>
-              Our website does not use tracking cookies. We may use essential session cookies to
-              ensure the site functions correctly.
-            </p>
+            <p>We use cookies and similar technologies to enhance user experience, analyze usage, and support marketing. You can manage cookie preferences in your browser.</p>
           </section>
-
-          <section>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">5. Third-Party Services</h2>
-            <p>
-              We use Google Fonts to display typography on this site. Google may collect certain
-              usage data when fonts are loaded. Please refer to{' '}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">
-                Google&apos;s Privacy Policy
-              </a>{' '}
-              for details.
-            </p>
+            <p>We may use trusted service providers to help operate our services. These providers are contractually bound to maintain privacy and data security. We may share data where required by law or legal process.</p>
           </section>
-
-          <section>
+          <section className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-3">6. Your Rights</h2>
-            <p>You have the right to:</p>
-            <ul className="list-disc list-inside mt-2 space-y-1">
-              <li>Request access to the personal data we hold about you</li>
-              <li>Request correction or deletion of your data</li>
-              <li>Withdraw consent at any time</li>
+            <ul className="list-disc list-inside mb-3">
+              <li>Access, correct, or update your information</li>
+              <li>Request deletion ("right to be forgotten")</li>
+              <li>Restrict or object to processing</li>
+              <li>Data portability</li>
+              <li>Withdraw consent for marketing</li>
             </ul>
-            <p className="mt-3">
-              To exercise any of these rights, email us at{' '}
-              <a href="mailto:contact@aymorix.com" className="text-teal-600 hover:underline">contact@aymorix.com</a>.
-            </p>
+            <p>To exercise your rights, email us at <a href="mailto:info@aymorix.com" className="text-blue-600 hover:underline">info@aymorix.com</a>.</p>
           </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">7. Changes to This Policy</h2>
-            <p>
-              We may update this Privacy Policy from time to time. Changes will be posted on this
-              page with an updated date. Continued use of our website constitutes acceptance of any
-              revised policy.
-            </p>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">7. Retention of Data</h2>
+            <p>We retain personal information only as long as necessary for the purposes outlined or as required by law. When no longer needed, data will be deleted, anonymized, or securely stored.</p>
           </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">8. Contact</h2>
-            <p>
-              For any privacy-related questions, please contact us at{' '}
-              <a href="mailto:contact@aymorix.com" className="text-teal-600 hover:underline">contact@aymorix.com</a>.
-            </p>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">8. Children’s Privacy</h2>
+            <p>Our services are not intended for children under 16. We do not knowingly collect data from anyone under this age. If you believe we hold information about a child under 16, contact us for removal.</p>
+          </section>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">9. Links to Third-Party Websites</h2>
+            <p>Our services may link to third-party sites. These have their own privacy policies; Aymorix is not responsible for their content or practices.</p>
+          </section>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">10. Data Security</h2>
+            <p>We implement organizational, technical, and administrative safeguards to protect personal data. However, no system is completely secure.</p>
+          </section>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy for legal, technical, or business reasons. The "Last Updated" date will be revised. Material changes may be communicated via our website or other means.</p>
+          </section>
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-3">12. Contact Us</h2>
+            <p>If you have questions or wish to exercise your privacy rights, contact us:</p>
+            <ul className="list-disc list-inside">
+                <li>Email: info@aymorix.com</li>
+                <li>Address: Aymorix Technologies, Nagpur, Maharashtra, India</li>
+            </ul>
           </section>
         </div>
       </main>
-
-      <footer className="border-t border-slate-100 py-8 px-6 mt-10">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-400">
-          <p>&copy; {new Date().getFullYear()} Aymorix. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-teal-600 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-teal-600 transition-colors">Terms of Service</Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

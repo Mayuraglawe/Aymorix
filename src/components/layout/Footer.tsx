@@ -210,7 +210,7 @@ export default function Footer() {
                 <div>
                     <h3 className="font-bold mb-4 text-white">Resources</h3>
                     <ul className="space-y-2 text-slate-400 text-sm">
-                        <li><Link href="/docs"><i className="fas fa-book mr-2"></i>Documentation</Link></li>
+                            <li><Link href="/documentation"><i className="fas fa-book mr-2"></i>Documentation</Link></li>
                         <li><Link href="/privacy"><i className="fas fa-shield-alt mr-2"></i>Privacy Policy</Link></li>
                         <li><Link href="/terms"><i className="fas fa-file-contract mr-2"></i>Terms of Service</Link></li>
                     </ul>
