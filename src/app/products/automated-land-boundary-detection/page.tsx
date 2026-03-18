@@ -151,6 +151,10 @@ export default function AutomatedLandBoundaryDetectionPage() {
         </div>
       </section>
 
+      {/* Review Section */}
+      <section>
+      </section>
+
       {/* About Us Section (moved to end) */}
       <section className="py-14 md:py-20 bg-gradient-to-br from-blue-50 via-white to-emerald-50 border-y border-slate-200">
         <div className="max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center gap-10">

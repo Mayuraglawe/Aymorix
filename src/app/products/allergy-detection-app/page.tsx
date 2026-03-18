@@ -112,6 +112,10 @@ export default function AllergyDetectionAppPage() {
         </div>
       </section>
 
+      {/* Review Section */}
+      <section>
+      </section>
+
       {/* About Us Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-100 py-20 mt-10">
         <div className="mx-auto max-w-screen-lg px-6 md:px-12">

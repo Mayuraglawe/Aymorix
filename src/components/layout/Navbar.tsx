@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronDown, Briefcase, Plus, Factory, MonitorPlay, Gamepad2, Building2, Lock, Clock, ShoppingCart } from 'lucide-react';
+import { ArrowRight, ChevronDown, Briefcase, Plus, Factory, MonitorPlay, Gamepad2, Building2, Lock, Clock, ShoppingCart, GraduationCap } from 'lucide-react';
 
 export default function Navbar() {
     return (
@@ -38,32 +38,16 @@ export default function Navbar() {
                         <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
                             <div className="w-[600px] rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_40px_rgba(8,13,28,0.12)] grid grid-cols-2 gap-x-12 gap-y-4">
                                 <div className="flex items-center gap-3">
-                                    <Briefcase size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Banking, Finance, and Insurance</span>
+                                    <GraduationCap size={22} />
+                                    <span className="text-ink text-[15px] font-medium">Education</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Plus size={22} />
                                     <span className="text-ink text-[15px] font-medium">Healthcare</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Factory size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Manufacturing</span>
-                                </div>
-                                <div className="flex items-center gap-3">
                                     <MonitorPlay size={22} />
                                     <span className="text-ink text-[15px] font-medium">Media and Entertainment</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Gamepad2 size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Gaming</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Building2 size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Real Estate</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Lock size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Hiring</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Clock size={22} />
@@ -105,35 +89,20 @@ export default function Navbar() {
                         </div>
                     </div>
                 </li>
-                                <li>
-                                    <div className="group relative">
-                                        <button
-                                            type="button"
-                                            className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
-                                        >
-                                            Partnership
-                                            <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                                        </button>
-                                        <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                                            <div className="w-[220px] rounded-xl border border-slate-200 bg-white p-4 shadow-[0_16px_40px_rgba(8,13,28,0.12)]">
-                                                <div className="mb-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Industry Partners</div>
-                                                <ul className="space-y-2">
-                                                    <li className="text-ink text-[15px] font-medium">AWS</li>
-                                                    <li className="text-ink text-[15px] font-medium">Vercel</li>
-                                                    <li className="text-ink text-[15px] font-medium">GitHub</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
                 <li>
-                    <Link href="#tech-stack" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
+                    <Link href="#technologies" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
                         Tech Stack
                     </Link>
                 </li>
                 <li>
                     <Link href="#about" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
                         About Us
+                    </Link>
+                </li>
+
+                <li>
+                    <Link href="#faq" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
+                        FAQ
                     </Link>
                 </li>
             </ul>

@@ -1,5 +1,5 @@
 "use client";
-
+import SlidingReviewSection from "@/components/SlidingReviewSection";
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -227,6 +227,10 @@ export default function ZenithPage() {
             })}
           </div>
         </div>
+      </section>
+
+      {/* Review Section */}
+      <section>
       </section>
 
       <section id="zenith-clubs" className="pb-20 md:pb-24">

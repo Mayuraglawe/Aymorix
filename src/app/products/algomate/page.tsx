@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ArrowRight, Brain, CalendarCheck2, CheckCircle2, Cpu, GraduationCap, Workflow } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import TechStrip from '@/components/TechStrip';
 
 const capabilityCards = [
   {
@@ -214,6 +215,34 @@ export default function AlgomatePage() {
           </div>
         </div>
       </section>
+
+      {/* Review Section */}
+      <section>
+      </section>
+
+        {/* Academic Compass Pro Feature Card Section - moved after feature cards */}
+        <section className="py-12 md:py-16">
+          <div className="mx-auto max-w-screen-xl px-8 md:px-16">
+            <div className="rounded-3xl bg-[linear-gradient(135deg,#f5faff_0%,#dbeafe_60%,#e7f0fa_100%)] shadow-xl flex flex-col md:flex-row gap-10 items-center border border-transparent">
+              <div className="flex-1 min-w-[260px] p-8 md:p-12">
+                <span className="inline-block mb-3 rounded-full border border-blue-300 bg-blue-300/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-blue-700">ADVANCED TECHNOLOGY</span>
+                <h2 className="font-display text-4xl font-extrabold tracking-tight text-blue-900 mb-4">Academic Compass Pro</h2>
+                <p className="text-lg text-blue-700 mb-6 max-w-md">Unlock advanced features for academic management with enhanced AI, analytics, and real-time collaboration tools.</p>
+                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-blue-500 text-white px-6 py-3 font-semibold shadow-md hover:bg-blue-600 transition text-lg">Request Demo <ArrowRight size={18} /></Link>
+              </div>
+              <div className="flex-1 min-w-[260px] p-8 md:p-12">
+                <ul className="space-y-4">
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> Real-Time Analytics</li>
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> AI-Driven Insights</li>
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> Secure Cloud Storage</li>
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> Faculty Collaboration</li>
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> Customizable Dashboards</li>
+                  <li className="rounded-xl bg-blue-100 px-6 py-4 text-blue-900 font-medium flex items-center gap-3 shadow-sm text-lg"><CheckCircle2 size={22} className="text-emerald-400" /> Advanced Scheduling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
       <section className="pb-24 md:pb-28" id="about-algomate">
         <div className="mx-auto max-w-screen-xl px-8 md:px-16">
