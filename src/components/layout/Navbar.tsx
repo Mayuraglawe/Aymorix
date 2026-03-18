@@ -109,7 +109,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-3">
                 <Link href="#contact" className="btn-primary">
-                    Book a Demo <ArrowRight size={14} strokeWidth={2} />
+                    Contact Us <ArrowRight size={14} strokeWidth={2} />
                 </Link>
             </div>
         </nav>

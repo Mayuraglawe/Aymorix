@@ -253,9 +253,9 @@ export default function HeroAnimated() {
                             className="animate-fadeUp opacity-0 mb-5 font-display font-extrabold text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.01] tracking-[-0.045em] text-ink"
                             style={{ animationDelay: '180ms' }}
                         >
-                            <span className="block">Software that</span>
-                            <span className="block text-grad">runs your</span>
-                            <span className="block">business.</span>
+                                <span className="block">
+                                    Engineering <span className="text-blue-600">scalable SaaS</span> & <span className="text-black">intelligent automations</span>
+                                </span>
                         </h1>
 
                         <p
