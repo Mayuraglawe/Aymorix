@@ -253,9 +253,9 @@ export default function HeroAnimated() {
                             className="animate-fadeUp opacity-0 mb-5 font-display font-extrabold text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.01] tracking-[-0.045em] text-ink"
                             style={{ animationDelay: '180ms' }}
                         >
-                                <span className="block">
-                                    Engineering <span className="text-blue-600">scalable SaaS</span> & <span className="text-black">intelligent automations</span>
-                                </span>
+                            <span className="block">
+                                Engineering <span className="text-blue-600">scalable SaaS</span> & <span className="text-black">intelligent automations</span>
+                            </span>
                         </h1>
 
                         <p
@@ -266,19 +266,15 @@ export default function HeroAnimated() {
                         </p>
 
                         <div className="animate-fadeUp opacity-0 flex flex-wrap items-center gap-3 mb-12" style={{ animationDelay: '400ms' }}>
-                            <Link href="#" className="btn-primary">
-                                Start Free Trial <ArrowRight size={13} strokeWidth={2.5} />
-                            </Link>
-                            <Link href="#" className="btn-ghost">
-                                <Play size={14} fill="currentColor" strokeWidth={1} className="text-mid" />
-                                Watch Demo
+                            <Link href="#contact" className="btn-primary">
+                                Get In Touch <ArrowRight size={13} strokeWidth={2.5} />
                             </Link>
                         </div>
 
                         <div className="animate-fadeUp opacity-0 flex flex-wrap gap-3 mb-8" style={{ animationDelay: '520ms' }}>
                             <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
-                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">500+</div>
-                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Businesses automated</div>
+                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">100%</div>
+                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Custom Solutions</div>
                             </div>
                             <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
                                 <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">3× faster</div>
@@ -314,7 +310,7 @@ export default function HeroAnimated() {
                                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
                                     <div className="flex-1 mx-3 h-6 rounded-md bg-[#eef0f7] flex items-center px-2.5 gap-1.5 text-[11px] text-soft">
-                                        app.babasolutions.com
+                                        aymorix.com
                                     </div>
                                     <div className="flex items-center gap-1.25 px-2.5 py-1 rounded-md bg-[#eef1fd] text-[10.5px] font-bold text-brand">
                                         <span className="w-1.5 h-1.5 rounded-full bg-brand animate-blink"></span>
@@ -326,25 +322,22 @@ export default function HeroAnimated() {
                                 <div className="flex border-b border-[#e8edf6] bg-[#fafbfd]">
                                     <button
                                         onClick={() => setActiveTab('crm')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
-                                            activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
-                                        }`}
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                            }`}
                                     >
                                         <Home size={11} /> CRM Dashboard
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('erp')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
-                                            activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
-                                        }`}
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                            }`}
                                     >
                                         <LayoutGrid size={11} /> ERP Overview
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('app')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${
-                                            activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
-                                        }`}
+                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                            }`}
                                     >
                                         <Smartphone size={11} /> Mobile App
                                     </button>

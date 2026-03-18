@@ -84,7 +84,10 @@ export default function Services() {
                 <h2 id="industry" className="font-display font-extrabold text-3xl md:text-5xl text-ink tracking-tight mb-4 text-center">
                     Industries We Excel In
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <p className="text-soft text-base md:text-lg max-w-2xl mx-auto text-center mb-10">
+                    Delivering tailored software solutions to meet the unique challenges of diverse sectors.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* First row: Education, Healthcare */}
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Education</h3>
@@ -97,14 +100,14 @@ export default function Services() {
                         </div>
                     </div>
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px]">
-                            <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Healthcare</h3>
-                            <div className="relative w-full h-40 mb-2 group">
-                                <img src="/industry-healthcare.png" alt="Healthcare" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
-                                <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
-                                    <p className="text-ink text-lg font-medium mb-4">Our healthcare app development services can help you improve staff productivity, reduce costs, and achieve service excellence.</p>
-                                    <a href="#healthcare-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
-                                </div>
+                        <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Healthcare</h3>
+                        <div className="relative w-full h-40 mb-2 group">
+                            <img src="/health_care.png" alt="Healthcare" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
+                                <p className="text-ink text-lg font-medium mb-4">Our healthcare app development services can help you improve staff productivity, reduce costs, and achieve service excellence.</p>
+                                <a href="#healthcare-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -122,7 +125,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Hospitality</h3>
                         <div className="relative w-full h-40 mb-2">
-                            <img src="/industry-hospitality.png" alt="Hospitality" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="/hospitality.png" alt="Hospitality" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our hospitality solutions optimize guest management, booking systems, and operational workflows for hotels, restaurants, and resorts.</p>
                                 <a href="#hospitality-details" className="text-brand-accent font-semibold flex items-center gap-2 mt-2">KNOW MORE <span className="text-red-600 text-xl">→</span></a>

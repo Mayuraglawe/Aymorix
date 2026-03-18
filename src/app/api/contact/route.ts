@@ -4,13 +4,14 @@ import * as path from 'path';
 
 const SUBMISSIONS_FILE = path.join(process.cwd(), 'submissions.json');
 
-// Simple in-memory rate limiter: max 5 submissions per IP per minute
+// Stricter in-memory rate limiter: max 2 submissions per IP per 1 hour (3,600,000 ms)
 const requestCounts = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
-  const times = (requestCounts.get(ip) ?? []).filter((t) => now - t < 60_000);
-  if (times.length >= 5) return true;
+  // Filter out requests older than 1 hour (3,600,000 ms)
+  const times = (requestCounts.get(ip) ?? []).filter((t) => now - t < 3_600_000);
+  if (times.length >= 2) return true;
   times.push(now);
   requestCounts.set(ip, times);
   return false;
@@ -37,10 +38,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { firstName, lastName, email, program, message } = body as Record<
+  const { firstName, lastName, email, program, message, honeypot } = body as Record<
     string,
     string
   >;
+
+  // Honeypot check - if a bot filled this out, act like it succeeded but do nothing.
+  if (honeypot) {
+    return NextResponse.json({
+      success: true,
+      message: "Thanks for reaching out! We'll get back to you shortly.",
+    });
+  }
 
   // Validate required fields
   if (!firstName || !lastName || !email || !message) {

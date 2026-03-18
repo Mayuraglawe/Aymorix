@@ -13,7 +13,7 @@ const techStack = [
   { name: 'Svelte', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg' },
   { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
   { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  { name: 'Neon', icon: 'https://neon.tech/favicon.ico' },
+  { name: 'Neon', icon: '/neon.png' },
   { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
   { name: 'n8n', icon: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/n8n.svg' },
   { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
@@ -27,7 +27,7 @@ export default function TechStrip() {
   return (
     <div className="overflow-hidden w-full py-6 bg-white">
       <div className="max-w-screen-xl mx-auto mb-8 text-center">
-        <h2 className="text-3xl font-extrabold text-ink mb-2">Technologies We Use and We Know</h2>
+        <h2 className="text-3xl font-extrabold text-ink mb-2">Technologies We Use</h2>
         <p className="text-lg text-mid">Our platform is built on modern, scalable, and secure technologies.</p>
       </div>
       <div className="relative w-full">

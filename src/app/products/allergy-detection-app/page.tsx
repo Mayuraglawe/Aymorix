@@ -150,9 +150,7 @@ export default function AllergyDetectionAppPage() {
                 <li>Designed for both clinical and personal use</li>
                 <li>Modern, user-friendly interface</li>
               </ul>
-              <div className="mt-4">
-                <p className="text-base text-soft">Want to know more or collaborate? <Link href="/contact" className="underline text-blue-700 hover:text-pink-600 transition">Contact Us</Link></p>
-              </div>
+
             </div>
           </div>
         </div>

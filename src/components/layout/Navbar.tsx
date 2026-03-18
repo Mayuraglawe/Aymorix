@@ -27,13 +27,13 @@ export default function Navbar() {
                 </li>
                 <li>
                     <div className="group relative">
-                        <button
-                            type="button"
+                        <Link
+                            href="#industry"
                             className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
                         >
                             Industry
                             <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                        </button>
+                        </Link>
 
                         <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
                             <div className="w-[600px] rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_40px_rgba(8,13,28,0.12)] grid grid-cols-2 gap-x-12 gap-y-4">
@@ -63,13 +63,13 @@ export default function Navbar() {
                 </li>
                 <li>
                     <div className="group relative">
-                        <button
-                            type="button"
+                        <Link
+                            href="#products"
                             className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
                         >
                             Products
                             <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                        </button>
+                        </Link>
 
                         <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
                             <div className="w-65 rounded-xl border border-slate-200 bg-white p-2 shadow-[0_16px_40px_rgba(8,13,28,0.12)]">

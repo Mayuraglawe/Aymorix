@@ -2,8 +2,46 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Facebook, Twitter, Linkedin, Instagram, Youtube, Github, Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Footer() {
+    const [status, setStatus] = useState<'' | 'loading' | 'success' | 'error'>('');
+    const [formData, setFormData] = useState({ fullName: '', email: '', program: 'Algomate', message: '', honeypot: '' });
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        const names = formData.fullName.trim().split(' ');
+        const firstName = names[0] || '';
+        const lastName = names.slice(1).join(' ') || ' ';
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email: formData.email,
+                    program: formData.program,
+                    message: formData.message,
+                    honeypot: formData.honeypot
+                }),
+            });
+
+            if (res.ok) {
+                setStatus('success');
+                setFormData({ fullName: '', email: '', program: 'Algomate', message: '', honeypot: '' });
+                setTimeout(() => setStatus(''), 5000);
+            } else {
+                setStatus('error');
+            }
+        } catch (err) {
+            setStatus('error');
+        }
+    };
     return (
         <footer id="contact" className="bg-ink text-white py-20 relative overflow-hidden">
             <div className="dot-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
@@ -27,8 +65,8 @@ export default function Footer() {
                         </div>
                         <div>
                             <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Email</div>
-                            <a href="mailto:hello@aymorix.com" className="text-[15px] font-medium text-white hover:text-brand-accent transition">
-                                hello@aymorix.com
+                            <a href="mailto:info@aymorix.com" className="text-[15px] font-medium text-white hover:text-brand-accent transition">
+                                info@aymorix.com
                             </a>
                         </div>
                     </div>
@@ -36,12 +74,37 @@ export default function Footer() {
 
                 {/* Right: Contact Form */}
                 <div className="bg-slate-900 border border-white/10 rounded-2xl p-8 shadow-2xl relative">
-                    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-5" onSubmit={handleSubmit}>
+                        {status === 'success' && (
+                            <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-3 rounded-lg text-sm text-center">
+                                Message sent successfully! We will get back to you shortly.
+                            </div>
+                        )}
+                        {status === 'error' && (
+                            <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-sm text-center">
+                                Failed to send message. Please try again.
+                            </div>
+                        )}
+                        {/* Honeypot field - visually hidden */}
+                        <div className="hidden" aria-hidden="true">
+                            <label>Leave this field empty</label>
+                            <input
+                                type="text"
+                                name="honeypot"
+                                tabIndex={-1}
+                                autoComplete="off"
+                                value={formData.honeypot}
+                                onChange={(e) => setFormData(prev => ({ ...prev, honeypot: e.target.value }))}
+                            />
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label className="block text-xs font-semibold text-slate-400 mb-2 tracking-tight">Full Name</label>
                                 <input
                                     type="text"
+                                    required
+                                    value={formData.fullName}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
                                     className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none transition"
                                     placeholder="John Doe"
                                 />
@@ -50,6 +113,9 @@ export default function Footer() {
                                 <label className="block text-xs font-semibold text-slate-400 mb-2 tracking-tight">Email Address</label>
                                 <input
                                     type="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                                     className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none transition"
                                     placeholder="john@company.com"
                                 />
@@ -57,7 +123,11 @@ export default function Footer() {
                         </div>
                         <div>
                             <label className="block text-xs font-semibold text-slate-400 mb-2 tracking-tight">Interested In</label>
-                            <select className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none appearance-none transition">
+                            <select
+                                value={formData.program}
+                                onChange={(e) => setFormData(prev => ({ ...prev, program: e.target.value }))}
+                                className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none appearance-none transition"
+                            >
                                 <option>Algomate</option>
                                 <option>Custom SaaS Development</option>
                                 <option>General AI Integration</option>
@@ -67,12 +137,18 @@ export default function Footer() {
                             <label className="block text-xs font-semibold text-slate-400 mb-2 tracking-tight">Message</label>
                             <textarea
                                 rows={4}
+                                required
+                                value={formData.message}
+                                onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                                 className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none transition resize-none"
                                 placeholder="Tell us about your project or use case..."
                             ></textarea>
                         </div>
-                        <button className="w-full bg-brand hover:bg-brand-accent text-white font-semibold py-3.5 rounded-lg text-sm transition tracking-wide flex items-center justify-center gap-2">
-                            Send Message
+                        <button
+                            disabled={status === 'loading'}
+                            className="w-full bg-brand hover:bg-brand-accent disabled:opacity-70 disabled:hover:bg-brand text-white font-semibold py-3.5 rounded-lg text-sm transition tracking-wide flex items-center justify-center gap-2"
+                        >
+                            {status === 'loading' ? 'Sending...' : 'Send Message'}
                         </button>
                     </form>
                 </div>
@@ -97,19 +173,25 @@ export default function Footer() {
                     <p className="text-slate-400 text-[15px] leading-relaxed mb-6">
                         Empowering businesses with scalable SaaS and intelligent automations.
                     </p>
-                    <div className="flex gap-6 mb-6">
-                        <a href="https://facebook.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full bg-blue-600/30 w-12 h-12 flex items-center justify-center hover:bg-blue-600 transition">
-                            <i className="fab fa-facebook-f text-white text-2xl"></i>
+                    <div className="flex flex-wrap gap-4 mb-6">
+                        <a href="https://facebook.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Facebook size={20} className="text-white" />
                         </a>
-                        <a href="https://twitter.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="rounded-full bg-blue-600/30 w-12 h-12 flex items-center justify-center hover:bg-blue-600 transition">
-                            <i className="fab fa-twitter text-white text-2xl"></i>
+                        <a href="https://twitter.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Twitter size={20} className="text-white" />
                         </a>
-                        <a href="https://linkedin.com/company/aymorix" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-full bg-blue-600/30 w-12 h-12 flex items-center justify-center hover:bg-blue-600 transition">
-                            <i className="fab fa-linkedin-in text-white text-2xl"></i>
+                        <a href="https://linkedin.com/company/aymorix" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Linkedin size={20} className="text-white" />
                         </a>
-                        <a href="https://instagram.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-blue-600/30 w-12 h-12 flex items-center justify-center hover:bg-blue-600 transition">
-                            <i className="fab fa-instagram text-white text-2xl"></i>
+                        <a href="https://instagram.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Instagram size={20} className="text-white" />
                         </a>
+                        {/* <a href="https://youtube.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Youtube size={20} className="text-white" />
+                        </a> */}
+                        {/* <a href="https://github.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <Github size={20} className="text-white" />
+                        </a> */}
                     </div>
                 </div>
                 {/* Quick Links */}
@@ -137,9 +219,9 @@ export default function Footer() {
                 <div>
                     <h3 className="font-bold mb-4 text-white">Contact Us</h3>
                     <ul className="space-y-3 text-slate-400 text-sm">
-                        <li><span className="inline-flex items-center"><i className="fas fa-envelope mr-2"></i> hello@aymorix.com</span></li>
-                        <li><span className="inline-flex items-center"><i className="fas fa-phone mr-2"></i> +91 7058435485</span></li>
-                        <li><span className="inline-flex items-center"><i className="fas fa-map-marker-alt mr-2"></i> Nagpur, Maharashtra, India</span></li>
+                        <li><span className="inline-flex items-center"><Mail size={16} className="mr-3" /> info@aymorix.com</span></li>
+                        <li><span className="inline-flex items-center"><Phone size={16} className="mr-3" /> +91 7058435485</span></li>
+                        <li><span className="inline-flex items-center"><MapPin size={16} className="mr-3" /> Nagpur, Maharashtra, India</span></li>
                     </ul>
                 </div>
             </div>
