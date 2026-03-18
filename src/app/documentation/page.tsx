@@ -22,23 +22,9 @@ export default function Documentation() {
         {/* Sidebar Navigation */}
         <nav className="md:w-64 w-full bg-white rounded-2xl shadow border border-blue-200 p-6 mb-8 md:mb-0">
           <ul className="space-y-4">
-            <li><span className="font-bold text-blue-900">Get started</span>
-              <ul className="ml-4 space-y-2">
-                <li><button className={`text-blue-700 hover:underline ${activeSection === 'introduction' ? 'font-bold' : ''}`} onClick={() => setActiveSection('introduction')}>Introduction</button></li>
-                <li><button className={`text-blue-700 hover:underline ${activeSection === 'quickstart' ? 'font-bold' : ''}`} onClick={() => setActiveSection('quickstart')}>Quickstart</button></li>
-              </ul>
-            </li>
-            <li><span className="font-bold text-blue-900">Guides</span>
-              <ul className="ml-4 space-y-2">
-                <li><button className={`text-blue-700 hover:underline ${activeSection === 'installation' ? 'font-bold' : ''}`} onClick={() => setActiveSection('installation')}>Installation & Setup</button></li>
-                <li><button className={`text-blue-700 hover:underline ${activeSection === 'project-structure' ? 'font-bold' : ''}`} onClick={() => setActiveSection('project-structure')}>Project Structure</button></li>
-                <li><button className={`text-blue-700 hover:underline ${activeSection === 'features' ? 'font-bold' : ''}`} onClick={() => setActiveSection('features')}>Core Features</button></li>
-              </ul>
-            </li>
-            <li><button className={`font-bold text-blue-900 ${activeSection === 'api' ? 'underline' : ''}`} onClick={() => setActiveSection('api')}>API Reference</button></li>
-            <li><button className={`font-bold text-blue-900 ${activeSection === 'customization' ? 'underline' : ''}`} onClick={() => setActiveSection('customization')}>Customization</button></li>
+            <li><button className={`font-bold text-blue-900 ${activeSection === 'introduction' ? 'underline' : ''}`} onClick={() => setActiveSection('introduction')}>Introduction</button></li>
+            <li><button className={`font-bold text-blue-900 ${activeSection === 'features' ? 'underline' : ''}`} onClick={() => setActiveSection('features')}>Features</button></li>
             <li><button className={`font-bold text-blue-900 ${activeSection === 'faq' ? 'underline' : ''}`} onClick={() => setActiveSection('faq')}>FAQ</button></li>
-            <li><button className={`font-bold text-blue-900 ${activeSection === 'changelog' ? 'underline' : ''}`} onClick={() => setActiveSection('changelog')}>Changelog</button></li>
             <li><button className={`font-bold text-blue-900 ${activeSection === 'contact' ? 'underline' : ''}`} onClick={() => setActiveSection('contact')}>Contact</button></li>
           </ul>
         </nav>
@@ -64,73 +50,19 @@ export default function Documentation() {
               <p className="mt-4">This documentation provides step-by-step guides, API references, customization options, troubleshooting tips, and FAQs to help you get the most out of Aymorix. Whether you are a developer, administrator, or end user, you'll find resources to support your journey with our platform.</p>
             </section>
           )}
-          {activeSection === 'quickstart' && (
-            <section id="quickstart" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Quickstart</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li>Clone the repository from GitHub using <span className="font-mono">git clone</span>.</li>
-                <li>Install dependencies with <span className="font-mono">npm install</span> to ensure all required packages are available.</li>
-                <li>Configure environment variables in <span className="font-mono">.env</span> for database, API keys, and other settings.</li>
-                <li>Run the development server: <span className="font-mono">npm run dev</span> and access the app at <span className="font-mono">localhost:3000</span>.</li>
-                <li>For production, use <span className="font-mono">npm run build</span> and <span className="font-mono">npm start</span>.</li>
-              </ul>
-            </section>
-          )}
-          {activeSection === 'installation' && (
-            <section id="installation" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Installation & Setup</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li>System requirements: Node.js (v18+), npm (v9+), and a modern browser.</li>
-                <li>Clone project: <span className="font-mono">git clone &lt;repo-url&gt;</span> to your local machine.</li>
-                <li>Install dependencies: <span className="font-mono">npm install</span> to set up all packages.</li>
-                <li>Start server: <span className="font-mono">npm run dev</span> for development, <span className="font-mono">npm run build</span> for production.</li>
-                <li>Check <span className="font-mono">README.md</span> for additional setup instructions.</li>
-              </ul>
-            </section>
-          )}
-          {activeSection === 'project-structure' && (
-            <section id="project-structure" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Project Structure</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li><span className="font-mono">src/app</span>: Main application pages, including documentation, terms, privacy, and product pages.</li>
-                <li><span className="font-mono">src/components</span>: Reusable UI components for layout, branding, and interactive features.</li>
-                <li><span className="font-mono">public</span>: Static assets (logo, images, video frames).</li>
-                <li><span className="font-mono">package.json</span>: Project metadata, scripts, and dependencies.</li>
-                <li><span className="font-mono">README.md</span>: Overview and instructions for contributors.</li>
-              </ul>
-            </section>
-          )}
           {activeSection === 'features' && (
             <section id="features" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Core Features</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-3">Core Features of Aymorix</h2>
               <ul className="list-disc list-inside mb-3">
-                <li>Timetable Scheduler: Automate and optimize scheduling for academic and business needs.</li>
-                <li>AI Automations: Intelligent workflows for productivity, including reminders and task management.</li>
-                <li>Product Showcase: Highlight and manage products with customizable layouts and reviews.</li>
-                <li>FAQ and Review Sections: Enhance user engagement and support.</li>
-              </ul>
-            </section>
-          )}
-          {activeSection === 'api' && (
-            <section id="api" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">API Reference</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li>Endpoints: <span className="font-mono">/api/contact</span>, <span className="font-mono">/api/products</span>, <span className="font-mono">/api/reviews</span></li>
-                <li>Authentication: JWT-based, API keys, and OAuth support.</li>
-                <li>Error Handling: Standardized error responses with helpful messages.</li>
-                <li>Rate Limiting: Prevent abuse and ensure reliability for all users.</li>
-                <li>API documentation available in the docs section.</li>
-              </ul>
-            </section>
-          )}
-          {activeSection === 'customization' && (
-            <section id="customization" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Customization</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li>Theme & Branding: Update colors, logo, and fonts in <span className="font-mono">globals.css</span> and <span className="font-mono">layout.tsx</span>.</li>
-                <li>Extending Functionality: Add new pages/components in <span className="font-mono">src/app</span> and <span className="font-mono">src/components</span> for custom features.</li>
-                <li>Integrations: Connect with third-party APIs and services, such as payment gateways and analytics.</li>
-                <li>Responsive design: Ensure compatibility across devices.</li>
+                <li><b>Smart Timetable Scheduler:</b> Automate, optimize, and visualize schedules for academic, business, and personal needs with drag-and-drop and conflict detection.</li>
+                <li><b>AI-Powered Automations:</b> Intelligent workflows for reminders, task management, notifications, and repetitive process automation.</li>
+                <li><b>Product & Service Showcase:</b> Customizable layouts, reviews, ratings, and bulk upload for products/services. Modern UI for easy browsing and management.</li>
+                <li><b>Advanced Analytics:</b> Actionable insights, usage statistics, and performance dashboards to help decision-making.</li>
+                <li><b>Integration Hub:</b> Connect with popular tools, APIs, payment gateways, and third-party services for seamless workflow.</li>
+                <li><b>Secure & Scalable Platform:</b> User authentication, data privacy, and scalable infrastructure for organizations of any size.</li>
+                <li><b>Customizable Themes:</b> Personalize colors, branding, and layouts to match your organization’s identity.</li>
+                <li><b>User Engagement:</b> Built-in FAQ, review, and feedback sections to support and engage users.</li>
+                <li><b>Live Support & Feedback:</b> Integrated live chat and feedback forms for real-time assistance and suggestions.</li>
               </ul>
             </section>
           )}
@@ -139,20 +71,7 @@ export default function Documentation() {
               <h2 className="text-xl font-bold text-slate-900 mb-3">FAQ</h2>
               <ul className="list-disc list-inside mb-3">
                 <li><b>How do I reset my password?</b> Use the account settings page or contact support. Password reset emails are sent instantly.</li>
-                <li><b>How to add new products?</b> Use the Product Showcase section or API endpoint. You can also bulk upload products via CSV.</li>
                 <li><b>How to report a bug?</b> Email <a href="mailto:info@aymorix.com" className="text-blue-600 hover:underline">info@aymorix.com</a> or use the feedback form in the app.</li>
-                <li><b>How to customize the theme?</b> Edit <span className="font-mono">globals.css</span> and preview changes live.</li>
-              </ul>
-            </section>
-          )}
-          {activeSection === 'changelog' && (
-            <section id="changelog" className="mb-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Changelog</h2>
-              <ul className="list-disc list-inside mb-3">
-                <li>v1.0.0: Initial release with core scheduling and product features.</li>
-                <li>v1.1.0: Added AI automations, review section, and improved UI.</li>
-                <li>v1.2.0: Improved scheduling features, added bulk product upload, and enhanced API documentation.</li>
-                <li>v1.2.1: Minor bug fixes and performance improvements.</li>
               </ul>
             </section>
           )}
