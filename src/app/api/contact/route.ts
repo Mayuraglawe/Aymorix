@@ -98,17 +98,26 @@ export async function POST(req: NextRequest) {
   // Send email if configured
   const emailUser = process.env.EMAIL_USER;
   const emailPass = process.env.EMAIL_PASS;
-  if (emailUser && emailPass && emailUser !== 'your-email@gmail.com') {
+  if (emailUser && emailPass) {
     try {
       const nodemailer = await import('nodemailer');
+      const smtpHost = process.env.SMTP_HOST || 'smtp.zoho.com';
+      const smtpPort = Number(process.env.SMTP_PORT || 465);
+      const smtpSecure = (process.env.SMTP_SECURE || 'true').toLowerCase() === 'true';
+
       const transporter = nodemailer.default.createTransport({
-        service: 'gmail',
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpSecure,
         auth: { user: emailUser, pass: emailPass },
       });
 
+      const emailTo = process.env.EMAIL_TO || emailUser;
+      const emailFrom = process.env.EMAIL_FROM || emailUser;
+
       await transporter.sendMail({
-        from: emailUser,
-        to: process.env.EMAIL_TO || emailUser,
+        from: emailFrom,
+        to: emailTo,
         replyTo: submission.email,
         subject: `New Inquiry from ${submission.firstName} ${submission.lastName}`,
         html: `
