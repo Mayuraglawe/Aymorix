@@ -7,6 +7,38 @@ const SUBMISSIONS_FILE = path.join(process.cwd(), 'submissions.json');
 // Stricter in-memory rate limiter: max 2 submissions per IP per 1 hour (3,600,000 ms)
 const requestCounts = new Map<string, number[]>();
 
+function normalizeFromAddress(rawFrom: string | undefined, fallbackEmail: string): string {
+  if (!rawFrom) return fallbackEmail;
+
+  const value = rawFrom.trim();
+  if (!value) return fallbackEmail;
+
+  // Already in RFC-like format: Name <email@domain.com>
+  if (value.includes('<') && value.includes('>')) return value;
+
+  // Pure email address
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return value;
+
+  // Gracefully handle "Name email@domain.com" from env providers/UI
+  const nameAndEmail = value.match(/^(.*)\s+([^\s@]+@[^\s@]+\.[^\s@]+)$/);
+  if (nameAndEmail) {
+    const name = nameAndEmail[1].trim();
+    const email = nameAndEmail[2].trim();
+    return `${name} <${email}>`;
+  }
+
+  return fallbackEmail;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   // Filter out requests older than 1 hour (3,600,000 ms)
@@ -101,6 +133,7 @@ export async function POST(req: NextRequest) {
   if (emailUser && emailPass) {
     try {
       const nodemailer = await import('nodemailer');
+      const smtpAuthUser = process.env.SMTP_AUTH_USER || emailUser;
       const smtpHost = process.env.SMTP_HOST || 'smtp.zoho.com';
       const smtpPort = Number(process.env.SMTP_PORT || 465);
       const smtpSecure = (process.env.SMTP_SECURE || 'true').toLowerCase() === 'true';
@@ -109,35 +142,75 @@ export async function POST(req: NextRequest) {
         host: smtpHost,
         port: smtpPort,
         secure: smtpSecure,
-        auth: { user: emailUser, pass: emailPass },
+        auth: { user: smtpAuthUser, pass: emailPass },
+        connectionTimeout: 20_000,
+        greetingTimeout: 20_000,
+        socketTimeout: 30_000,
       });
 
       const emailTo = process.env.EMAIL_TO || emailUser;
-      const emailFrom = process.env.EMAIL_FROM || emailUser;
+      const emailFrom = normalizeFromAddress(process.env.EMAIL_FROM, emailUser);
+      const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      const safeFirstName = escapeHtml(submission.firstName);
+      const safeLastName = escapeHtml(submission.lastName);
+      const safeEmail = escapeHtml(submission.email);
+      const safeProgram = escapeHtml(submission.program);
+      const safeMessageHtml = escapeHtml(submission.message).replace(/\n/g, '<br>');
 
-      await transporter.sendMail({
-        from: emailFrom,
-        to: emailTo,
-        replyTo: submission.email,
-        subject: `New Inquiry from ${submission.firstName} ${submission.lastName}`,
-        html: `
-          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px;">
-            <h2 style="color:#0D9488;margin:0 0 16px;">New Contact Submission</h2>
-            <table style="width:100%;border-collapse:collapse;">
-              <tr><td style="padding:8px 0;color:#64748b;width:120px;">Name</td><td style="padding:8px 0;font-weight:600;">${submission.firstName} ${submission.lastName}</td></tr>
-              <tr><td style="padding:8px 0;color:#64748b;">Email</td><td style="padding:8px 0;"><a href="mailto:${submission.email}" style="color:#0D9488;">${submission.email}</a></td></tr>
-              <tr><td style="padding:8px 0;color:#64748b;">Interested In</td><td style="padding:8px 0;">${submission.program}</td></tr>
-            </table>
-            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
-            <p style="color:#64748b;font-size:13px;margin:0 0 8px;">Message:</p>
-            <p style="margin:0;line-height:1.6;">${submission.message.replace(/\n/g, '<br>')}</p>
-            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
-            <p style="color:#94a3b8;font-size:11px;margin:0;">Submitted on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST via aymorix.com</p>
-          </div>`,
-        text: `New inquiry from ${submission.firstName} ${submission.lastName}\nEmail: ${submission.email}\nInterested In: ${submission.program}\n\n${submission.message}`,
-      });
-    } catch {
-      // Email failed — submission is already saved, don't block the response
+      try {
+        await transporter.sendMail({
+          from: emailFrom,
+          to: emailTo,
+          replyTo: submission.email,
+          subject: `New Inquiry from ${submission.firstName} ${submission.lastName}`,
+          html: `
+            <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px;">
+              <h2 style="color:#0D9488;margin:0 0 16px;">New Contact Submission</h2>
+              <table style="width:100%;border-collapse:collapse;">
+                <tr><td style="padding:8px 0;color:#64748b;width:120px;">Name</td><td style="padding:8px 0;font-weight:600;">${safeFirstName} ${safeLastName}</td></tr>
+                <tr><td style="padding:8px 0;color:#64748b;">Email</td><td style="padding:8px 0;"><a href="mailto:${safeEmail}" style="color:#0D9488;">${safeEmail}</a></td></tr>
+                <tr><td style="padding:8px 0;color:#64748b;">Interested In</td><td style="padding:8px 0;">${safeProgram}</td></tr>
+              </table>
+              <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+              <p style="color:#64748b;font-size:13px;margin:0 0 8px;">Message:</p>
+              <p style="margin:0;line-height:1.6;">${safeMessageHtml}</p>
+              <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+              <p style="color:#94a3b8;font-size:11px;margin:0;">Submitted on ${submittedAt} IST via aymorix.com</p>
+            </div>`,
+          text: `New inquiry from ${submission.firstName} ${submission.lastName}\nEmail: ${submission.email}\nInterested In: ${submission.program}\n\n${submission.message}`,
+        });
+      } catch (error) {
+        console.error('Admin contact email send failed:', error);
+      }
+
+      try {
+        await transporter.sendMail({
+          from: emailFrom,
+          to: submission.email,
+          replyTo: emailTo,
+          subject: 'We received your inquiry - Aymorix',
+          html: `
+            <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px;">
+              <h2 style="color:#0D9488;margin:0 0 12px;">Thanks for contacting Aymorix</h2>
+              <p style="margin:0 0 12px;line-height:1.6;color:#0f172a;">Hi ${safeFirstName}, we have received your inquiry and our team will get back to you shortly.</p>
+              <p style="margin:0 0 16px;line-height:1.6;color:#334155;">Here is a copy of what you submitted:</p>
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+                <p style="margin:0 0 8px;"><strong>Name:</strong> ${safeFirstName} ${safeLastName}</p>
+                <p style="margin:0 0 8px;"><strong>Email:</strong> ${safeEmail}</p>
+                <p style="margin:0 0 8px;"><strong>Interested In:</strong> ${safeProgram}</p>
+                <p style="margin:0 0 6px;"><strong>Message:</strong></p>
+                <p style="margin:0;line-height:1.6;color:#334155;">${safeMessageHtml}</p>
+              </div>
+              <p style="margin:16px 0 0;line-height:1.6;color:#64748b;font-size:12px;">Submitted on ${submittedAt} IST</p>
+            </div>`,
+          text: `Hi ${submission.firstName},\n\nThanks for contacting Aymorix. We have received your inquiry and will get back to you shortly.\n\nSubmitted details:\nName: ${submission.firstName} ${submission.lastName}\nEmail: ${submission.email}\nInterested In: ${submission.program}\nMessage: ${submission.message}`,
+        });
+      } catch (error) {
+        console.error('Acknowledgement email send failed:', error);
+      }
+    } catch (error) {
+      // Email configuration/import failed — submission is already saved, don't block the response
+      console.error('Contact email initialization failed:', error);
     }
   }
 
