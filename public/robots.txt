@@ -1,0 +1,20 @@
+# Allow all search engines to crawl your site
+User-agent: *
+Allow: /
+
+# Disallow crawler access to private or unnecessary pages
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Point to sitemap
+Sitemap: https://www.aymorix.com/sitemap.xml
+
+# Rate limiting for aggressive crawlers (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
