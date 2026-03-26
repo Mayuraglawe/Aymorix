@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Instagram, Youtube, Github, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Youtube, Github, Mail, Phone, MapPin, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -174,18 +174,20 @@ export default function Footer() {
                         Empowering businesses with scalable SaaS and intelligent automations.
                     </p>
                     <div className="flex flex-wrap gap-4 mb-6">
-                        <a href="https://facebook.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                        {/* <a href="https://facebook.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
                             <Facebook size={20} className="text-white" />
+                        </a> */}
+                        <a href="https://x.com/aymorix_tech" target="_blank" rel="noopener noreferrer" aria-label="X" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                            </svg>
                         </a>
-                        <a href="https://twitter.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
-                            <Twitter size={20} className="text-white" />
-                        </a>
-                        <a href="https://linkedin.com/company/aymorix" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                        <a href="https://linkedin.com/company/aymorix-technologies" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
                             <Linkedin size={20} className="text-white" />
                         </a>
-                        <a href="https://instagram.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
+                        {/* <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
                             <Instagram size={20} className="text-white" />
-                        </a>
+                        </a> */}
                         {/* <a href="https://youtube.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
                             <Youtube size={20} className="text-white" />
                         </a> */}
