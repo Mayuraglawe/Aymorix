@@ -222,7 +222,7 @@ export default function Footer() {
                     <h3 className="font-bold mb-4 text-white">Contact Us</h3>
                     <ul className="space-y-3 text-slate-400 text-sm">
                         <li><span className="inline-flex items-center"><Mail size={16} className="mr-3" /> info@aymorix.com</span></li>
-                        <li><span className="inline-flex items-center"><Phone size={16} className="mr-3" /> +91 7058435485</span></li>
+                        <li><span className="inline-flex items-center"><Phone size={16} className="mr-3" /> +91 72490 45485</span></li>
                         <li><span className="inline-flex items-center"><MapPin size={16} className="mr-3" /> Nagpur, Maharashtra, India</span></li>
                     </ul>
                 </div>
