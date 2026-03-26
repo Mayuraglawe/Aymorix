@@ -169,7 +169,7 @@ export default function AutomatedLandBoundaryDetectionPage() {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-emerald-200 bg-white">
-              <Image src="/land2.png" alt="Our Team" fill className="object-cover" />
+              <Image src="/land2.png" alt="Aymorix geospatial engineering team - automated land boundary detection" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-400/30 via-transparent to-transparent" />
             </div>
           </div>

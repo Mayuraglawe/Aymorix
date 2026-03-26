@@ -266,25 +266,30 @@ export default function HeroAnimated() {
                         </p>
 
                         <div className="animate-fadeUp opacity-0 flex flex-wrap items-center gap-3 mb-12" style={{ animationDelay: '400ms' }}>
-                            <Link href="#contact" className="btn-primary">
-                                Get In Touch <ArrowRight size={13} strokeWidth={2.5} />
-                            </Link>
-                        </div>
+    			<Link href="#contact" className="btn-primary">
+    				Get In Touch <ArrowRight size={13} strokeWidth={2.5} />
+    			</Link>
+    		</div>
 
-                        <div className="animate-fadeUp opacity-0 flex flex-wrap gap-3 mb-8" style={{ animationDelay: '520ms' }}>
-                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
-                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">100%</div>
-                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Custom Solutions</div>
-                            </div>
-                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
-                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">3× faster</div>
-                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Sales cycle close</div>
-                            </div>
-                            <div className="bg-white border-[1.5px] border-[#dce3ef] rounded-xl px-4 py-3 cursor-default hover:border-[#a3b4f8] hover:shadow-[0_4px_20px_rgba(24,71,240,0.08)] hover:-translate-y-1 transition-all">
-                                <div className="font-display font-bold text-[21px] text-ink leading-none tracking-tight">40%</div>
-                                <div className="text-[11.5px] font-medium text-soft mt-1.5">Ops cost reduction</div>
-                            </div>
+                    {/* 4 Pillars stats section restored */}
+                    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <div className="text-3xl font-bold text-primary">50+</div>
+                            <div className="text-xs text-gray-500">Projects Delivered</div>
                         </div>
+                        <div>
+                            <div className="text-3xl font-bold text-primary">20+</div>
+                            <div className="text-xs text-gray-500">Industries Served</div>
+                        </div>
+                        <div>
+                            <div className="text-3xl font-bold text-primary">100k+</div>
+                            <div className="text-xs text-gray-500">Users Impacted</div>
+                        </div>
+                        <div>
+                            <div className="text-3xl font-bold text-primary">10+</div>
+                            <div className="text-xs text-gray-500">Countries Reached</div>
+                        </div>
+                    </div>
 
                         <div className="animate-fadeUp opacity-0 flex flex-wrap gap-2" style={{ animationDelay: '660ms' }}>
                             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] text-brand">

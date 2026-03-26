@@ -10,7 +10,7 @@ export default function Documentation() {
       <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-blue-200 py-3 md:py-4 px-4 sm:px-6 shadow-sm">
         <div className="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
-            <Image src="/Aymorix_logo2.png" alt="Aymorix Logo" width={44} height={44} className="rounded-full" priority />
+            <Image src="/Aymorix_logo2.png" alt="Aymorix company logo - AI workflow platform" width={44} height={44} className="rounded-full" priority />
             <span className="text-xl md:text-2xl font-extrabold text-black tracking-tight">Aymorix</span>
           </div>
           <Link href="/" className="text-sm md:text-base text-blue-600 font-semibold hover:text-blue-800 transition-colors">

@@ -92,7 +92,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Education</h3>
                         <div className="relative w-full h-40 mb-2">
-                            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80" alt="Education" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80" alt="Education technology digital classroom - Aymorix EdTech solution" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our education solutions streamline administration, enhance learning experiences, and empower institutions with digital tools for modern classrooms.</p>
                             </div>
@@ -101,7 +101,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px]">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Healthcare</h3>
                         <div className="relative w-full h-40 mb-2 group">
-                            <img src="/health_care.png" alt="Healthcare" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="/health_care.png" alt="Healthcare app development - Aymorix medical software" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our healthcare app development services can help you improve staff productivity, reduce costs, and achieve service excellence.</p>
                             </div>
@@ -113,7 +113,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Media and Entertainment</h3>
                         <div className="relative w-full h-40 mb-2">
-                            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Media and Entertainment" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Media and entertainment platform - Aymorix content streaming" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">We create platforms for content management, streaming, and audience engagement.</p>
                             </div>
@@ -122,7 +122,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">Hospitality</h3>
                         <div className="relative w-full h-40 mb-2">
-                            <img src="/hospitality.png" alt="Hospitality" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="/hospitality.png" alt="Hospitality management software - Aymorix hotel and restaurant solution" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">Our hospitality solutions optimize guest management, booking systems, and operational workflows for hotels, restaurants, and resorts.</p>
                             </div>
@@ -131,7 +131,7 @@ export default function Services() {
                     <div className="rounded-2xl bg-white border border-slate-200 shadow-md p-8 flex flex-col items-start justify-between min-h-[260px] md:min-h-[320px] group">
                         <h3 className="font-display font-bold text-2xl md:text-3xl text-ink mb-4">E-commerce</h3>
                         <div className="relative w-full h-40 mb-2">
-                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="E-commerce" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="E-commerce web app - Aymorix online retail platform" className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-0" />
                             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 group-hover:opacity-100 opacity-0 transition-opacity duration-500">
                                 <p className="text-ink text-lg font-medium mb-4">We build seamless e-commerce platforms for shopping and customer engagement.</p>
                             </div>

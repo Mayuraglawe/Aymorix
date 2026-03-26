@@ -33,40 +33,12 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <div className="group relative">
-                        <Link
-                            href="#industry"
-                            className="relative inline-flex items-center gap-1 text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 group-hover:after:scale-x-100"
-                        >
-                            Industry
-                            <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
-                        </Link>
-
-                        <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                            <div className="w-150 rounded-xl border border-slate-200 bg-white p-6 shadow-[0_16px_40px_rgba(8,13,28,0.12)] grid grid-cols-2 gap-x-12 gap-y-4">
-                                <div className="flex items-center gap-3">
-                                    <GraduationCap size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Education</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Plus size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Healthcare</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <MonitorPlay size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Media and Entertainment</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Clock size={22} />
-                                    <span className="text-ink text-[15px] font-medium">Hospitality</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <ShoppingCart size={22} />
-                                    <span className="text-ink text-[15px] font-medium">E-commerce</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Link
+                        href="#industry"
+                        className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100"
+                    >
+                        Industry
+                    </Link>
                 </li>
                 <li>
                     <div className="group relative">
@@ -97,19 +69,19 @@ export default function Navbar() {
                     </div>
                 </li>
                 <li>
-                    <Link href="#technologies" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
+                    <Link href="#tech-stack" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
                         Tech Stack
                     </Link>
                 </li>
                 <li>
-                    <Link href="#about" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
-                        About Us
+                    <Link href="#faq" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
+                        FAQ
                     </Link>
                 </li>
 
                 <li>
-                    <Link href="#faq" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
-                        FAQ
+                    <Link href="#about" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
+                        About Us
                     </Link>
                 </li>
             </ul>
@@ -135,9 +107,9 @@ export default function Navbar() {
                         <Link href="#services" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Services</Link>
                         <Link href="#industry" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Industry</Link>
                         <Link href="#products" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Products</Link>
-                        <Link href="#technologies" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Tech Stack</Link>
-                        <Link href="#about" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">About Us</Link>
+                        <Link href="#tech-stack" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Tech Stack</Link>
                         <Link href="#faq" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">FAQ</Link>
+                        <Link href="#about" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">About Us</Link>
                         <div className="mt-3 border-t border-slate-200 pt-3">
                             <p className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wide text-soft">Products</p>
                             <Link href="/products/algomate" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Algomate</Link>
