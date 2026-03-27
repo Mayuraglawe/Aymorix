@@ -168,7 +168,7 @@ export default function Footer() {
                                 priority
                             />
                         </Link>
-                        <span className="font-display font-bold text-sm text-white tracking-tight">Aymorix</span>
+                        <span className="font-display font-bold text-sm text-white tracking-tight">Aymorix Technologies</span>
                     </div>
                     <p className="text-slate-400 text-[15px] leading-relaxed mb-6">
                         Empowering businesses with scalable SaaS and intelligent automations.

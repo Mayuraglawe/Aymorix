@@ -22,7 +22,7 @@ export default function Navbar() {
                     priority
                 />
                 <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
-                    Aymorix
+                    Aymorix Technologies
                 </span>
             </Link>
 
