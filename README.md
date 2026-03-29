@@ -1,45 +1,25 @@
-# Aymorix - Company Website
+# Aymorix
 
-The official website for **Aymorix**, a technology company building intelligent software products for the education sector.
+Official web presence for **Aymorix**, a technology company focused on building impactful digital products.
 
-## Getting Started
+## Company Website
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+Visit: [https://www.aymorix.com/](https://www.aymorix.com/)
 
-### Installation
+## About This Repository
 
-```bash
-npm install
-```
+This repository contains the source code for the Aymorix company website, including:
 
-### Development
+- Company profile and core offerings
+- Product and solution pages
+- Legal and documentation pages
+- Contact API endpoint and supporting UI components
 
-```bash
-npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) to see the website.
+## Contact
 
-### Production Build
-
-```bash
-npm run build
-npm start
-```
-
-## Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-
-## Our Products
-
-- **Academic Compass** - A comprehensive academic management platform for colleges
+For business inquiries, partnerships, or product discussions, please use the contact section on the website:
+[https://www.aymorix.com/](https://www.aymorix.com/)
 
 ## License
 
