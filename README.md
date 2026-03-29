@@ -1,4 +1,4 @@
-# Aymorix Tecgnologies
+# Aymorix Technologies
 
 Official web presence for **Aymorix**, a technology company focused on building impactful digital products.
 
@@ -23,4 +23,4 @@ For business inquiries, partnerships, or product discussions, please use the con
 
 ## License
 
-Copyright © 2025 Aymorix Tecgnologies. All rights reserved.
+Copyright © 2025 Aymorix Technologies. All rights reserved.
