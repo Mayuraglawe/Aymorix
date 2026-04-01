@@ -13,8 +13,12 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.aymorix.com'),
   title: 'Aymorix - Enterprise Software & AI Workflows',
   description: 'Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms.',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/Aymorix_logo2.png',
     shortcut: '/Aymorix_logo2.png',

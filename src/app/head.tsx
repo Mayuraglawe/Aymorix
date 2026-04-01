@@ -4,6 +4,7 @@
 export default function Head() {
   return (
     <>
+      <link rel="canonical" href="https://www.aymorix.com/" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -11,7 +12,7 @@ export default function Head() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Aymorix",
-            "url": "https://aymorix.com/",
+            "url": "https://www.aymorix.com/",
             "logo": "/Aymorix_logo2.png",
             "description": "Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms."
           })
