@@ -210,23 +210,23 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" className="bg-[#EEF1F8] py-20 md:py-24 font-sans">
+    <section id="services" className="bg-[#EEF1F8] py-20 md:py-24 max-[600px]:py-14 font-sans">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 max-[600px]:mb-8">
           <span className="inline-block bg-indigo-100 text-blue-700 text-xs font-semibold tracking-widest uppercase rounded-full px-4 py-2 mb-4">Our Services</span>
           <h2 className="font-display font-extrabold text-[clamp(1.8rem,3.5vw,2.7rem)] leading-[1.07] tracking-[-0.035em] text-ink mb-3">Custom Engineering Solutions</h2>
-          <p className="text-base md:text-lg text-slate-500 max-w-xl mx-auto">We build scalable, cloud-native applications tailored to accelerate your growth.</p>
+          <p className="text-base md:text-lg max-[600px]:text-sm text-slate-500 max-w-xl mx-auto">We build scalable, cloud-native applications tailored to accelerate your growth.</p>
         </div>
 
         {/* Pillar Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center max-[600px]:justify-stretch gap-3 mb-8 max-[600px]:mb-6">
           {pillars.map((p, idx) => {
             const isActive = activePillar === idx;
             return (
               <button
                 key={p.id}
-                className={`flex items-center gap-2 px-6 py-2 rounded-lg font-semibold text-sm shadow-sm border transition-all duration-150 ` +
+                className={`flex items-center gap-2 px-6 py-2 max-[600px]:w-full max-[600px]:justify-start rounded-lg font-semibold text-sm shadow-sm border transition-all duration-150 ` +
                   (isActive
                     ? `text-white shadow-md`
                     : `bg-white text-slate-600 border-slate-200 hover:border-[${p.accent}] hover:text-[${p.accent}]`)
@@ -242,7 +242,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Main Card */}
-        <div className="rounded-3xl bg-white shadow-xl grid grid-cols-1 md:grid-cols-[260px_1fr_340px] min-h-[520px] overflow-hidden">
+        <div className="rounded-3xl max-[600px]:rounded-2xl bg-white shadow-xl grid grid-cols-1 md:grid-cols-[260px_1fr_340px] min-h-[520px] max-[600px]:min-h-0 overflow-hidden">
           {/* Service List */}
           <div className="border-b md:border-b-0 md:border-r border-slate-100 flex flex-col">
             <div className="px-6 pt-8 pb-4 border-b border-slate-100 hidden md:block">
@@ -253,23 +253,23 @@ export default function ServicesSection() {
               {current.services.map((s, idx) => (
                 <button
                   key={idx}
-                  className={`flex items-center gap-3 w-full px-6 py-4 text-left border-l-4 transition-all duration-150 ${activeService === idx ? 'bg-slate-50' : 'border-transparent hover:bg-slate-50'}`}
+                  className={`flex items-center gap-3 w-full px-6 max-[600px]:px-4 py-4 text-left border-l-4 transition-all duration-150 ${activeService === idx ? 'bg-slate-50' : 'border-transparent hover:bg-slate-50'}`}
                   style={activeService === idx ? { borderLeftColor: current.accent } : {}}
                   onClick={() => switchService(idx)}
                 >
                   <span className="w-2.5 h-2.5 rounded-full mr-2" style={{ background: current.accent }}></span>
-                  <span className="font-bold text-sm text-slate-900">{s.title}</span>
+                  <span className="font-bold text-sm text-slate-900 leading-snug">{s.title}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Main Service Card */}
-          <div className="flex flex-col p-8">
+          <div className="flex flex-col p-8 max-[600px]:p-5">
             <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: current.accent }}>Pillar {current.code}</div>
             <div className="text-xs font-bold text-slate-900 mb-2">{current.name}</div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3">{service.title}</h3>
-            <p className="text-slate-500 text-base mb-2">{service.description}</p>
+            <h3 className="text-2xl md:text-3xl max-[600px]:text-xl font-extrabold text-slate-900 mb-3">{service.title}</h3>
+            <p className="text-slate-500 text-base max-[600px]:text-sm mb-2">{service.description}</p>
             {/* Tech stack display - moved just below description */}
             {service.tech && (
               <div className="mb-6">
@@ -286,7 +286,7 @@ export default function ServicesSection() {
             )}
             {/* CTA Button remains at the bottom */}
             <button
-              className="mt-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow transition-all duration-150 text-base"
+              className="mt-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 max-[600px]:w-full rounded-lg shadow transition-all duration-150 text-base max-[600px]:text-sm"
               style={{ background: current.accent }}
             >
               Let's build your next project
@@ -294,7 +294,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Image Panel */}
-          <div className="relative flex flex-col min-h-[320px] bg-gradient-to-b from-slate-100 to-slate-200">
+          <div className="relative flex flex-col min-h-[320px] max-[600px]:min-h-[240px] bg-gradient-to-b from-slate-100 to-slate-200">
             <div className="flex-1 relative overflow-hidden">
               <img
                 key={service.image}

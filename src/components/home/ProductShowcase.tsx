@@ -134,7 +134,7 @@ export default function ProductShowcase() {
     };
 
     return (
-        <section id="products" className="py-16 md:py-24 text-white overflow-hidden relative bg-[linear-gradient(145deg,#050916_0%,#0b1126_42%,#14122f_100%)]">
+        <section id="products" className="py-16 md:py-24 max-[600px]:py-12 text-white overflow-hidden relative bg-[linear-gradient(145deg,#050916_0%,#0b1126_42%,#14122f_100%)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(0,190,255,0.18),transparent_38%),radial-gradient(circle_at_88%_8%,rgba(153,69,255,0.2),transparent_42%),radial-gradient(circle_at_80%_88%,rgba(45,115,255,0.2),transparent_45%)]" />
             <div className="absolute -left-24 top-1/3 h-60 w-60 rotate-12 rounded-[40px] border border-cyan-200/20 bg-cyan-300/10 blur-2xl" />
             <div className="absolute -right-20 bottom-16 h-52 w-52 -rotate-12 rounded-[42px] border border-fuchsia-200/20 bg-fuchsia-300/10 blur-2xl" />
@@ -153,7 +153,7 @@ export default function ProductShowcase() {
                 </div>
 
                 <div className="rounded-3xl border border-white/15 bg-white/[0.04] backdrop-blur-sm p-4 md:p-6 shadow-[0_24px_60px_rgba(5,8,22,0.45)]">
-                    <div className="relative h-[620px] sm:h-[640px] lg:h-[460px]">
+                    <div className="relative h-[560px] min-[400px]:h-[620px] sm:h-[640px] lg:h-[460px]">
                         {PRODUCTS.map((product, idx) => {
                             const position = queue.indexOf(idx);
                             return (
@@ -236,7 +236,7 @@ export default function ProductShowcase() {
                             <button
                                 key={`${product.name}-tab`}
                                 onClick={() => bringToFront(idx)}
-                                className={`px-3 py-1.5 rounded-full text-xs border transition-colors ${
+                                className={`px-3 py-1.5 rounded-full text-xs max-[600px]:text-[11px] border transition-colors ${
                                     idx === activeIndex
                                         ? 'bg-white/10 border-white/20 text-white'
                                         : 'bg-transparent border-white/10 text-slate-400 hover:text-white'

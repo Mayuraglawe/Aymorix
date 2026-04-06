@@ -79,16 +79,16 @@ export default function WhatWeDeliver() {
     const slide = slides[active];
 
     return (
-        <section className="py-14 md:py-16 bg-slate-100 border-y border-slate-200">
+        <section className="py-12 md:py-16 max-[600px]:py-10 bg-slate-100 border-y border-slate-200">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-16">
-                <div className="mb-7 md:mb-8">
-                    <h2 className="font-display font-extrabold text-3xl md:text-5xl text-ink tracking-tight">
+                <div className="mb-6 md:mb-8">
+                    <h2 className="font-display font-extrabold text-[clamp(1.75rem,5vw,2.8rem)] text-ink tracking-tight">
                         What We Deliver
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-10 items-center">
-                    <div className="relative h-[280px] md:h-[400px] rounded-3xl overflow-hidden shadow-md border border-slate-200">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-6 lg:gap-10 items-center">
+                    <div className="relative h-[240px] sm:h-[320px] md:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-200">
                         <img
                             src={slide.image}
                             alt={slide.title}
@@ -99,24 +99,24 @@ export default function WhatWeDeliver() {
 
                     <div className="flex flex-col justify-center">
                         <div>
-                            <span className="text-[13px] md:text-sm font-bold tracking-[0.2em] uppercase text-brand mb-4 block">
+                            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-brand mb-3 md:mb-4 block">
                                 {slide.category}
                             </span>
-                            <h3 className="font-display font-extrabold text-3xl md:text-5xl text-ink tracking-tight leading-[1.1] mb-4">
+                            <h3 className="font-display font-extrabold text-[clamp(1.6rem,5vw,2.8rem)] text-ink tracking-tight leading-[1.1] mb-3 md:mb-4">
                                 {slide.title}
                             </h3>
-                            <p className="text-mid text-lg md:text-xl leading-[1.45] max-w-xl">
+                            <p className="text-mid text-base sm:text-lg md:text-xl leading-[1.45] max-w-xl">
                                 {slide.description}
                             </p>
                         </div>
 
-                        <div className="mt-10 flex items-center gap-2 max-w-sm">
+                        <div className="mt-7 md:mt-10 flex items-center gap-2 max-w-sm max-[600px]:max-w-full overflow-x-auto pb-1">
                             {slides.map((_, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => goTo(idx)}
                                     aria-label={`Slide ${idx + 1}`}
-                                    className="relative h-1.5 w-14 rounded-full overflow-hidden bg-slate-300/80 shrink-0 focus:outline-none"
+                                    className="relative h-1 sm:h-1.5 w-8 sm:w-12 md:w-14 rounded-full overflow-hidden bg-slate-300/80 shrink-0 focus:outline-none"
                                 >
                                     {idx === active && (
                                         <span

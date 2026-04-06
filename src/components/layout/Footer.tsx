@@ -43,16 +43,16 @@ export default function Footer() {
         }
     };
     return (
-        <footer id="contact" className="bg-ink text-white py-20 relative overflow-hidden">
+        <footer id="contact" className="bg-ink text-white py-20 max-[600px]:py-14 relative overflow-hidden">
             <div className="dot-grid absolute inset-0 opacity-10 pointer-events-none z-0"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 max-[600px]:gap-9">
                 {/* Left: Contact Information */}
                 <div className="max-w-md">
                     <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 text-brand-accent text-xs font-semibold tracking-wide uppercase mb-6">
                         Contact
                     </span>
-                    <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight mb-5">
+                    <h2 className="font-display font-extrabold text-3xl md:text-4xl max-[600px]:text-2xl tracking-tight mb-5">
                         Let's Build Together
                     </h2>
                     <p className="text-slate-400 text-[15px] leading-relaxed mb-6">
@@ -73,7 +73,7 @@ export default function Footer() {
                 </div>
 
                 {/* Right: Contact Form */}
-                <div className="bg-slate-900 border border-white/10 rounded-2xl p-8 shadow-2xl relative">
+                <div className="bg-slate-900 border border-white/10 rounded-2xl p-8 max-[600px]:p-5 shadow-2xl relative">
                     <form className="space-y-5" onSubmit={handleSubmit}>
                         {status === 'success' && (
                             <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-3 rounded-lg text-sm text-center">
@@ -154,7 +154,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 mt-20 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 mt-20 max-[600px]:mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-4 gap-8 max-[600px]:gap-6 items-start">
                 {/* Logo & Description */}
                 <div>
                     <div className="flex items-center gap-3 mb-4">
@@ -221,9 +221,9 @@ export default function Footer() {
                 <div>
                     <h3 className="font-bold mb-4 text-white">Contact Us</h3>
                     <ul className="space-y-3 text-slate-400 text-sm">
-                        <li><span className="inline-flex items-center"><Mail size={16} className="mr-3" /> info@aymorix.com</span></li>
-                        <li><span className="inline-flex items-center"><Phone size={16} className="mr-3" /> +91 72490 45485</span></li>
-                        <li><span className="inline-flex items-center"><MapPin size={16} className="mr-3" /> Nagpur, Maharashtra, India</span></li>
+                        <li><span className="inline-flex items-start break-words"><Mail size={16} className="mr-3 mt-0.5 shrink-0" /> info@aymorix.com</span></li>
+                        <li><span className="inline-flex items-start break-words"><Phone size={16} className="mr-3 mt-0.5 shrink-0" /> +91 72490 45485</span></li>
+                        <li><span className="inline-flex items-start break-words"><MapPin size={16} className="mr-3 mt-0.5 shrink-0" /> Nagpur, Maharashtra, India</span></li>
                     </ul>
                 </div>
             </div>

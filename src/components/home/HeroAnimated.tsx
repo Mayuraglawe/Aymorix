@@ -228,7 +228,7 @@ export default function HeroAnimated() {
     }, [activeTab]);
 
     return (
-        <section className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-20 md:pt-24">
+        <section className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-20 md:pt-24 max-[600px]:pt-[76px]">
             {/* Background Background */}
             <div className="dot-grid absolute inset-0 opacity-55 pointer-events-none z-0"></div>
             <div
@@ -238,11 +238,11 @@ export default function HeroAnimated() {
 
             {/* Main Content Area */}
             <div className="relative z-10 flex-1 flex items-center">
-                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-10 max-[600px]:py-7 flex flex-col lg:flex-row items-start gap-10 lg:gap-16 max-[600px]:gap-7">
 
                     {/* Left Side: Copy & CTA */}
-                    <div className="flex-1 min-w-0 max-w-135 pt-3">
-                        <div className="animate-fadeIn opacity-0 inline-block mb-7" style={{ animationDelay: '80ms' }}>
+                    <div className="flex-1 min-w-0 max-w-135 max-[600px]:max-w-full pt-3 max-[600px]:pt-1">
+                        <div className="animate-fadeIn opacity-0 inline-block mb-7 max-[600px]:mb-5" style={{ animationDelay: '80ms' }}>
                             <span className="inline-flex items-center gap-2 bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] rounded-full px-4 py-1.5 text-xs font-semibold text-brand tracking-wide">
                                 <span className="w-1.5 h-1.5 rounded-full animate-pdot bg-brand"></span>
                                 CRM · ERP · Custom Apps — All in one
@@ -250,7 +250,7 @@ export default function HeroAnimated() {
                         </div>
 
                         <h1
-                            className="animate-fadeUp opacity-0 mb-5 font-display font-extrabold text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.01] tracking-[-0.045em] text-ink"
+                            className="animate-fadeUp opacity-0 mb-5 max-[600px]:mb-4 font-display font-extrabold text-[clamp(2.4rem,5vw,4.2rem)] max-[600px]:text-[clamp(1.9rem,9vw,2.5rem)] leading-[1.01] tracking-[-0.045em] text-ink"
                             style={{ animationDelay: '180ms' }}
                         >
                             <span className="block">
@@ -259,34 +259,34 @@ export default function HeroAnimated() {
                         </h1>
 
                         <p
-                            className="animate-fadeUp opacity-0 mb-10 text-[clamp(14.5px,1.45vw,16.5px)] text-soft max-w-107.5 leading-[1.8] tracking-tight"
+                            className="animate-fadeUp opacity-0 mb-10 max-[600px]:mb-7 text-[clamp(14.5px,1.45vw,16.5px)] max-[600px]:text-[14px] text-soft max-w-107.5 max-[600px]:max-w-full leading-[1.8] max-[600px]:leading-[1.65] tracking-tight"
                             style={{ animationDelay: '280ms' }}
                         >
                             Tailor-built CRM, ERP, and mobile apps that connect your teams, automate workflows, and give you complete visibility across every department.
                         </p>
 
-                        <div className="animate-fadeUp opacity-0 flex flex-wrap items-center gap-3 mb-12" style={{ animationDelay: '400ms' }}>
+                        <div className="animate-fadeUp opacity-0 flex flex-wrap items-center gap-3 mb-12 max-[600px]:mb-8" style={{ animationDelay: '400ms' }}>
     			<Link href="#contact" className="btn-primary">
     				Get In Touch <ArrowRight size={13} strokeWidth={2.5} />
     			</Link>
     		</div>
 
                     {/* 4 Pillars stats section restored */}
-                    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div className="mt-8 max-[600px]:mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 max-[600px]:gap-3 text-center">
                         <div>
-                            <div className="text-3xl font-bold text-primary">50+</div>
+                            <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">50+</div>
                             <div className="text-xs text-gray-500">Projects Delivered</div>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold text-primary">20+</div>
+                            <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">20+</div>
                             <div className="text-xs text-gray-500">Industries Served</div>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold text-primary">100k+</div>
+                            <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">100k+</div>
                             <div className="text-xs text-gray-500">Users Impacted</div>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold text-primary">10+</div>
+                            <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">10+</div>
                             <div className="text-xs text-gray-500">Countries Reached</div>
                         </div>
                     </div>
@@ -305,8 +305,8 @@ export default function HeroAnimated() {
                     </div>
 
                     {/* Right Side: Interactive Panel */}
-                    <div className="hidden lg:flex flex-1 items-start justify-center min-w-0 pt-2">
-                        <div className="relative w-full max-w-160">
+                    <div className="flex w-full lg:flex-1 items-start justify-center min-w-0 pt-2 mt-2 lg:mt-0 overflow-hidden">
+                        <div className="relative w-full max-w-full lg:max-w-160 overflow-hidden">
                             <div className="product-panel animate-fadeIn opacity-0" style={{ animationDelay: '400ms' }}>
 
                                 {/* Browser Chrome */}
@@ -324,24 +324,24 @@ export default function HeroAnimated() {
                                 </div>
 
                                 {/* Tabs Navigation */}
-                                <div className="flex border-b border-[#e8edf6] bg-[#fafbfd]">
+                                <div className="flex border-b border-[#e8edf6] bg-[#fafbfd] overflow-x-auto">
                                     <button
                                         onClick={() => setActiveTab('crm')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        className={`shrink-0 px-3 sm:px-4.5 py-2.5 text-[10px] sm:text-[12px] font-semibold flex items-center gap-1 sm:gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'crm' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                             }`}
                                     >
                                         <Home size={11} /> CRM Dashboard
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('erp')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        className={`shrink-0 px-3 sm:px-4.5 py-2.5 text-[10px] sm:text-[12px] font-semibold flex items-center gap-1 sm:gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'erp' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                             }`}
                                     >
                                         <LayoutGrid size={11} /> ERP Overview
                                     </button>
                                     <button
                                         onClick={() => setActiveTab('app')}
-                                        className={`px-4.5 py-2.5 text-[12px] font-semibold flex items-center gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
+                                        className={`shrink-0 px-3 sm:px-4.5 py-2.5 text-[10px] sm:text-[12px] font-semibold flex items-center gap-1 sm:gap-1.5 transition-all outline-none border-b-[2.5px] ${activeTab === 'app' ? 'text-brand border-brand bg-white' : 'text-soft border-transparent hover:text-mid hover:bg-[#f4f5fb]'
                                             }`}
                                     >
                                         <Smartphone size={11} /> Mobile App

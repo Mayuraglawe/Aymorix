@@ -11,7 +11,7 @@ export default function Navbar() {
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 md:py-5 bg-white/85 border-b border-slate-100 glass-nav">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 md:py-5 max-[600px]:px-3 max-[600px]:py-2.5 bg-white/85 border-b border-slate-100 glass-nav">
             <Link href="/" className="flex items-center gap-3 no-underline">
                 <Image
                     src="/Aymorix_logo2.png"
@@ -21,8 +21,11 @@ export default function Navbar() {
                     className="w-9 h-9 sm:w-10 sm:h-10"
                     priority
                 />
-                <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
+                <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink max-[600px]:hidden">
                     Aymorix Technologies
+                </span>
+                <span className="hidden max-[600px]:inline font-display font-bold text-[18px] tracking-tight text-ink">
+                    Aymorix
                 </span>
             </Link>
 
@@ -86,14 +89,14 @@ export default function Navbar() {
                 </li>
             </ul>
 
-            <div className="flex items-center gap-3">
-                <Link href="#contact" className="hidden sm:inline-flex btn-primary">
+            <div className="flex items-center gap-2 sm:gap-3">
+                <Link href="#contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm">
                     Contact Us <ArrowRight size={14} strokeWidth={2} />
                 </Link>
                 <button
                     type="button"
                     onClick={() => setIsMenuOpen((prev) => !prev)}
-                    className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-ink transition hover:bg-slate-50 md:hidden"
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 sm:p-2.5 text-ink transition hover:bg-slate-50 md:hidden"
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={isMenuOpen}
                 >
@@ -102,7 +105,7 @@ export default function Navbar() {
             </div>
 
             {isMenuOpen && (
-                <div className="absolute left-0 right-0 top-full border-b border-slate-200 bg-white px-4 py-4 shadow-lg md:hidden">
+                <div className="absolute left-0 right-0 top-full border-b border-slate-200 bg-white px-4 py-4 shadow-lg max-h-[calc(100vh-68px)] overflow-y-auto md:hidden">
                     <div className="mx-auto max-w-screen-xl space-y-2">
                         <Link href="#services" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Services</Link>
                         <Link href="#industry" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Industry</Link>

@@ -17,35 +17,35 @@ const industrySvgs = [
 
 export default function IndustriesSection() {
   return (
-    <section id="industry" className="py-20 md:py-24 bg-[#F8FAFC]">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="font-display font-extrabold text-[clamp(1.8rem,3.5vw,2.7rem)] leading-[1.07] tracking-[-0.035em] text-ink mb-6">
+    <section id="industry" className="py-16 md:py-24 bg-[#F8FAFC]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 text-center">
+        <h2 className="font-display font-extrabold text-[clamp(1.8rem,5vw,2.7rem)] leading-[1.07] tracking-[-0.035em] text-ink mb-4 md:mb-6">
           Industries We Excel In
         </h2>
-        <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-12">
+        <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto mb-8 md:mb-12 px-2">
           We deliver tailored solutions for a wide range of industries, leveraging deep expertise and modern technology to drive results.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {industries.map((industry, idx) => (
             <div
               key={industry.name}
-              className="relative group bg-white rounded-2xl shadow p-8 flex flex-col items-center overflow-hidden cursor-pointer transition-all duration-200"
-              style={{ minHeight: 260 }}
+              className="relative group bg-white rounded-xl md:rounded-2xl shadow p-6 md:p-8 flex flex-col items-center overflow-hidden cursor-pointer transition-all duration-200"
+              style={{ minHeight: '240px' }}
             >
               {/* Blue gradient overlay only on hover, no image */}
-              <div className="absolute inset-0 z-10 rounded-2xl overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/80 via-blue-400/90 to-blue-700/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 z-10 rounded-xl md:rounded-2xl overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-b from-white/80 via-blue-400/90 to-blue-700/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               {/* SVG Icon with colored circle */}
-              <span className="mb-4 z-20 relative transition-colors duration-300 flex items-center justify-center">
-                <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#e0e7ff] group-hover:bg-blue-600 transition-colors duration-300">
-                  <span className="text-blue-700 group-hover:text-white transition-colors duration-300">{industrySvgs[idx]}</span>
+              <span className="mb-3 md:mb-4 z-20 relative transition-colors duration-300 flex items-center justify-center">
+                <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#e0e7ff] group-hover:bg-blue-600 transition-colors duration-300">
+                  <span className="text-blue-700 group-hover:text-white transition-colors duration-300 w-8 h-8 md:w-full md:h-full flex items-center justify-center">{industrySvgs[idx]}</span>
                 </span>
               </span>
-              <div className="font-bold text-xl mb-2 z-20 relative transition-colors duration-300 text-center group-hover:text-white">
+              <div className="font-bold text-lg md:text-xl mb-2 z-20 relative transition-colors duration-300 text-center group-hover:text-white">
                 {industry.name}
               </div>
-              <div className="text-slate-500 text-base z-20 relative transition-colors duration-300 text-center group-hover:text-blue-100">
+              <div className="text-slate-500 text-sm md:text-base z-20 relative transition-colors duration-300 text-center group-hover:text-blue-100">
                 {industry.description}
               </div>
             </div>
