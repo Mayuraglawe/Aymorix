@@ -8,7 +8,7 @@ const slides = [
         title: 'Using AI for Now and Future',
         description:
             'We lead the AI revolution by helping you build Gen AI-powered solutions that enhance critical workflows and simplify processes.',
-        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1200&q=80',
+        image: '/using_ai.jpg',
     },
     {
         category: 'SERVICES',
@@ -22,7 +22,7 @@ const slides = [
         title: 'Custom SaaS Development',
         description:
             'We build robust and scalable platforms with modern architecture, clean code standards, and user-first experiences.',
-        image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80',
+        image: '/SaaS_dev.jpg',
     },
     {
         category: 'SERVICES',
@@ -36,14 +36,14 @@ const slides = [
         title: 'Standardized Development',
         description:
             'Our standardized suite of processes makes product development faster and efficient to ensure consistency, quality, and reduced time-to-market.',
-        image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
+        image: '/standard_development.jpg',
     },
     {
         category: 'SERVICES',
         title: 'From Prototype to Deployment',
         description:
             'We move your idea from rapid prototype to production deployment with clear milestones, measurable outcomes, and dependable delivery.',
-        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+        image: '/prototype.jpg',
     },
 ];
 
