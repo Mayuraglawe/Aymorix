@@ -12,6 +12,7 @@ type FeedItem = {
     action: string;
     chip: string;
     chipClass: string;
+    avatarClass: string;
 };
 
 export default function HeroAnimated() {
@@ -27,6 +28,7 @@ export default function HeroAnimated() {
             action: 'Viewed proposal · Meridian Corp',
             chip: 'Hot lead',
             chipClass: 'bg-[#dcfce7] text-[#14532d]',
+            avatarClass: 'from-brand to-[#5b30e8]',
         },
         {
             initials: 'NK',
@@ -34,6 +36,7 @@ export default function HeroAnimated() {
             action: 'Opened quote · Vortex',
             chip: 'Proposal',
             chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
+            avatarClass: 'from-[#f59e0b] to-[#d97706]',
         },
     ]);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -169,6 +172,7 @@ export default function HeroAnimated() {
                     action: 'Won contract · Meridian Corp',
                     chip: 'Won!',
                     chipClass: 'bg-[#dcfce7] text-[#14532d]',
+                    avatarClass: 'from-[#0f7a42] to-[#22c55e]',
                 };
                 if (nextItem.chip === 'Won!') {
                     triggerToast();

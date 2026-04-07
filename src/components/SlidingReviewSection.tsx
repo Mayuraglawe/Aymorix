@@ -38,20 +38,35 @@ const reviews = [
 
 export default function ReviewCards() {
   const [slideIdx, setSlideIdx] = useState(0);
-  const reviewsPerSlide = 2;
+  const [reviewsPerSlide, setReviewsPerSlide] = useState(2);
   const maxSlide = Math.ceil(reviews.length / reviewsPerSlide);
   const visibleReviews = reviews.slice(slideIdx * reviewsPerSlide, (slideIdx + 1) * reviewsPerSlide);
 
-  // Auto-rotate slides every 4 seconds
+  useEffect(() => {
+    const updateSlides = () => {
+      const nextReviewsPerSlide = window.innerWidth < 640 ? 1 : 2;
+      setReviewsPerSlide(nextReviewsPerSlide);
+      setSlideIdx((prev) => {
+        const nextMaxSlide = Math.ceil(reviews.length / nextReviewsPerSlide);
+        return prev >= nextMaxSlide ? 0 : prev;
+      });
+    };
+
+    updateSlides();
+    window.addEventListener('resize', updateSlides);
+    return () => window.removeEventListener('resize', updateSlides);
+  }, []);
+
+  // Auto-rotate slides every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIdx((prev) => (prev < maxSlide - 1 ? prev + 1 : 0));
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [maxSlide]);
 
   return (
-    <section className="relative w-full py-14 overflow-hidden">
+    <section className="relative w-full py-10 sm:py-12 lg:py-14 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <svg width="100%" height="100%" viewBox="0 0 2600 900" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
           <polygon points="0,0 1200,0 900,900 0,900" fill="#dbeafe" />
@@ -60,39 +75,41 @@ export default function ReviewCards() {
         </svg>
       </div>
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Testimonial</h2>
-        <p className="text-base md:text-lg text-center mb-8 text-slate-600">Hear from our happy users and discover how Aymorix made a difference for them.</p>
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center items-center">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Testimonial</h2>
+        <p className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg text-center mb-6 sm:mb-8 text-slate-600">
+          Hear from our happy users and discover how Aymorix made a difference for them.
+        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 justify-center items-stretch">
           {visibleReviews.map((review, idx) => (
-            <div key={idx} className="flex flex-col items-center w-full max-w-[420px] rounded-2xl border border-slate-200 bg-white bg-opacity-80 shadow-lg p-6 md:p-8">
-              <div className="mb-4 flex items-center justify-center">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full border-4 border-white shadow-md bg-blue-100 text-blue-700 text-3xl font-bold">
+            <div key={idx} className="flex h-full w-full flex-col items-center rounded-2xl border border-slate-200 bg-white/90 shadow-lg p-4 sm:p-6 md:p-8">
+              <div className="mb-3 sm:mb-4 flex items-center justify-center">
+                <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-md bg-blue-100 text-blue-700 text-xl sm:text-2xl md:text-3xl font-bold">
                   {review.name.trim().charAt(0)}
                 </div>
               </div>
-              <div className="text-base md:text-lg font-semibold text-ink mb-2 text-center">{review.text}</div>
-              <div className="flex items-center mt-2">
+              <div className="text-sm sm:text-base md:text-lg font-semibold text-ink mb-2 text-center leading-relaxed">{review.text}</div>
+              <div className="flex items-center mt-2 scale-90 sm:scale-100">
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className={`w-5 h-5 ${i < (review.rating || 0) ? 'text-yellow-400' : 'text-slate-300'}`}
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ${i < (review.rating || 0) ? 'text-yellow-400' : 'text-slate-300'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.454a1 1 0 00-1.175 0l-3.38 2.454c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z" />
                   </svg>
                 ))}
-                <span className="ml-2 text-sm text-slate-500">{review.rating}.0</span>
+                <span className="ml-2 text-xs sm:text-sm text-slate-500">{review.rating}.0</span>
               </div>
-              <div className="text-sm text-mid mb-1">{review.name}</div>
-              <div className="text-xs text-slate-500 mb-1">{review.company}</div>
-              <div className="text-xs font-bold text-green-600">{review.highlight}</div>
+              <div className="text-xs sm:text-sm text-mid mb-1 text-center">{review.name}</div>
+              <div className="text-[11px] sm:text-xs text-slate-500 mb-1 text-center">{review.company}</div>
+              <div className="text-[11px] sm:text-xs font-bold text-green-600 text-center">{review.highlight}</div>
             </div>
           ))}
         </div>
         {/* Sliding line indicator */}
-        <div className="flex justify-center mt-6">
-          <div className="relative w-64 h-2 bg-slate-200 rounded-full">
+        <div className="flex justify-center mt-5 sm:mt-6">
+          <div className="relative w-36 sm:w-48 md:w-64 h-2 bg-slate-200 rounded-full overflow-hidden">
             <div
               className="absolute top-0 left-0 h-2 bg-blue-500 rounded-full transition-all duration-500"
               style={{ width: `${100 / maxSlide}%`, left: `${(100 / maxSlide) * slideIdx}%` }}

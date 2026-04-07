@@ -11,25 +11,23 @@ export default function Navbar() {
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 md:py-5 max-[600px]:px-3 max-[600px]:py-2.5 bg-white/85 border-b border-slate-100 glass-nav">
-            <Link href="/" className="flex items-center gap-3 no-underline">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-2 px-4 sm:px-6 md:px-16 py-3 md:py-5 max-[600px]:px-3 max-[600px]:py-2.5 bg-white/85 border-b border-slate-100 glass-nav">
+            <Link href="/" className="flex min-w-0 flex-none items-center gap-2 no-underline">
                 <Image
                     src="/Aymorix_logo2.png"
                     alt="Aymorix logo"
                     width={42}
                     height={42}
-                    className="w-9 h-9 sm:w-10 sm:h-10"
+                    className="w-8 h-8 sm:w-10 sm:h-10"
                     priority
                 />
-                <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink max-[600px]:hidden">
-                    Aymorix Technologies
-                </span>
-                <span className="hidden max-[600px]:inline font-display font-bold text-[18px] tracking-tight text-ink">
-                    Aymorix
+                <span className="min-w-0 flex flex-col md:flex-row md:items-center md:gap-1 font-display font-bold tracking-[-0.02em] text-ink text-[13px] sm:text-xl md:text-2xl leading-none max-[420px]:text-[12px]">
+                    <span className="block">Aymorix</span>
+                    <span className="block max-[600px]:mt-0.5 md:mt-0">Technologies</span>
                 </span>
             </Link>
 
-            <ul className="hidden md:flex items-center gap-12 lg:gap-14 list-none">
+            <ul className="hidden md:flex flex-1 items-center justify-center gap-12 lg:gap-14 list-none">
                 <li>
                     <Link href="#services" className="relative inline-block text-ink text-[16px] font-semibold tracking-[0.06em] transition-all duration-300 hover:text-brand hover:-translate-y-0.5 after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">
                         Services
@@ -89,8 +87,8 @@ export default function Navbar() {
                 </li>
             </ul>
 
-            <div className="flex items-center gap-2 sm:gap-3">
-                <Link href="#contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm">
+            <div className="flex flex-none items-center gap-2 sm:gap-3">
+                <Link href="#contact" className="hidden lg:inline-flex btn-primary text-xs sm:text-sm">
                     Contact Us <ArrowRight size={14} strokeWidth={2} />
                 </Link>
                 <button
@@ -120,8 +118,8 @@ export default function Navbar() {
                             <Link href="/products/allergy-detection-app" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Allergy Detection App</Link>
                             <Link href="/products/automated-land-boundary-detection" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Automated Land Boundary Detection</Link>
                         </div>
-                        <Link href="#contact" onClick={closeMenu} className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white">
-                            Contact Us <ArrowRight size={14} strokeWidth={2} />
+                        <Link href="#contact" onClick={closeMenu} className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-brand px-3 py-2 text-[12px] font-semibold text-white max-[600px]:px-2.5 max-[600px]:py-1.5 max-[600px]:text-[11px]">
+                            Contact Us <ArrowRight size={12} strokeWidth={2} />
                         </Link>
                     </div>
                 </div>
