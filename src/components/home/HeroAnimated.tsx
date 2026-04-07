@@ -12,138 +12,55 @@ type FeedItem = {
     action: string;
     chip: string;
     chipClass: string;
-    avatarClass: string;
 };
-
-const FEED_ROTATION: FeedItem[] = [
-    {
-        initials: 'NK',
-        name: 'Neha Kapoor',
-        action: 'Opened quote · Vortex',
-        chip: 'Proposal',
-        chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
-        avatarClass: 'from-[#f59e0b] to-[#d97706]',
-    },
-    {
-        initials: 'MR',
-        name: 'Mihail Radu',
-        action: 'Deal closed · NovaTech',
-        chip: 'Won!',
-        chipClass: 'bg-[#dcfce7] text-[#14532d]',
-        avatarClass: 'from-[#0f7a42] to-[#22c55e]',
-    },
-    {
-        initials: 'SW',
-        name: 'Sara Williams',
-        action: 'Booked demo · Axiom',
-        chip: 'Hot lead',
-        chipClass: 'bg-[#dcfce7] text-[#14532d]',
-        avatarClass: 'from-[#c2410c] to-[#f97316]',
-    },
-    {
-        initials: 'LP',
-        name: 'Lena Park',
-        action: 'Replied follow-up · Parallax',
-        chip: 'Negotiation',
-        chipClass: 'bg-[#fef3c7] text-[#78350f]',
-        avatarClass: 'from-brand to-[#5b30e8]',
-    },
-];
-
-const INITIAL_FEED: FeedItem[] = [
-    {
-        initials: 'RS',
-        name: 'Rahul Sharma',
-        action: 'Viewed proposal · Meridian Corp',
-        chip: 'Hot lead',
-        chipClass: 'bg-[#dcfce7] text-[#14532d]',
-        avatarClass: 'from-brand to-[#5b30e8]',
-    },
-    {
-        initials: 'PK',
-        name: 'Priya Kumar',
-        action: 'Replied to email · CloudCore',
-        chip: 'Proposal',
-        chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
-        avatarClass: 'from-[#0784a8] to-[#06b6d4]',
-    },
-];
-
-const ERP_HEALTH = [
-    { label: 'Finance', value: 92, color: 'from-[#f97316] to-[#c2410c]' },
-    { label: 'HR', value: 78, color: 'from-[#d946ef] to-[#9333ea]' },
-    { label: 'Supply Chain', value: 96, color: 'from-[#06b6d4] to-[#0284c7]' },
-];
 
 export default function HeroAnimated() {
     const [activeTab, setActiveTab] = useState<Tab>('crm');
-    const canvasRef = useRef<HTMLCanvasElement>(null);
     const [showToast, setShowToast] = useState(false);
-    const [feedRows, setFeedRows] = useState<FeedItem[]>(INITIAL_FEED);
-    const [pipelineVals, setPipelineVals] = useState([68, 44, 28, 18]);
-    const [kpi, setKpi] = useState({ revenueM: 2.4, leads: 184, dealsWon: 47, pipelineK: 840 });
     const [kpiTick, setKpiTick] = useState(0);
+    const [kpi, setKpi] = useState({ revenueM: 12.4, leads: 248, dealsWon: 36, pipelineK: 840 });
+    const [pipelineVals, setPipelineVals] = useState([68, 44, 28, 18]);
+    const [feedRows, setFeedRows] = useState<FeedItem[]>([
+        {
+            initials: 'RS',
+            name: 'Rahul Sharma',
+            action: 'Viewed proposal · Meridian Corp',
+            chip: 'Hot lead',
+            chipClass: 'bg-[#dcfce7] text-[#14532d]',
+        },
+        {
+            initials: 'NK',
+            name: 'Neha Kapoor',
+            action: 'Opened quote · Vortex',
+            chip: 'Proposal',
+            chipClass: 'bg-[#dbeafe] text-[#1e3a8a]',
+        },
+    ]);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    // Auto tab cycling to keep the hero continuously active.
+    const triggerToast = () => {
+        setShowToast(true);
+        window.setTimeout(() => setShowToast(false), 2200);
+    };
+
+    const ERP_HEALTH = [
+        { label: 'Orders', value: 96, color: 'from-[#5b30e8] to-[#7e5cf7]' },
+        { label: 'Inventory', value: 88, color: 'from-[#1847f0] to-[#4d7aff]' },
+        { label: 'Fulfillment', value: 91, color: 'from-[#0784a8] to-[#0ba7cc]' },
+    ];
+
+    // Keep tab auto-rotation consistent on desktop and mobile.
     useEffect(() => {
-        const tabTimer = setInterval(() => {
-            setActiveTab((prev) => (prev === 'crm' ? 'erp' : prev === 'erp' ? 'app' : 'crm'));
-        }, 7000);
+        const tabOrder: Tab[] = ['crm', 'erp', 'app'];
+        const rotateTimer = window.setInterval(() => {
+            setActiveTab((prev) => {
+                const currentIndex = tabOrder.indexOf(prev);
+                return tabOrder[(currentIndex + 1) % tabOrder.length];
+            });
+        }, 3000);
 
-        return () => clearInterval(tabTimer);
+        return () => window.clearInterval(rotateTimer);
     }, []);
-
-    // CRM live widgets: KPI tick, pipeline movement, activity feed, and toast cycle.
-    useEffect(() => {
-        if (activeTab !== 'crm') {
-            setShowToast(false);
-            return;
-        }
-
-        let feedIndex = 0;
-
-        const triggerToast = () => {
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 2600);
-        };
-
-        const kpiTimer = setInterval(() => {
-            setKpi((prev) => ({
-                revenueM: Math.max(1, prev.revenueM + (Math.random() * 0.04 - 0.005)),
-                leads: prev.leads + (Math.random() > 0.55 ? 1 : 0),
-                dealsWon: prev.dealsWon + (Math.random() > 0.82 ? 1 : 0),
-                pipelineK: Math.max(200, prev.pipelineK + Math.round(Math.random() * 9 - 2)),
-            }));
-            setKpiTick((prev) => prev + 1);
-        }, 3500);
-
-        const pipelineTimer = setInterval(() => {
-            setPipelineVals((prev) =>
-                prev.map((value) => {
-                    const next = value + (Math.random() * 2 - 0.9);
-                    return Math.max(5, Math.min(95, next));
-                })
-            );
-        }, 4000);
-
-        const feedTimer = setInterval(() => {
-            const nextItem = FEED_ROTATION[feedIndex % FEED_ROTATION.length];
-            feedIndex += 1;
-            setFeedRows((prev) => [nextItem, ...prev].slice(0, 2));
-            if (nextItem.chip === 'Won!') {
-                triggerToast();
-            }
-        }, 5000);
-
-        const firstToast = setTimeout(triggerToast, 2800);
-
-        return () => {
-            clearInterval(kpiTimer);
-            clearInterval(pipelineTimer);
-            clearInterval(feedTimer);
-            clearTimeout(firstToast);
-        };
-    }, [activeTab]);
 
     // CRM Live Sparkline Logic
     useEffect(() => {
@@ -224,6 +141,49 @@ export default function HeroAnimated() {
         return () => {
             cancelAnimationFrame(rafId);
             window.removeEventListener('resize', sizeCanvas);
+        };
+    }, [activeTab]);
+
+    useEffect(() => {
+        if (activeTab !== 'crm') return;
+
+        const kpiTimer = window.setInterval(() => {
+            setKpiTick((value) => value + 1);
+            setKpi((prev) => ({
+                revenueM: +(prev.revenueM + (Math.random() * 0.3 - 0.05)).toFixed(1),
+                leads: Math.max(0, Math.round(prev.leads + (Math.random() * 8 - 3))),
+                dealsWon: Math.max(0, Math.round(prev.dealsWon + (Math.random() * 2 - 0.4))),
+                pipelineK: Math.max(0, Math.round(prev.pipelineK + (Math.random() * 12 - 4))),
+            }));
+        }, 4000);
+
+        const pipelineTimer = window.setInterval(() => {
+            setPipelineVals((prev) => prev.map((value) => Math.max(5, Math.min(95, value + (Math.random() * 8 - 4)))));
+        }, 5000);
+
+        const feedTimer = window.setInterval(() => {
+            setFeedRows((prev) => {
+                const nextItem: FeedItem = {
+                    initials: 'AJ',
+                    name: 'Amir Jafari',
+                    action: 'Won contract · Meridian Corp',
+                    chip: 'Won!',
+                    chipClass: 'bg-[#dcfce7] text-[#14532d]',
+                };
+                if (nextItem.chip === 'Won!') {
+                    triggerToast();
+                }
+                return [nextItem, ...prev].slice(0, 2);
+            });
+        }, 6000);
+
+        const firstToast = window.setTimeout(triggerToast, 2800);
+
+        return () => {
+            window.clearInterval(kpiTimer);
+            window.clearInterval(pipelineTimer);
+            window.clearInterval(feedTimer);
+            window.clearTimeout(firstToast);
         };
     }, [activeTab]);
 
@@ -349,7 +309,7 @@ export default function HeroAnimated() {
                                 </div>
 
                                 {/* Tab Content */}
-                                <div className="p-4 relative min-h-132.5">
+                                <div className="relative min-h-132.5 overflow-x-hidden p-4 max-[600px]:min-h-0 max-[600px]:p-3">
                                     {activeTab === 'crm' && (
                                         <div key="crm-tab" className="animate-fadeIn">
                                             {/* Toast Notification */}
@@ -599,10 +559,10 @@ export default function HeroAnimated() {
 
                                     {activeTab === 'app' && (
                                         <div key="app-tab" className="animate-fadeIn">
-                                            <div className="flex gap-4">
+                                            <div className="flex flex-col gap-3 md:flex-row md:gap-4">
                                                 {/* Phone Mockup */}
-                                                <div className="w-41.5 shrink-0 animate-phoneIn opacity-0">
-                                                    <div className="animate-phoneFloat">
+                                                <div className="w-full shrink-0 animate-phoneIn opacity-0 md:w-41.5">
+                                                    <div className="mx-auto w-full max-w-[250px] animate-phoneFloat sm:max-w-[280px] md:max-w-none">
                                                         <div className="bg-[#0d1120] rounded-7 p-2.5 shadow-[0_20px_60px_rgba(8,13,28,0.22)]">
                                                             <div className="w-13 h-1.25 bg-[#1c2442] rounded-full mx-auto mb-2"></div>
                                                             <div className="bg-[#f7f8fb] rounded-5 overflow-hidden">
@@ -669,7 +629,7 @@ export default function HeroAnimated() {
                                                 </div>
 
                                                 {/* Feature Cards */}
-                                                <div className="flex-1 space-y-2.5">
+                                                <div className="w-full space-y-2.5 md:flex-1">
                                                     <div className="animate-notifDrop opacity-0 p-3.5 bg-linear-to-br from-brand to-brand-accent rounded-2xl text-white">
                                                         <div className="text-[9px] font-bold opacity-60 uppercase mb-1">Available on</div>
                                                         <div className="font-display font-bold text-[16px] mb-2 tracking-tight">iOS & Android</div>

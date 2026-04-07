@@ -1,8 +1,11 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ShieldCheck, Activity, ClipboardCheck } from 'lucide-react';
+
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { useState, useEffect } from 'react';
 
 const features = [
   {
@@ -23,6 +26,34 @@ const features = [
 ];
 
 export default function AllergyDetectionAppPage() {
+  // Mobile tap effect logic
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Remove active effect on scroll or outside tap (mobile UX)
+  useEffect(() => {
+    if (!isMobile || activeIdx === null) return;
+    const handle = () => setActiveIdx(null);
+    window.addEventListener('scroll', handle, { passive: true });
+    window.addEventListener('touchstart', handle);
+    return () => {
+      window.removeEventListener('scroll', handle);
+      window.removeEventListener('touchstart', handle);
+    };
+  }, [isMobile, activeIdx]);
+
+  // Card tap handler
+  const handleCardClick = (idx: number) => {
+    if (isMobile) setActiveIdx(idx === activeIdx ? null : idx);
+  };
+
   return (
     <main className="min-h-screen bg-white text-ink">
       <Navbar />
@@ -96,10 +127,22 @@ export default function AllergyDetectionAppPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {features.map((feature) => {
+            {features.map((feature, idx) => {
               const Icon = feature.icon;
+              // Mobile: tap to activate, Desktop: hover
+              const isActive = isMobile ? activeIdx === idx : false;
               return (
-                <article key={feature.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <article
+                  key={feature.title}
+                  className={
+                    `rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition ` +
+                    (isMobile
+                      ? (isActive ? ' -translate-y-1 shadow-lg ring-2 ring-blue-200' : '')
+                      : 'hover:-translate-y-1 hover:shadow-lg')
+                  }
+                  onClick={() => handleCardClick(idx)}
+                  style={{ touchAction: 'manipulation', cursor: isMobile ? 'pointer' : 'default' }}
+                >
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-brand">
                     <Icon size={20} />
                   </div>
