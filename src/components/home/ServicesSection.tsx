@@ -67,7 +67,7 @@ const pillars = [
         title: "Enterprise Workflow Automation",
         description: "Eliminate manual data entry and human error. We build complex n8n and API workflows that connect your CRM, email, and internal databases.",
         tech: ["n8n", "Zapier", "REST APIs"],
-        image: "/database architecture.jpg",
+        image: "/database architecture2.jpg",
         imageAlt: "Enterprise workflow automation service",
       },
       {
@@ -148,7 +148,7 @@ const pillars = [
         title: "Custom Dashboards & Business Intelligence",
         description: "We build custom admin panels and interactive data visualization dashboards so leadership can track KPIs, user behavior, and revenue in real-time.",
         tech: ["D3.js", "Recharts", "WebSockets"],
-        image: "/BI.jpg",
+        image: "/BI2.jpg",
         imageAlt: "Business intelligence dashboard service",
       },
     ],

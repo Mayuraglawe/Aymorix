@@ -19,6 +19,7 @@ export default function HeroAnimated() {
     const [activeTab, setActiveTab] = useState<Tab>('crm');
     const [showToast, setShowToast] = useState(false);
     const [kpiTick, setKpiTick] = useState(0);
+    const [mobileFlowStep, setMobileFlowStep] = useState(0);
     const [kpi, setKpi] = useState({ revenueM: 12.4, leads: 248, dealsWon: 36, pipelineK: 840 });
     const [pipelineVals, setPipelineVals] = useState([68, 44, 28, 18]);
     const [feedRows, setFeedRows] = useState<FeedItem[]>([
@@ -148,6 +149,16 @@ export default function HeroAnimated() {
     }, [activeTab]);
 
     useEffect(() => {
+        if (activeTab !== 'erp') return;
+
+        const stepTimer = window.setInterval(() => {
+            setMobileFlowStep((prev) => (prev + 1) % 4);
+        }, 1500);
+
+        return () => window.clearInterval(stepTimer);
+    }, [activeTab]);
+
+    useEffect(() => {
         if (activeTab !== 'crm') return;
 
         const kpiTimer = window.setInterval(() => {
@@ -235,7 +246,7 @@ export default function HeroAnimated() {
     			</Link>
     		</div>
 
-                    {/* 4 Pillars stats section restored */}
+                    {/* 4 Pillars stats section restored
                     <div className="mt-8 max-[600px]:mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 max-[600px]:gap-3 text-center">
                         <div>
                             <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">50+</div>
@@ -253,7 +264,7 @@ export default function HeroAnimated() {
                             <div className="text-3xl max-[600px]:text-2xl font-bold text-primary">10+</div>
                             <div className="text-xs text-gray-500">Countries Reached</div>
                         </div>
-                    </div>
+                    </div> */}
 
                         <div className="mt-4 max-[600px]:mt-5 animate-fadeUp opacity-0 flex flex-wrap gap-2" style={{ animationDelay: '660ms' }}>
                             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] text-brand">
@@ -468,53 +479,140 @@ export default function HeroAnimated() {
                                                 ))}
                                             </div>
 
-                                            {/* Process Flow SVG */}
+                                            {/* Process Flow */}
                                             <div className="mc mb-3">
                                                 <div className="text-[11px] font-bold text-ink mb-3">Business Process Flow</div>
-                                                <div className="overflow-x-auto pb-1">
-                                                    <div className="relative h-43 min-w-[520px]">
+
+                                                {/* Mobile: vertical timeline (no horizontal scrolling) */}
+                                                <div className="sm:hidden">
+                                                    <div className="relative rounded-2xl border border-[#e6ebf5] bg-[#fbfcff] p-3">
+                                                        <div className="absolute left-5 top-6 bottom-6 w-px bg-[#dce3ef]"></div>
+                                                        {[
+                                                            {
+                                                                label: 'Procurement',
+                                                                icon: Briefcase,
+                                                                tone: 'bg-[#f2efff] border-[#cec3fa] text-brand-accent',
+                                                                delay: '0ms',
+                                                            },
+                                                            {
+                                                                label: 'Inventory',
+                                                                icon: Package,
+                                                                tone: 'bg-[#eef1fd] border-[#c3ccf8] text-brand',
+                                                                delay: '120ms',
+                                                            },
+                                                            {
+                                                                label: 'Production',
+                                                                icon: Sun,
+                                                                tone: 'bg-[#ecfcff] border-[#a0ecf8] text-[#0784a8]',
+                                                                delay: '240ms',
+                                                            },
+                                                            {
+                                                                label: 'Dispatch',
+                                                                icon: Truck,
+                                                                tone: 'bg-[#f0fdf5] border-[#a7f0c4] text-[#0f7a42]',
+                                                                delay: '360ms',
+                                                            },
+                                                        ].map((node, i) => {
+                                                            const NodeIcon = node.icon;
+                                                            const isDone = i < mobileFlowStep;
+                                                            const isActive = i === mobileFlowStep;
+                                                            return (
+                                                                <div key={node.label} className="relative animate-nodeIn opacity-0" style={{ animationDelay: node.delay }}>
+                                                                    <div className={`absolute left-2 top-4 h-3 w-3 rounded-full border-2 border-white shadow-[0_0_0_1px_#cbd5e1] ${isDone ? 'bg-[#16a34a]' : isActive ? 'bg-brand animate-pulse' : 'bg-[#cbd5e1]'}`}></div>
+                                                                    <div className={`ml-8 rounded-xl border px-3 py-2 transition-all duration-500 ${node.tone} ${isActive ? 'ring-2 ring-brand/30 shadow-[0_8px_20px_rgba(24,71,240,0.12)]' : ''}`}>
+                                                                        <div className="flex items-center gap-2 justify-between">
+                                                                            <div className="flex items-center gap-2">
+                                                                                <NodeIcon size={13} />
+                                                                                <span className="text-[10px] font-bold">{node.label}</span>
+                                                                            </div>
+                                                                            <span className={`text-[9px] font-bold ${isDone ? 'text-[#0f7a42]' : isActive ? 'text-brand' : 'text-soft'}`}>
+                                                                                {isDone ? 'Done' : isActive ? 'Running' : 'Queued'}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    {i < 3 && (
+                                                                        <div className="ml-8 my-1">
+                                                                            <div className="h-1 rounded-full bg-[#e7ecf7] overflow-hidden">
+                                                                                <div
+                                                                                    className={`h-full rounded-full bg-linear-to-r from-brand to-brand-accent transition-all duration-700 ${i < mobileFlowStep ? 'w-full' : i === mobileFlowStep ? 'w-1/2 animate-pulse' : 'w-0'}`}
+                                                                                ></div>
+                                                                            </div>
+                                                                            <div className="mt-1 text-[9px] font-bold text-soft">
+                                                                                {i < mobileFlowStep ? 'Hand-off complete' : i === mobileFlowStep ? 'Transferring to next phase...' : 'Awaiting previous phase'}
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                    {isDone && (
+                                                                        <div className="absolute right-2.5 top-2.5 text-[#0f7a42]">
+                                                                            <Check size={10} strokeWidth={3} />
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            );
+                                                        })}
+
+                                                        <div className="mt-2 grid grid-cols-2 gap-2 pl-8">
+                                                            <div className="rounded-xl border border-[#fed7aa] bg-[#fff7ed] px-2.5 py-2 text-[#c2410c] animate-nodeIn opacity-0" style={{ animationDelay: '520ms' }}>
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <Wallet size={11} />
+                                                                    <span className="text-[9px] font-bold">Finance</span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="rounded-xl border border-[#f0abfc] bg-[#fdf4ff] px-2.5 py-2 text-[#a21caf] animate-nodeIn opacity-0" style={{ animationDelay: '620ms' }}>
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <UserRound size={11} />
+                                                                    <span className="text-[9px] font-bold">HR</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Desktop/Tablet: existing graph layout */}
+                                                <div className="hidden sm:block pb-1">
+                                                    <div className="relative mx-auto h-43 w-full max-w-[520px]">
                                                     <svg width="100%" height="172" viewBox="0 0 520 172" className="overflow-visible">
                                                         {/* Edges */}
                                                         <line x1="88" y1="44" x2="152" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '300ms' }} />
                                                         <line x1="242" y1="44" x2="308" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '500ms' }} />
-                                                        <line x1="398" y1="44" x2="456" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '700ms' }} />
-                                                        <line x1="197" y1="70" x2="197" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '600ms' }} />
-                                                        <line x1="353" y1="70" x2="353" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '800ms' }} />
+                                                        <line x1="398" y1="44" x2="438" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '700ms' }} />
+                                                        <line x1="197" y1="68" x2="197" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '600ms' }} />
+                                                        <line x1="353" y1="68" x2="353" y2="106" stroke="#dce3ef" strokeWidth="1.5" className="animate-edgeDraw opacity-0" style={{ animationDelay: '800ms' }} />
                                                         {/* Packets */}
                                                         <circle r="4" fill="#1847f0" className="animate-flowDot" style={{ offsetPath: `path('M88,44 L242,44')` }} />
                                                         <circle r="4" fill="#0784a8" className="animate-flowDot [animation-delay:0.6s]" style={{ offsetPath: `path('M242,44 L398,44')` }} />
-                                                        <circle r="4" fill="#16a34a" className="animate-flowDot [animation-delay:1.2s]" style={{ offsetPath: `path('M398,44 L456,44')` }} />
-                                                        <circle r="4" fill="#5b30e8" className="animate-flowDot [animation-delay:1.8s]" style={{ offsetPath: `path('M197,70 L197,106')` }} />
-                                                        <circle r="4" fill="#0784a8" className="animate-flowDot [animation-delay:2.2s]" style={{ offsetPath: `path('M353,70 L353,106')` }} />
+                                                        <circle r="4" fill="#16a34a" className="animate-flowDot [animation-delay:1.2s]" style={{ offsetPath: `path('M398,44 L438,44')` }} />
+                                                        <circle r="4" fill="#5b30e8" className="animate-flowDot [animation-delay:1.8s]" style={{ offsetPath: `path('M197,68 L197,106')` }} />
+                                                        <circle r="4" fill="#0784a8" className="animate-flowDot [animation-delay:2.2s]" style={{ offsetPath: `path('M353,68 L353,106')` }} />
                                                     </svg>
 
                                                     <div className="pointer-events-none absolute inset-0">
-                                                        <div className="absolute left-3 top-5 w-19 h-12 rounded-2.5 bg-[#f2efff] border border-[#cec3fa] text-brand-accent flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0">
+                                                        <div className="absolute top-5 h-12 rounded-2.5 bg-[#f2efff] border border-[#cec3fa] text-brand-accent flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '2.3077%', width: '14.6154%' }}>
                                                             <Briefcase size={13} />
                                                             <span className="text-[8.5px] font-bold">Procurement</span>
                                                         </div>
 
-                                                        <div className="absolute left-38 top-5 w-22.5 h-12 rounded-2.5 bg-[#eef1fd] border border-[#c3ccf8] text-brand flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '200ms' }}>
+                                                        <div className="absolute top-5 h-12 rounded-2.5 bg-[#eef1fd] border border-[#c3ccf8] text-brand flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '29.2308%', width: '17.3077%', animationDelay: '200ms' }}>
                                                             <Package size={13} />
                                                             <span className="text-[8.5px] font-bold">Inventory</span>
                                                         </div>
 
-                                                        <div className="absolute left-77 top-5 w-22.5 h-12 rounded-2.5 bg-[#ecfcff] border border-[#a0ecf8] text-[#0784a8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '400ms' }}>
+                                                        <div className="absolute top-5 h-12 rounded-2.5 bg-[#ecfcff] border border-[#a0ecf8] text-[#0784a8] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '59.2308%', width: '17.3077%', animationDelay: '400ms' }}>
                                                             <Sun size={13} />
                                                             <span className="text-[8.5px] font-bold">Production</span>
                                                         </div>
 
-                                                        <div className="absolute left-114 top-5 w-14 h-12 rounded-2.5 bg-[#f0fdf5] border border-[#a7f0c4] text-[#0f7a42] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '600ms' }}>
+                                                        <div className="absolute top-5 h-12 rounded-2.5 bg-[#f0fdf5] border border-[#a7f0c4] text-[#0f7a42] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '84.2308%', width: '10.7692%', animationDelay: '600ms' }}>
                                                             <Truck size={13} />
                                                             <span className="text-[8.5px] font-bold">Dispatch</span>
                                                         </div>
 
-                                                        <div className="absolute left-39.25 top-26.5 w-20 h-10.5 rounded-2.5 bg-[#fff7ed] border border-[#fed7aa] text-[#c2410c] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '700ms' }}>
+                                                        <div className="absolute top-26.5 h-10.5 rounded-2.5 bg-[#fff7ed] border border-[#fed7aa] text-[#c2410c] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '30.1923%', width: '15.3846%', animationDelay: '700ms' }}>
                                                             <Wallet size={12} />
                                                             <span className="text-[8.5px] font-bold">Finance</span>
                                                         </div>
 
-                                                        <div className="absolute left-77 top-26.5 w-22.5 h-10.5 rounded-2.5 bg-[#fdf4ff] border border-[#f0abfc] text-[#a21caf] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ animationDelay: '820ms' }}>
+                                                        <div className="absolute top-26.5 h-10.5 rounded-2.5 bg-[#fdf4ff] border border-[#f0abfc] text-[#a21caf] flex flex-col items-center justify-center gap-1 animate-nodeIn opacity-0" style={{ left: '59.2308%', width: '17.3077%', animationDelay: '820ms' }}>
                                                             <UserRound size={12} />
                                                             <span className="text-[8.5px] font-bold">HR</span>
                                                         </div>
