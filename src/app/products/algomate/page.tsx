@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Brain, CalendarCheck2, CheckCircle2, Cpu, GraduationCap, Workflow } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -30,6 +33,25 @@ const capabilityCards = [
 ];
 
 export default function AlgomatePage() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeCapability, setActiveCapability] = useState<number | null>(null);
+  const [aboutActive, setAboutActive] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const updateMode = () => {
+      setIsMobile(mediaQuery.matches);
+      if (!mediaQuery.matches) {
+        setActiveCapability(null);
+        setAboutActive(false);
+      }
+    };
+
+    updateMode();
+    mediaQuery.addEventListener('change', updateMode);
+    return () => mediaQuery.removeEventListener('change', updateMode);
+  }, []);
+
   return (
     <main className="min-h-screen bg-white text-ink">
       <Navbar />
@@ -61,24 +83,24 @@ export default function AlgomatePage() {
                 </Link>
               </div>
 
-              <div className="mt-8 flex max-w-xl flex-wrap gap-3">
-                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg">
-                  <div className="font-display text-[22px] font-bold tracking-tight text-ink">SIH 2025</div>
-                  <div className="mt-1 text-[11.5px] font-medium text-soft">Winners</div>
+              <div className="mt-8 flex max-w-xl flex-wrap gap-3 max-[600px]:max-w-[340px] max-[600px]:gap-2">
+                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg max-[600px]:min-w-[140px] max-[600px]:rounded-lg max-[600px]:px-3 max-[600px]:py-2.5">
+                  <div className="font-display text-[22px] font-bold tracking-tight text-ink max-[600px]:text-[18px]">SIH 2025</div>
+                  <div className="mt-1 text-[11.5px] font-medium text-soft max-[600px]:text-[10px]">Winners</div>
                 </div>
-                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg">
-                  <div className="font-display text-[22px] font-bold tracking-tight text-ink">Hybrid AI</div>
-                  <div className="mt-1 text-[11.5px] font-medium text-soft">Driven Engine</div>
+                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg max-[600px]:min-w-[140px] max-[600px]:rounded-lg max-[600px]:px-3 max-[600px]:py-2.5">
+                  <div className="font-display text-[22px] font-bold tracking-tight text-ink max-[600px]:text-[18px]">Hybrid AI</div>
+                  <div className="mt-1 text-[11.5px] font-medium text-soft max-[600px]:text-[10px]">Driven Engine</div>
                 </div>
-                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg">
-                  <div className="font-display text-[22px] font-bold tracking-tight text-ink">NEP 2020</div>
-                  <div className="mt-1 text-[11.5px] font-medium text-soft">Compliant</div>
+                <div className="cursor-default rounded-xl border-[1.5px] border-slate-200 bg-white px-4 py-3 transition-all hover:-translate-y-[2px] hover:border-brand-accent/40 hover:shadow-lg max-[600px]:min-w-[140px] max-[600px]:rounded-lg max-[600px]:px-3 max-[600px]:py-2.5">
+                  <div className="font-display text-[22px] font-bold tracking-tight text-ink max-[600px]:text-[18px]">NEP 2020</div>
+                  <div className="mt-1 text-[11.5px] font-medium text-soft max-[600px]:text-[10px]">Compliant</div>
                 </div>
               </div>
             </div>
 
             <div className="relative rounded-3xl border border-blue-100 bg-[linear-gradient(165deg,#eaf5ff_0%,#dff0ff_45%,#f7fbff_100%)] p-4 shadow-2xl shadow-blue-100/80 md:p-5">
-              <div className="relative h-[360px] overflow-hidden rounded-2xl border border-blue-100 bg-white md:h-[480px]">
+              <div className="relative h-[430px] overflow-hidden rounded-2xl border border-blue-100 bg-white sm:h-[380px] md:h-[480px]">
                 <div className="absolute left-0 right-0 top-0 flex items-center justify-between border-b border-blue-100 bg-gradient-to-r from-[#2d79be] to-[#4f8ccf] px-4 py-3 text-white md:px-5">
                   <div className="text-sm font-semibold md:text-base">Timetable Scheduler - AI powered</div>
                   <div className="rounded-full bg-emerald-400 px-3 py-1 text-[11px] font-bold text-emerald-950">No Conflicts</div>
@@ -92,8 +114,8 @@ export default function AlgomatePage() {
                   ))}
                 </div>
 
-                <div className="absolute left-3 right-3 top-[108px] bottom-3 grid grid-cols-[56px_1fr] gap-2 md:left-4 md:right-4 md:grid-cols-[66px_1fr]">
-                  <div className="space-y-4 pt-2 text-[11px] font-semibold text-slate-400 md:space-y-6 md:text-xs">
+                <div className="absolute left-3 right-3 top-[108px] bottom-14 grid grid-cols-[50px_1fr] gap-2 sm:bottom-3 sm:grid-cols-[56px_1fr] md:left-4 md:right-4 md:grid-cols-[66px_1fr]">
+                  <div className="space-y-4 pt-2 text-[10px] font-semibold text-slate-400 sm:text-[11px] md:space-y-6 md:text-xs">
                     <p>9-10</p>
                     <p>10-11</p>
                     <p>11-12</p>
@@ -101,64 +123,64 @@ export default function AlgomatePage() {
                   </div>
 
                   <div className="relative rounded-xl border border-blue-100 bg-[linear-gradient(180deg,#f8fbff_0%,#f3f9ff_100%)]">
-                    <div className="absolute left-[3%] top-[8%] w-[18%] rounded-xl bg-[#5a8fc8] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Math</p>
-                      <p className="text-[10px] text-blue-100">Dr. Sharma</p>
+                    <div className="absolute left-[3%] top-[8%] w-[18%] rounded-xl bg-[#5a8fc8] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Math</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Sharma</p>
                     </div>
-                    <div className="absolute left-[25%] top-[8%] w-[18%] rounded-xl bg-[#6eaecf] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Physics</p>
-                      <p className="text-[10px] text-blue-100">Dr. Rao</p>
+                    <div className="absolute left-[25%] top-[8%] w-[18%] rounded-xl bg-[#6eaecf] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Physics</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Rao</p>
                     </div>
-                    <div className="absolute left-[58%] top-[8%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">CS Lab</p>
-                      <p className="text-[10px] text-blue-100">Prof. Singh</p>
+                    <div className="absolute left-[58%] top-[8%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">CS Lab</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Prof. Singh</p>
                     </div>
-                    <div className="absolute left-[83%] top-[8%] w-[14%] rounded-xl bg-[#4d78b4] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">English</p>
-                      <p className="text-[10px] text-blue-100">Ms. Patel</p>
-                    </div>
-
-                    <div className="absolute left-[20%] top-[35%] w-[18%] rounded-xl bg-[#5f89bc] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Data Str.</p>
-                      <p className="text-[10px] text-blue-100">Dr. Mehta</p>
-                    </div>
-                    <div className="absolute left-[41%] top-[35%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Networks</p>
-                      <p className="text-[10px] text-blue-100">Prof. Ali</p>
-                    </div>
-                    <div className="absolute left-[74%] top-[35%] w-[18%] rounded-xl bg-[#79b7c2] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Algebra</p>
-                      <p className="text-[10px] text-blue-100">Dr. Kumar</p>
+                    <div className="absolute left-[83%] top-[8%] w-[14%] rounded-xl bg-[#4d78b4] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">English</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Ms. Patel</p>
                     </div>
 
-                    <div className="absolute left-[3%] top-[61%] w-[16%] rounded-xl bg-[#6eaecf] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">OS Lab</p>
-                      <p className="text-[10px] text-blue-100">Dr. Sharma</p>
+                    <div className="absolute left-[20%] top-[35%] w-[18%] rounded-xl bg-[#5f89bc] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Data Str.</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Mehta</p>
                     </div>
-                    <div className="absolute left-[58%] top-[61%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">DBMS</p>
-                      <p className="text-[10px] text-blue-100">Prof. Das</p>
+                    <div className="absolute left-[41%] top-[35%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Networks</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Prof. Ali</p>
                     </div>
-                    <div className="absolute left-[83%] top-[61%] w-[14%] rounded-xl bg-[#6f9fb8] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">Stats</p>
-                      <p className="text-[10px] text-blue-100">Dr. Rao</p>
+                    <div className="absolute left-[74%] top-[35%] w-[18%] rounded-xl bg-[#79b7c2] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Algebra</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Kumar</p>
                     </div>
 
-                    <div className="absolute left-[41%] top-[84%] w-[18%] rounded-xl bg-[#5d87bb] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">SE</p>
-                      <p className="text-[10px] text-blue-100">Prof. Singh</p>
+                    <div className="absolute left-[3%] top-[61%] w-[16%] rounded-xl bg-[#6eaecf] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">OS Lab</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Sharma</p>
                     </div>
-                    <div className="absolute left-[74%] top-[84%] w-[16%] rounded-xl bg-[#79b7c2] px-2 py-2 text-white shadow-sm">
-                      <p className="text-[11px] font-bold">AI/ML</p>
-                      <p className="text-[10px] text-blue-100">Dr. Mehta</p>
+                    <div className="absolute left-[58%] top-[61%] w-[18%] rounded-xl bg-[#5f9bbc] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">DBMS</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Prof. Das</p>
+                    </div>
+                    <div className="absolute left-[83%] top-[61%] w-[14%] rounded-xl bg-[#6f9fb8] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">Stats</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Rao</p>
+                    </div>
+
+                    <div className="absolute left-[41%] top-[84%] w-[18%] rounded-xl bg-[#5d87bb] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">SE</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Prof. Singh</p>
+                    </div>
+                    <div className="absolute left-[74%] top-[84%] w-[16%] rounded-xl bg-[#79b7c2] px-2 py-2 text-white shadow-sm max-[600px]:rounded-lg max-[600px]:px-1 max-[600px]:py-1">
+                      <p className="text-[11px] font-bold leading-tight max-[600px]:text-[10px]">AI/ML</p>
+                      <p className="text-[10px] text-blue-100 max-[600px]:hidden">Dr. Mehta</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-4 left-4 rounded-2xl bg-[#3f87ab] px-3 py-2 text-white shadow-lg">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide">AI Ready</p>
+                <div className="absolute bottom-3 left-3 rounded-2xl bg-[#3f87ab] px-2.5 py-1.5 text-white shadow-lg sm:bottom-4 sm:left-4 sm:px-3 sm:py-2">
+                  <p className="text-[9px] font-semibold uppercase tracking-wide sm:text-[10px]">AI Ready</p>
                 </div>
-                <div className="absolute bottom-4 right-4 rounded-full bg-[#265fa7] px-4 py-2 text-xs font-bold text-white shadow-lg">
+                <div className="absolute bottom-3 right-3 rounded-full bg-[#265fa7] px-3 py-1.5 text-[11px] font-bold text-white shadow-lg sm:bottom-4 sm:right-4 sm:px-4 sm:py-2 sm:text-xs">
                   NEP 2020
                 </div>
               </div>
@@ -182,14 +204,20 @@ export default function AlgomatePage() {
       <section className="pb-20 md:pb-24">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-16">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {capabilityCards.map((card) => {
+            {capabilityCards.map((card, idx) => {
               const Icon = card.icon;
+              const isActive = isMobile && activeCapability === idx;
               return (
                 <article
                   key={card.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition ${isActive ? '-translate-y-1 shadow-lg' : 'shadow-sm hover:-translate-y-1 hover:shadow-lg'}`}
+                  onClick={() => {
+                    if (isMobile) {
+                      setActiveCapability((prev) => (prev === idx ? null : idx));
+                    }
+                  }}
                 >
-                  <div className="pointer-events-none absolute inset-0 z-0 translate-y-[-100%] opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className={`pointer-events-none absolute inset-0 z-0 transition-all duration-500 ease-out ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-[-100%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100'}`}>
                     <Image
                       src={card.image}
                       alt={`${card.title} preview`}
@@ -200,13 +228,13 @@ export default function AlgomatePage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#072a57]/75 via-[#0f4b86]/65 to-[#0c698f]/70" />
                   </div>
 
-                  <div className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-brand transition-colors group-hover:bg-white/20 group-hover:text-white">
+                  <div className={`relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-blue-50 text-brand group-hover:bg-white/20 group-hover:text-white'}`}>
                     <Icon size={20} />
                   </div>
-                  <h2 className="relative z-10 mt-4 font-display text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-white">
+                  <h2 className={`relative z-10 mt-4 font-display text-2xl font-bold tracking-tight transition-colors ${isActive ? 'text-white' : 'text-ink group-hover:text-white'}`}>
                     {card.title}
                   </h2>
-                  <p className="relative z-10 mt-3 text-sm leading-relaxed text-mid transition-colors group-hover:text-blue-100">
+                  <p className={`relative z-10 mt-3 text-sm leading-relaxed transition-colors ${isActive ? 'text-blue-100' : 'text-mid group-hover:text-blue-100'}`}>
                     {card.description}
                   </p>
                 </article>
@@ -256,19 +284,26 @@ export default function AlgomatePage() {
           </div>
 
           <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(160deg,#ffffff_0%,#f3f9ff_100%)] p-7 shadow-sm md:p-10">
-            <article className="group relative mb-7 overflow-hidden rounded-2xl border border-blue-200 bg-white shadow-sm md:mb-8">
+            <article
+              className={`group relative mb-7 overflow-hidden rounded-2xl border border-blue-200 bg-white md:mb-8 ${aboutActive ? 'shadow-lg' : 'shadow-sm'}`}
+              onClick={() => {
+                if (isMobile) {
+                  setAboutActive((prev) => !prev);
+                }
+              }}
+            >
               <div className="relative h-48 w-full md:h-64">
                 <Image
                   src="/screen.png"
                   alt="Algomate dashboard preview"
                   fill
                   sizes="(max-width: 1024px) 100vw, 80vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`object-cover transition-transform duration-500 ${aboutActive ? 'scale-105' : 'group-hover:scale-105'}`}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06224b]/88 via-[#0f3b75]/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className={`absolute inset-0 bg-gradient-to-t from-[#06224b]/88 via-[#0f3b75]/45 to-transparent transition-opacity duration-300 ${aboutActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
 
-                <div className="absolute inset-x-4 bottom-4 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className={`absolute inset-x-4 bottom-4 transition-all duration-300 ${aboutActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100'}`}>
                   <p className="text-[10px] font-semibold uppercase tracking-wide text-blue-100">Hover Insight</p>
                   <p className="mt-1 text-sm font-bold text-white md:text-base">Algomate Mission in Action</p>
                   <p className="mt-1 text-xs text-blue-100 md:text-sm">AI-driven scheduling that frees educators from manual planning and keeps classrooms running smarter.</p>

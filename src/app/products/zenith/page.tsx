@@ -73,6 +73,9 @@ const clubs = [
 
 export default function ZenithPage() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeCoreCard, setActiveCoreCard] = useState<number | null>(null);
+  const [activeClubCard, setActiveClubCard] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -80,6 +83,21 @@ export default function ZenithPage() {
     }, 3000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const updateMode = () => {
+      setIsMobile(mediaQuery.matches);
+      if (!mediaQuery.matches) {
+        setActiveCoreCard(null);
+        setActiveClubCard(null);
+      }
+    };
+
+    updateMode();
+    mediaQuery.addEventListener('change', updateMode);
+    return () => mediaQuery.removeEventListener('change', updateMode);
   }, []);
 
   return (
@@ -202,11 +220,20 @@ export default function ZenithPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {corePillars.map((card) => {
+            {corePillars.map((card, idx) => {
               const Icon = card.icon;
+              const isActive = isMobile && activeCoreCard === idx;
               return (
-                <article key={card.title} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                  <div className="pointer-events-none absolute inset-0 z-0 translate-y-[-100%] opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                <article
+                  key={card.title}
+                  className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition ${isActive ? '-translate-y-1 shadow-lg' : 'shadow-sm hover:-translate-y-1 hover:shadow-lg'}`}
+                  onClick={() => {
+                    if (isMobile) {
+                      setActiveCoreCard((prev) => (prev === idx ? null : idx));
+                    }
+                  }}
+                >
+                  <div className={`pointer-events-none absolute inset-0 z-0 transition-all duration-500 ease-out ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-[-100%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100'}`}>
                     <Image
                       src="/zenith_logo.png"
                       alt="Zenith logo feature preview"
@@ -217,11 +244,11 @@ export default function ZenithPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#072a57]/75 via-[#0f4b86]/65 to-[#0c698f]/70" />
                   </div>
 
-                  <div className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-brand transition-colors group-hover:bg-white/20 group-hover:text-white">
+                  <div className={`relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-blue-50 text-brand group-hover:bg-white/20 group-hover:text-white'}`}>
                     <Icon size={20} />
                   </div>
-                  <h2 className="relative z-10 mt-4 font-display text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-white">{card.title}</h2>
-                  <p className="relative z-10 mt-3 text-sm leading-relaxed text-mid transition-colors group-hover:text-blue-100">{card.description}</p>
+                  <h2 className={`relative z-10 mt-4 font-display text-2xl font-bold tracking-tight transition-colors ${isActive ? 'text-white' : 'text-ink group-hover:text-white'}`}>{card.title}</h2>
+                  <p className={`relative z-10 mt-3 text-sm leading-relaxed transition-colors ${isActive ? 'text-blue-100' : 'text-mid group-hover:text-blue-100'}`}>{card.description}</p>
                 </article>
               );
             })}
@@ -248,9 +275,19 @@ export default function ZenithPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {clubs.map((club) => (
-              <article key={club.name} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                <div className="pointer-events-none absolute inset-0 z-0 translate-y-[-100%] opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+            {clubs.map((club, idx) => {
+              const isActive = isMobile && activeClubCard === idx;
+              return (
+              <article
+                key={club.name}
+                className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition ${isActive ? '-translate-y-1 shadow-lg' : 'shadow-sm hover:-translate-y-1 hover:shadow-lg'}`}
+                onClick={() => {
+                  if (isMobile) {
+                    setActiveClubCard((prev) => (prev === idx ? null : idx));
+                  }
+                }}
+              >
+                <div className={`pointer-events-none absolute inset-0 z-0 transition-all duration-500 ease-out ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-[-100%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100'}`}>
                   <Image
                     src={club.image}
                     alt={`${club.name} club preview`}
@@ -262,7 +299,7 @@ export default function ZenithPage() {
                 </div>
 
                 <div className="relative z-10 flex items-start gap-3">
-                  <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 transition-colors group-hover:border-white/30 group-hover:bg-white/20">
+                  <div className={`relative h-11 w-11 overflow-hidden rounded-xl border transition-colors ${isActive ? 'border-white/30 bg-white/20' : 'border-slate-200 bg-slate-50 group-hover:border-white/30 group-hover:bg-white/20'}`}>
                     <Image
                       src={club.image}
                       alt={`${club.name} logo`}
@@ -272,15 +309,15 @@ export default function ZenithPage() {
                     />
                   </div>
                   <div>
-                    <p className={`text-xs font-bold uppercase tracking-[0.15em] transition-colors group-hover:text-white ${club.tone}`}>{club.name}</p>
-                    <h3 className="mt-1 font-display text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-white">{club.focus}</h3>
+                    <p className={`text-xs font-bold uppercase tracking-[0.15em] transition-colors ${isActive ? 'text-white' : `group-hover:text-white ${club.tone}`}`}>{club.name}</p>
+                    <h3 className={`mt-1 font-display text-xl font-bold tracking-tight transition-colors ${isActive ? 'text-white' : 'text-ink group-hover:text-white'}`}>{club.focus}</h3>
                   </div>
                 </div>
 
-                <p className="relative z-10 mt-5 text-sm leading-relaxed text-mid transition-colors group-hover:text-blue-100">{club.desc}</p>
-                <p className="relative z-10 mt-4 text-sm font-semibold text-brand transition-colors group-hover:text-white">Learn More</p>
+                <p className={`relative z-10 mt-5 text-sm leading-relaxed transition-colors ${isActive ? 'text-blue-100' : 'text-mid group-hover:text-blue-100'}`}>{club.desc}</p>
+                <p className={`relative z-10 mt-4 text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-brand group-hover:text-white'}`}>Learn More</p>
               </article>
-            ))}
+            )})}
           </div>
         </div>
       </section>

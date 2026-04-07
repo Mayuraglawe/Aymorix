@@ -8,6 +8,11 @@ export function middleware(request: NextRequest) {
   const hostname = nextUrl.hostname;
   const pathname = nextUrl.pathname;
 
+  // Never enforce canonical redirects outside production.
+  if (process.env.NODE_ENV !== 'production') {
+    return NextResponse.next();
+  }
+
   // Skip local development and preview hosts.
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
     return NextResponse.next();

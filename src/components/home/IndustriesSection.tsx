@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { industries } from "./industriesData";
 const industrySvgs = [
   // Healthcare
@@ -16,6 +17,23 @@ const industrySvgs = [
 ];
 
 export default function IndustriesSection() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateMode = () => {
+      setIsMobile(mediaQuery.matches);
+      if (!mediaQuery.matches) {
+        setActiveCard(null);
+      }
+    };
+
+    updateMode();
+    mediaQuery.addEventListener("change", updateMode);
+    return () => mediaQuery.removeEventListener("change", updateMode);
+  }, []);
+
   return (
     <section id="industry" className="py-16 md:py-24 bg-[#F8FAFC]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 text-center">
@@ -27,28 +45,38 @@ export default function IndustriesSection() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {industries.map((industry, idx) => (
+            (() => {
+              const isActive = isMobile && activeCard === idx;
+              return (
             <div
               key={industry.name}
               className="relative group bg-white rounded-xl md:rounded-2xl shadow p-6 md:p-8 flex flex-col items-center overflow-hidden cursor-pointer transition-all duration-200"
               style={{ minHeight: '240px' }}
+              onClick={() => {
+                if (isMobile) {
+                  setActiveCard((prev) => (prev === idx ? null : idx));
+                }
+              }}
             >
               {/* Blue gradient overlay only on hover, no image */}
               <div className="absolute inset-0 z-10 rounded-xl md:rounded-2xl overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-b from-white/80 via-blue-400/90 to-blue-700/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className={`absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-b from-white/80 via-blue-400/90 to-blue-700/80 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </div>
               {/* SVG Icon with colored circle */}
               <span className="mb-3 md:mb-4 z-20 relative transition-colors duration-300 flex items-center justify-center">
-                <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#e0e7ff] group-hover:bg-blue-600 transition-colors duration-300">
-                  <span className="text-blue-700 group-hover:text-white transition-colors duration-300 w-8 h-8 md:w-full md:h-full flex items-center justify-center">{industrySvgs[idx]}</span>
+                <span className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full transition-colors duration-300 ${isActive ? 'bg-blue-600' : 'bg-[#e0e7ff] group-hover:bg-blue-600'}`}>
+                  <span className={`transition-colors duration-300 w-8 h-8 md:w-full md:h-full flex items-center justify-center ${isActive ? 'text-white' : 'text-blue-700 group-hover:text-white'}`}>{industrySvgs[idx]}</span>
                 </span>
               </span>
-              <div className="font-bold text-lg md:text-xl mb-2 z-20 relative transition-colors duration-300 text-center group-hover:text-white">
+              <div className={`font-bold text-lg md:text-xl mb-2 z-20 relative transition-colors duration-300 text-center ${isActive ? 'text-white' : 'group-hover:text-white'}`}>
                 {industry.name}
               </div>
-              <div className="text-slate-500 text-sm md:text-base z-20 relative transition-colors duration-300 text-center group-hover:text-blue-100">
+              <div className={`text-sm md:text-base z-20 relative transition-colors duration-300 text-center ${isActive ? 'text-blue-100' : 'text-slate-500 group-hover:text-blue-100'}`}>
                 {industry.description}
               </div>
             </div>
+              );
+            })()
           ))}
         </div>
       </div>
