@@ -10,6 +10,7 @@ import TechStrip from '@/components/TechStrip';
 import FAQSection from '@/components/FAQSection';
 import AboutTeam from '@/components/home/AboutTeam';
 import Footer from '@/components/layout/Footer';
+import SlidingReviewSection from '@/components/SlidingReviewSection';
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       <ProductShowcase />
       <div className="my-12" />
       <TechStrip />
+      <SlidingReviewSection />
       <FAQSection />
       <AboutTeam />
       <Footer />

@@ -38,19 +38,9 @@ const reviews = [
 
 export default function ReviewCards() {
   const [slideIdx, setSlideIdx] = useState(0);
-  const [reviewsPerSlide, setReviewsPerSlide] = useState(2);
+  const reviewsPerSlide = 2;
   const maxSlide = Math.ceil(reviews.length / reviewsPerSlide);
   const visibleReviews = reviews.slice(slideIdx * reviewsPerSlide, (slideIdx + 1) * reviewsPerSlide);
-
-  useEffect(() => {
-    const setSlides = () => {
-      setReviewsPerSlide(window.innerWidth < 1024 ? 1 : 2);
-    };
-
-    setSlides();
-    window.addEventListener('resize', setSlides);
-    return () => window.removeEventListener('resize', setSlides);
-  }, []);
 
   // Auto-rotate slides every 4 seconds
   useEffect(() => {
@@ -70,7 +60,7 @@ export default function ReviewCards() {
         </svg>
       </div>
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Our Testimonials</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Testimonial</h2>
         <p className="text-base md:text-lg text-center mb-8 text-slate-600">Hear from our happy users and discover how Aymorix made a difference for them.</p>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center items-center">
           {visibleReviews.map((review, idx) => (

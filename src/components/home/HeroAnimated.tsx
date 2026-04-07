@@ -251,7 +251,7 @@ export default function HeroAnimated() {
                         </div>
                     </div>
 
-                        <div className="animate-fadeUp opacity-0 flex flex-wrap gap-2" style={{ animationDelay: '660ms' }}>
+                        <div className="mt-4 max-[600px]:mt-5 animate-fadeUp opacity-0 flex flex-wrap gap-2" style={{ animationDelay: '660ms' }}>
                             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold bg-[#eef1fd] border-[1.5px] border-[#c3ccf8] text-brand">
                                 <Home size={11} /> CRM Suite
                             </span>
@@ -329,7 +329,7 @@ export default function HeroAnimated() {
                                             </div>
 
                                             {/* KPI Grid */}
-                                            <div className="grid grid-cols-4 gap-2 mb-3">
+                                            <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                                                 {[
                                                     { label: 'Revenue', val: `$${kpi.revenueM.toFixed(1)}M`, pct: '+18%', up: true, delay: '0ms' },
                                                     { label: 'Leads', val: `${Math.round(kpi.leads)}`, pct: '+32%', up: true, delay: '90ms' },
@@ -467,7 +467,8 @@ export default function HeroAnimated() {
                                             {/* Process Flow SVG */}
                                             <div className="mc mb-3">
                                                 <div className="text-[11px] font-bold text-ink mb-3">Business Process Flow</div>
-                                                <div className="relative h-43">
+                                                <div className="overflow-x-auto pb-1">
+                                                    <div className="relative h-43 min-w-[520px]">
                                                     <svg width="100%" height="172" viewBox="0 0 520 172" className="overflow-visible">
                                                         {/* Edges */}
                                                         <line x1="88" y1="44" x2="152" y2="44" stroke="#dce3ef" strokeWidth="1.8" className="animate-edgeDraw opacity-0" style={{ animationDelay: '300ms' }} />
@@ -514,10 +515,11 @@ export default function HeroAnimated() {
                                                             <span className="text-[8.5px] font-bold">HR</span>
                                                         </div>
                                                     </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-2">
+                                            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                                 <div className="mc">
                                                     <div className="text-[11px] font-bold text-ink mb-2">Module Health</div>
                                                     <div className="space-y-2">
