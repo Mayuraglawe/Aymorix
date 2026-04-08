@@ -29,7 +29,7 @@ const slides = [
         title: 'Enterprise Workflow Automation',
         description:
             'We automate business operations through integrated tools, APIs, and smart orchestration for faster decisions and better outcomes.',
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+        image: '/workflow_automation.jpg',
     },
     {
         category: 'SERVICES',

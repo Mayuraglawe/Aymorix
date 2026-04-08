@@ -173,6 +173,11 @@ export default function Footer() {
                     <p className="text-slate-400 text-[15px] leading-relaxed mb-6">
                         Empowering businesses with scalable SaaS and intelligent automations.
                     </p>
+                    <div className="text-[15px] leading-relaxed text-slate-400 space-y-1 mb-6">
+                        <p>Registered MSME (Govt. of India)</p>
+                        <p>Udyam Registration Number: UDYAM-MH-20-0333050</p>
+                        <p>Nagpur, Maharashtra, India</p>
+                    </div>
                     <div className="flex flex-wrap gap-4 mb-6">
                         {/* <a href="https://facebook.com/aymorix" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full bg-slate-800 border border-slate-700 w-11 h-11 flex items-center justify-center hover:bg-brand hover:border-brand transition-colors">
                             <Facebook size={20} className="text-white" />
@@ -232,6 +237,6 @@ export default function Footer() {
                     &copy; {new Date().getFullYear()} Aymorix Technologies. All rights reserved.
                 </div>
             </div>
-        </footer>
+            </footer>
     );
 }

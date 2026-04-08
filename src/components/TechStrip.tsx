@@ -27,7 +27,7 @@ export default function TechStrip() {
   return (
     <div id="tech-stack" className="overflow-hidden w-full py-8 md:py-10 bg-white">
       <div className="max-w-screen-xl mx-auto mb-8 px-4 sm:px-6 md:px-16 text-center">
-        <h2 className="text-[clamp(1.5rem,4vw,2rem)] font-extrabold text-ink mb-2">Technologies We Use</h2>
+        <h2 className="font-display font-extrabold text-[clamp(1.75rem,5vw,2.8rem)] text-ink tracking-tight text-center mb-2">Technologies We Use</h2>
         <p className="text-sm sm:text-base md:text-lg text-mid">Our platform is built on modern, scalable, and secure technologies.</p>
       </div>
       <div className="relative w-full">

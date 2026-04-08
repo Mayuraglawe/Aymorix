@@ -66,17 +66,17 @@ export default function ReviewCards() {
   }, [maxSlide]);
 
   return (
-    <section className="relative w-full py-10 sm:py-12 lg:py-14 overflow-hidden">
+    <section className="relative w-full py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <svg width="100%" height="100%" viewBox="0 0 2600 900" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <polygon points="0,0 1200,0 900,900 0,900" fill="#dbeafe" />
-          <polygon points="2600,0 1800,0 2200,900 2600,900" fill="#f1f5f9" />
-          <polygon points="700,0 2100,0 1900,900 1100,900" fill="#e0e7ef" />
+        <svg width="100%" height="100%" viewBox="0 0 2600 1200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <polygon points="0,0 1200,0 900,1200 0,1200" fill="#dbeafe" />
+          <polygon points="2600,0 1800,0 2200,1200 2600,1200" fill="#f1f5f9" />
+          <polygon points="700,0 2100,0 1900,1200 1100,1200" fill="#e0e7ef" />
         </svg>
       </div>
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 text-blue-700 drop-shadow-sm">Testimonial</h2>
-        <p className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg text-center mb-6 sm:mb-8 text-slate-600">
+        <h2 className="font-display font-extrabold text-[clamp(1.75rem,5vw,2.8rem)] text-ink tracking-tight text-center mb-2">Testimonial</h2>
+        <p className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg text-center mb-6 sm:mb-8 text-black font-semibold">
           Hear from our happy users and discover how Aymorix made a difference for them.
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 justify-center items-stretch">
