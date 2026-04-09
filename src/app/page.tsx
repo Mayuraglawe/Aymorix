@@ -12,7 +12,7 @@ import AboutTeam from '@/components/home/AboutTeam';
 import Footer from '@/components/layout/Footer';
 import SlidingReviewSection from '@/components/SlidingReviewSection';
 
-
+// this need to add to for change to deploy
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
