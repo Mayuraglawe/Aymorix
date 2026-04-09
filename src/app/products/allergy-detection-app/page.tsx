@@ -103,8 +103,8 @@ export default function AllergyDetectionAppPage() {
 
           <div className="relative h-[360px] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-blue-100/70 md:h-[480px]">
             <Image
-              src="/allergy1.png"
-              alt="Allergy detection app interface"
+              src="/image.png"
+              alt="Safe Pick - product identity for Allergy Detection App"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
@@ -183,7 +183,7 @@ export default function AllergyDetectionAppPage() {
             </div>
             <div className="md:w-1/2 w-full">
               <span className="inline-block rounded-full border border-pink-200 bg-pink-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-pink-700 mb-2">About the App</span>
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl mb-4">Allergy Detection App: Your Smart Allergy Assistant</h2>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl mb-4">Safe Pick: Your Smart Allergy Assistant</h2>
               <p className="text-base md:text-lg text-mid mb-4">
                 The Allergy Detection App empowers healthcare professionals and patients with fast, reliable, and AI-powered allergy screening. Its intuitive interface and advanced algorithms analyze ingredient lists, flag potential allergens, and provide clear guidance for safe consumption. Whether in a clinic or at home, our product helps you make informed decisions and avoid risky ingredients.
               </p>

@@ -11,10 +11,10 @@ export default function Head() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Aymorix",
+            "name": "Aymorix Technologies",
             "url": "https://www.aymorix.com/",
             "logo": "/Aymorix_logo2.png",
-            "description": "Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms."
+            "description": "Aymorix Technologies is a deep-tech agency engineering cloud-native, enterprise-grade platforms."
           })
         }}
       />

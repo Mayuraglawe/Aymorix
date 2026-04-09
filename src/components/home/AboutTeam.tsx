@@ -58,8 +58,8 @@ export default function AboutTeam() {
                         </h2>
 
                         <p className="mt-4 md:mt-6 text-base sm:text-lg md:text-lg leading-relaxed text-mid">
-                            Aymorix blends product strategy, deep engineering, and AI-first thinking to craft dependable digital systems. We help
-                            organizations simplify operations, launch faster, and keep growing with confidence.
+                            Aymorix Technologies is an elite software engineering and design firm specializing in building scalable, cloud-native
+                            applications that optimize business operations and accelerate growth.
                         </p>
 
                         <div className="mt-6 md:mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">

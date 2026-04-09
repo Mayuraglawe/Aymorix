@@ -19,8 +19,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aymorix.com'),
-  title: 'Aymorix - Enterprise Software & AI Workflows',
-  description: 'Aymorix is a deep-tech agency engineering cloud-native, enterprise-grade platforms.',
+  title: 'Aymorix Technologies',
+  description: 'Aymorix Technologies is a deep-tech agency engineering cloud-native, enterprise-grade platforms.',
   alternates: {
     canonical: '/',
   },

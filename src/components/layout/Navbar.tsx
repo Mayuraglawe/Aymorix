@@ -60,7 +60,7 @@ export default function Navbar() {
                                     Zenith
                                 </Link>
                                 <Link href="/products/allergy-detection-app" className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-slate-50 hover:text-brand">
-                                    Allergy Detection App
+                                    Safe Pick
                                 </Link>
                                 <Link href="/products/automated-land-boundary-detection" className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-slate-50 hover:text-brand">
                                     Automated Land Boundary Detection
@@ -115,7 +115,7 @@ export default function Navbar() {
                             <p className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wide text-soft">Products</p>
                             <Link href="/products/algomate" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Algomate</Link>
                             <Link href="/products/zenith" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Zenith</Link>
-                            <Link href="/products/allergy-detection-app" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Allergy Detection App</Link>
+                            <Link href="/products/allergy-detection-app" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Safe Pick</Link>
                             <Link href="/products/automated-land-boundary-detection" onClick={closeMenu} className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-slate-50">Automated Land Boundary Detection</Link>
                         </div>
                         <Link href="#contact" onClick={closeMenu} className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-brand px-3 py-2 text-[12px] font-semibold text-white max-[600px]:px-2.5 max-[600px]:py-1.5 max-[600px]:text-[11px]">

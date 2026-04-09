@@ -66,7 +66,7 @@ export default function ReviewCards() {
   }, [maxSlide]);
 
   return (
-    <section className="relative w-full py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section id="testimonials" className="relative w-full py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <svg width="100%" height="100%" viewBox="0 0 2600 1200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
           <polygon points="0,0 1200,0 900,1200 0,1200" fill="#dbeafe" />

@@ -129,8 +129,10 @@ export default function Footer() {
                                 className="w-full bg-slate-800 border-none rounded-lg px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-accent outline-none appearance-none transition"
                             >
                                 <option>Algomate</option>
+                                <option>App Development</option>
+                                <option>Web Development</option>
                                 <option>Custom SaaS Development</option>
-                                <option>General AI Integration</option>
+                                <option>AI Automations</option>
                             </select>
                         </div>
                         <div>
@@ -170,9 +172,6 @@ export default function Footer() {
                         </Link>
                         <span className="font-display font-bold text-sm text-white tracking-tight">Aymorix Technologies</span>
                     </div>
-                    <p className="text-slate-400 text-[15px] leading-relaxed mb-6">
-                        Empowering businesses with scalable SaaS and intelligent automations.
-                    </p>
                     <div className="text-[15px] leading-relaxed text-slate-400 space-y-1 mb-6">
                         <p>Registered MSME (Govt. of India)</p>
                         <p>Udyam Registration Number: UDYAM-MH-20-0333050</p>
@@ -208,7 +207,8 @@ export default function Footer() {
                         <li><Link href="#services"><i className="fas fa-concierge-bell mr-2"></i>Services</Link></li>
                         <li><Link href="#industry"><i className="fas fa-industry mr-2"></i>Industry</Link></li>
                         <li><Link href="#products"><i className="fas fa-box-open mr-2"></i>Products</Link></li>
-                        <li><Link href="#techstack"><i className="fas fa-cubes mr-2"></i>Tech Stack</Link></li>
+                        <li><Link href="#tech-stack"><i className="fas fa-cubes mr-2"></i>Tech Stack</Link></li>
+                        <li><Link href="#testimonials"><i className="fas fa-comment-dots mr-2"></i>Testimonials</Link></li>
                         <li><Link href="#about"><i className="fas fa-users mr-2"></i>About Us</Link></li>
                         <li><Link href="#faq"><i className="fas fa-question-circle mr-2"></i>FAQ</Link></li>
                     </ul>

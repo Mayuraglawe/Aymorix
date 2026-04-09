@@ -19,8 +19,8 @@ const PRODUCTS: Product[] = [
         description:
             'An enterprise-grade timetable automation platform using hybrid AI algorithms to resolve complex scheduling conflicts in seconds.',
         metrics: ['99.9% Conflict-Free', '1000+ Concurrent Users', 'Next.js + Python'],
-        image: '/screen.png',
-        imageAlt: 'Algomate dashboard preview',
+        image: '/timetable.png',
+        imageAlt: 'Algomate timetable scheduler preview',
         href: '/products/algomate',
     },
     {
@@ -33,12 +33,12 @@ const PRODUCTS: Product[] = [
         href: '/products/zenith',
     },
     {
-        name: 'Allergy Detection App',
+        name: 'Safe Pick: Allergy Detection App',
         description:
             'AI-assisted allergy detection workflows that help identify risks earlier and provide reliable recommendations for clinical teams.',
         metrics: ['AI-assisted Detection', 'Faster Risk Screening', 'Audit-ready Reports'],
-        image: '/allergy1.png',
-        imageAlt: 'Medical analysis interface for allergy detection',
+        image: '/image.png',
+        imageAlt: 'Safe Pick branding and login screen',
         href: '/products/allergy-detection-app',
     },
     {
